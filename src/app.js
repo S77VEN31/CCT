@@ -1,8 +1,8 @@
 import express from "express";
 import morgan from "morgan";
 
-const App = express();
+const app = express();
 
-App.use(morgan("dev"));
+app.use(morgan("dev"));
 
-export default App;
+export default app;
