@@ -133,7 +133,24 @@ export const getEvent = async (req, res) => {
         res.status(500).json({ message: error.message })
     }
 }
-
+export const leaveEvent = async (req, res) => {
+    try {
+        // get event from id param
+        const event = await Event.findById(req.params.id)
+        // ensure user is an attendee
+        if (!event.attendees.includes(req.user)) {
+            throw new Error("You are not an attendee of this event")
+        }
+        // remove user from attendees
+        event.attendees = event.attendees.filter(user => user._id != req.user._id)
+        // save event
+        await event.save()
+        // return event
+        res.json(event)
+    } catch (error) {
+        res.status(500).json({ message: error.message })
+    }
+}
 export const joinEvent = async (req, res) => {
     try {
         // get event from id param
