@@ -1,4 +1,3 @@
-
 // Model
 import User from "../models/user.model.js"
 // Encrypt library
@@ -7,7 +6,6 @@ import bcrypt from "bcryptjs"
 import { createAccessToken } from "../libs/jwt.js"
 
 export const register = async (req, res) => {
-    console.log(req.body)
     const { userName, email, password } = req.body
     try {
         // Hash password
@@ -39,7 +37,6 @@ export const register = async (req, res) => {
 
 // Validar cuando se mandan datos extra
 export const login = async (req, res) => {
-
     const { email, password } = req.body
     try {
         // Find user
@@ -74,10 +71,12 @@ export const logout = (req, res) => {
     return res.sendStatus(200)
 }
 
-export const profile = (req, res) => {
-    const profileFound = User.findById(req.user.id)
+export const profile = async (req, res) => {
+    // Find user await 
+    const profileFound = await User.findById(req.user.id)
+    // If user not found
     if (!profileFound) return res.status(400).json({ message: "Profile not found" })
-
+    // If user found send user
     res.json({
         id: profileFound._id,
         userName: profileFound.userName,

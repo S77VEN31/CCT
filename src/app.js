@@ -1,5 +1,8 @@
+// App entry point
 import express from "express";
+// Log requests to console
 import morgan from "morgan";
+// Get cookies from request
 import cookieParser from "cookie-parser";
 
 // AuthRoutes
@@ -14,8 +17,7 @@ app.use(morgan("dev"));
 app.use(express.json());
 // Get cookies from request
 app.use(cookieParser());
-// Get url encoded data from request
+// Routes
 app.use("/api", authRoutes);
-
 
 export default app;
