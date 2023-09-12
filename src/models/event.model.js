@@ -2,6 +2,8 @@ import mongoose from "mongoose";
 import userModel from "./user.model";
 import activityModel from "./activity.model";
 import commentModel from "./comment.model";
+import valorationsModel from "./valorations.model";
+
 
 const eventModel = new mongoose.Schema({
     title: {
@@ -63,5 +65,9 @@ const eventModel = new mongoose.Schema({
         type: [activityModel],
         required: true,
     },
+    valorations: {
+        type: [valorationsModel],
+        required: true,
+    }
 }, { timestamps: true })
 export default mongoose.model("Event", eventModel);
