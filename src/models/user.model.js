@@ -18,6 +18,13 @@ const userModel = new mongoose.Schema({
         type: String,
         required: true,
         trim: true,
+    },
+    isOrganization: {
+        type: Boolean,
+        required: true,
+    },
+    members: {
+        type: [userModel],
     }
 }, { timestamps: true })
 export default mongoose.model("User", userModel);
