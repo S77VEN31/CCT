@@ -1,13 +1,19 @@
 // Router 
 import { Router } from 'express';
 // Controllers
-import { getEvents, getEvent, commentEvent, joinEvent, getEventRequests, acceptEventRequest, rejectEventRequest } from '../controllers/event.controller.js';
+import { getEvents, createEvent, editEvent, deleteEvent, getEvent, commentEvent, joinEvent, getEventRequests, acceptEventRequest, rejectEventRequest } from '../controllers/event.controller.js';
 
 // Middlewares
 import { authRequired } from '../middlewares/jwtValidate.js';
 
 const router = Router();
 
+// create event 
+router.post('/events', authRequired, createEvent)
+// edit event
+router.put('/events/:id', authRequired, editEvent)
+// delete event
+router.delete('/events/:id', authRequired, deleteEvent)
 // view all events
 router.get('/events', authRequired, getEvents)
 // view one event 

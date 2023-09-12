@@ -56,11 +56,6 @@ const eventModel = new mongoose.Schema({
         type: [userModel],
         required: true,
     },
-    feedbackForm: {
-        type: String,
-        required: true,
-        trim: true,
-    },
     activities: {
         type: [activityModel],
         required: true,

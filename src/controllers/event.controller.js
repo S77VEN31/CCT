@@ -2,6 +2,85 @@
 import Event from "../models/event.model.js"
 import Comment from "../models/comment.model.js"
 import User from "../models/user.model.js"
+import Activity from "../models/activity.model.js"
+
+export const createEvent = async (req, res) => {
+    ({ title, description, startTime, endTime, location, category, capacity, requiresApproval } = req.body);    
+    try {
+        // verify user is an organization
+        if (!req.user.isOrganization) {
+            throw new Error("You are not an organization")
+        }
+        // find organization members
+        const members = await User.find({ _id: { $in: req.user.members } })
+        // create event
+        const event = new Event({
+            title: title,
+            description: description,
+            startTime,
+            endTime,
+            location,
+            category,
+            capacity,
+            requiresApproval: requiresApproval,
+            activities: [],
+            collaborators: [req.user, ...members],
+            valorations: [],
+            attendees: [req.user],
+            attendanceRequests: [],
+            comments: []
+        })
+        // save event
+        await event.save()
+        // return event
+        res.json(event)
+    } catch (error) {
+        res.status(500).json({ message: error.message })
+    }
+}
+
+export const updateEvent = async (req, res) => {
+    try {
+        // get event from id param
+        const event = await Event.findById(req.params.id)
+        // ensure user is a collaborator
+        if (!event.collaborators.includes(req.user)) {
+            throw new Error("You are not a collaborator of this event")
+        }
+        // update event
+        event.title = req.body.title
+        event.description = req.body.description
+        event.startTime = req.body.startTime
+        event.endTime = req.body.endTime
+        event.location = req.body.location
+        event.category = req.body.category
+        event.capacity = req.body.capacity
+        event.requiresApproval = req.body.requiresApproval
+        // save event
+        await event.save()
+        // return event
+        res.json(event)
+    } catch (error) {
+        res.status(500).json({ message: error.message })
+    }
+}
+
+export const deleteEvent = async (req, res) => {
+    try {
+        // get event from id param
+        const event = await Event.findById(req.params.id)
+        // ensure user is a collaborator
+        if (!event.collaborators.includes(req.user)) {
+            throw new Error("You are not a collaborator of this event")
+        }
+        // delete event
+        await event.delete()
+        // return event
+        res.json(event)
+    } catch (error) {
+        res.status(500).json({ message: error.message })
+    }
+}
 
 export const getEvents = async (req, res) => {
     try {
@@ -28,6 +107,10 @@ export const joinEvent = async (req, res) => {
         // get event from id param
         const event = await Event.findById(req.params.id)
 
+        // ensure the event is not over capacity
+        if (event.attendees.length >= event.capacity) {
+            throw new Error("Event is over capacity")
+        }
 
         // ensure the user is not in the attendees list or attendance requests list
         if (event.attendees.includes(req.user)) {
@@ -74,6 +157,10 @@ export const acceptEventRequest = async (req, res) => {
     try {
         // get event requests from id 
         const event = await Event.findById(req.params.id)
+        // ensure event is not over capacity
+        if (event.attendees.length >= event.capacity) {
+            throw new Error("Event is over capacity")
+        }
         // if user is not collaborator
         if (!event.collaborators.includes(req.user)) {
             // throw error
