@@ -75,5 +75,13 @@ export const logout = (req, res) => {
 }
 
 export const profile = (req, res) => {
-    res.send("profile")
+    const profileFound = User.findById(req.user.id)
+    if (!profileFound) return res.status(400).json({ message: "Profile not found" })
+
+    res.json({
+        id: profileFound._id,
+        userName: profileFound.userName,
+        email: profileFound.email,
+        createdAt: profileFound.createdAt
+    })
 }
