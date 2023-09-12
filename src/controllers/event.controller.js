@@ -2,7 +2,39 @@
 import Event from "../models/event.model.js"
 import Comment from "../models/comment.model.js"
 import User from "../models/user.model.js"
-import Activity from "../models/activity.model.js"
+
+export const valorateEvent = async (req, res) => {
+    try {
+        // validate that the user is an attendee
+        const event = await Event.findById(req.params.id)
+        if (!event.attendees.includes(req.user)) {
+            throw new Error("You are not an attendee of this event")
+        }
+        // validate that the user has not valorated the event
+        if (event.valorations.find(valoration => valoration.user == req.user)) {
+            throw new Error("You have already valorated this event")
+        }
+        // create valoration
+        const valoration = {
+            user: req.user,
+            rating: req.body.rating,
+            recommendationProbability: req.body.recommendationProbability,
+            assistanceProbability: req.body.assistanceProbability,
+            comment: req.body.comment,
+            likesComment: req.body.likesComment,
+            dislikesComment: req.body.dislikesComment
+        }
+        // add valoration to event
+        event.valorations.push(valoration)
+        // save event
+        await event.save()
+        // return event
+        res.json(event)
+    } catch (error) {
+        res.status(500).json({ message: error.message })
+    }
+}
+
 
 export const createEvent = async (req, res) => {
     ({ title, description, startTime, endTime, location, category, capacity, requiresApproval } = req.body);    

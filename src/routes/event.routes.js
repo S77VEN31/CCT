@@ -1,7 +1,7 @@
 // Router 
 import { Router } from 'express';
 // Controllers
-import { getEvents, createEvent, editEvent, deleteEvent, getEvent, commentEvent, joinEvent, getEventRequests, acceptEventRequest, rejectEventRequest } from '../controllers/event.controller.js';
+import { getEvents, createEvent, editEvent, valorateEvent, deleteEvent, getEvent, commentEvent, joinEvent, getEventRequests, acceptEventRequest, rejectEventRequest } from '../controllers/event.controller.js';
 
 // Middlewares
 import { authRequired } from '../middlewares/jwtValidate.js';
@@ -28,4 +28,6 @@ router.get('/events/:id/requests', authRequired, getEventRequests)
 router.post('/events/:id/requests/:userId/accept', authRequired, acceptEventRequest)
 // reject event request (event collaborator only)
 router.post('/events/:id/requests/:userId/reject', authRequired, rejectEventRequest)
+// add valoration to event (event attendee only)
+router.post('/events/:id/valorate', authRequired, valorateEvent)
 export default router;
