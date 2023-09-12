@@ -1,10 +1,27 @@
 import mongoose from "mongoose";
+import userModel from "./user.model";
+
+const activityModel = new mongoose.Schema({
+    startTime: {
+        type: Date,
+        required: true,
+    },
+    title: {
+        type: String,
+        required: true,
+        trim: true,
+    },
+}, { timestamps: true })
 
 const eventModel = new mongoose.Schema({
     title: {
         type: String,
         required: true,
         trim: true,
+    },
+    collaborators: {
+        type: [userModel],
+        required: true,
     },
     description: {
         type: String
@@ -32,13 +49,17 @@ const eventModel = new mongoose.Schema({
         required: true,
     },
     attendees: {
-        type: [String],
+        type: [userModel],
         required: true,
     },
     feedbackForm: {
         type: String,
         required: true,
         trim: true,
-    }
+    },
+    activities: {
+        type: [activityModel],
+        required: true,
+    },
 }, { timestamps: true })
 export default mongoose.model("Event", eventModel);
