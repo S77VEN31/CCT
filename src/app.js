@@ -1,5 +1,6 @@
 import express from "express";
 import morgan from "morgan";
+import cookieParser from "cookie-parser";
 
 // AuthRoutes
 import authRoutes from "./routes/auth.routes.js"
@@ -13,5 +14,7 @@ app.use(morgan("dev"));
 app.use(express.json());
 // Get url encoded data from request
 app.use("/api", authRoutes);
+// Get cookies from request
+app.use(cookieParser());
 
 export default app;

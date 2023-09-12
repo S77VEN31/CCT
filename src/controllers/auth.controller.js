@@ -39,7 +39,7 @@ export const register = async (req, res) => {
 
 // Validar cuando se mandan datos extra
 export const login = async (req, res) => {
-    console.log(req.body)
+
     const { email, password } = req.body
     try {
         // Find user
@@ -53,7 +53,7 @@ export const login = async (req, res) => {
         // Create token with userFound._id
         const token = await createAccessToken({ id: userFound._id })
         // Send token in cookie
-        res.cookie("token", token, { httpOnly: true })
+        res.cookie("token", token)
         // Send user in response
         res.json({
             id: userFound._id,
@@ -69,7 +69,7 @@ export const login = async (req, res) => {
 
 export const logout = (req, res) => {
     // Clear cookie
-    res.cookie("token", "", { httpOnly: true, expires: new Date(0) })
+    res.cookie("token", "", { expires: new Date(0) })
     // Send status
     return res.sendStatus(200)
 }
