@@ -13,11 +13,31 @@ const activityModel = new mongoose.Schema({
     },
 }, { timestamps: true })
 
+const commentModel = new mongoose.Schema({
+    user: {
+        type: userModel,
+        required: true,
+    },
+    content: {
+        type: String,
+        required: true,
+        trim: true,
+    },
+}, { timestamps: true })
+
 const eventModel = new mongoose.Schema({
     title: {
         type: String,
         required: true,
         trim: true,
+    },
+    comments: {
+        type: [commentModel],
+        required: true,
+    },
+    requiresApproval: {
+        type: Boolean,
+        required: true,
     },
     collaborators: {
         type: [userModel],
