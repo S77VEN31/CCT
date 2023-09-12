@@ -1,29 +1,7 @@
 import mongoose from "mongoose";
 import userModel from "./user.model";
-
-const activityModel = new mongoose.Schema({
-    startTime: {
-        type: Date,
-        required: true,
-    },
-    title: {
-        type: String,
-        required: true,
-        trim: true,
-    },
-}, { timestamps: true })
-
-const commentModel = new mongoose.Schema({
-    user: {
-        type: userModel,
-        required: true,
-    },
-    content: {
-        type: String,
-        required: true,
-        trim: true,
-    },
-}, { timestamps: true })
+import activityModel from "./activity.model";
+import commentModel from "./comment.model";
 
 const eventModel = new mongoose.Schema({
     title: {
