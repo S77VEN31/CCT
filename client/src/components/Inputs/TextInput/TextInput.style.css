@@ -1,0 +1,40 @@
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  text-align: left;
+  color: var(--text-dark);
+  text-transform: capitalize;
+}
+
+.form-group input {
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+.form-group input::placeholder {
+  color: var(--text-light);
+}
+
+.input-and-icon {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid var(--primary);
+}
+
+.icon-and-input {
+  flex-direction: row-reverse;
+}
+
+.icon {
+  color: var(--primary);
+}
+
+.input-and-icon button {
+  border: none;
+  outline: none;
+  background: transparent;
+}
