@@ -1,5 +1,13 @@
+// React
 import React, { useState } from "react";
+// Styles
 import "./Login.style.css";
+// Icons
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPhone } from "@fortawesome/free-solid-svg-icons";
+// Components
+import TextInput from "../components/Inputs/TextInput/TextInput";
+
 function Login() {
   const [formData, setFormData] = useState({
     email: "",
@@ -25,28 +33,24 @@ function Login() {
     <div className="login-container">
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-        </div>
+        <TextInput
+          type="email"
+          id="email"
+          name="email"
+          onChange={handleChange}
+          value={formData.email}
+          placeholder="example@estudiantec.cr"
+          required={true}
+        />
+        <TextInput
+          type="password"
+          id="password"
+          name="password"
+          placeholder="your password"
+          onChange={handleChange}
+          value={formData.password}
+          required={true}
+        />
         <button type="submit">Login</button>
       </form>
     </div>
