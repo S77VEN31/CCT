@@ -12,9 +12,10 @@ const app = express();
 app.use(morgan("dev"));
 // Get json data from request
 app.use(express.json());
-// Get url encoded data from request
-app.use("/api", authRoutes);
 // Get cookies from request
 app.use(cookieParser());
+// Get url encoded data from request
+app.use("/api", authRoutes);
+
 
 export default app;
