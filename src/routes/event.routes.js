@@ -1,12 +1,17 @@
 // Router 
 import { Router } from 'express';
+// Controllers
+import { getEvents } from '../controllers/event.controller.js';
+
 // Middlewares
 import { authRequired } from '../middlewares/jwtValidate.js';
 
 const router = Router();
 
-// create an event
-
+// view all events
+router.get('/events', authRequired, getEvents)
+// view one event 
+router.get('/events/:id', authRequired, getEvent)
 
 
 
