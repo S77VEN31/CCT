@@ -39,6 +39,10 @@ const eventModel = new mongoose.Schema({
         type: Boolean,
         required: true,
     },
+    attendanceRequests: {
+        type: [userModel],
+        required: true,
+    },
     collaborators: {
         type: [userModel],
         required: true,
