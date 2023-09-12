@@ -1,7 +1,7 @@
 // Router 
 import { Router } from 'express';
 // Controllers
-import { getEvents } from '../controllers/event.controller.js';
+import { getEvents, getEvent } from '../controllers/event.controller.js';
 
 // Middlewares
 import { authRequired } from '../middlewares/jwtValidate.js';
