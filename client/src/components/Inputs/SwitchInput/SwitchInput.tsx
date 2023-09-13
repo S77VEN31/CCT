@@ -5,6 +5,11 @@ import ReactSwitch from "react-switch";
 
 const SwitchInput = () => {
   const [checked, setChecked] = useState(false);
+
+  const handleChange = () => {
+    setChecked(!checked);
+  };
+
   return (
     <div className="switch-input">
       <ReactSwitch
@@ -12,7 +17,7 @@ const SwitchInput = () => {
         checkedIcon={false}
         uncheckedIcon={false}
         onChange={() => {
-          setChecked(!checked);
+          handleChange();
         }}
         checked={checked}
       />
