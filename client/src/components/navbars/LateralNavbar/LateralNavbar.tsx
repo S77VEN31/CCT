@@ -3,6 +3,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 // Styles
 import "./LateralNavbar.style.css";
+// Svgs
+import { Svgs } from "../../../enumerables/svgs/svgs";
 // Enumerables
 import { RoutesList } from "../../../enumerables/routes/routes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -12,6 +14,9 @@ const LateralNavbar = () => {
   const [active, setActive] = useState<string>("/menu/profile");
   return (
     <div className="lateral-menu">
+      <div>
+        {Svgs.logo({ })}
+      </div>
       <ul>
         {menuRoutes.map((route, key) => {
           return (

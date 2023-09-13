@@ -4,13 +4,13 @@
   background-color: var(primary);
 }
 
-.main-container {
+.menu-screen .main-container {
   display: flex;
   height: 100%;
   width: 100%;
 }
 
-.content-container {
+.menu-screen .content-container {
   display: flex;
   border-radius: 38px 0 0 38px;
   flex: 1;
