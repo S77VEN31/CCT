@@ -1,12 +1,13 @@
 import "./Pablo.style.css";
-import AsociationCard from "./components/asociationCard/asociationCard";
+import AsociationCard from "./components/asociationCard/AsociationCard";
 function Pablo() {
   return(
-    <div className="screen">
+    <div className="pablo-screen">
       <AsociationCard 
         name="ASODEC" 
         carrer="Ingeniería en Computación" 
-        photo="https://i.imgur.com/4Q2qX3N.png"/>
+        photo="Logo"
+      />
     </div>
   )  
 }
