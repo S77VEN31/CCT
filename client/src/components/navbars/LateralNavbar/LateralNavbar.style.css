@@ -2,12 +2,25 @@
   height: 100%;
   flex: 0.2;
   color: var(--white);
+  display: flex;
+  flex-direction: column;
+}
+
+.app-logo {
+  padding: 28px 0px;
+  display: flex;
+  flex: 0.1;
+  align-items: center;
+  justify-content: center;
 }
 
 .lateral-menu ul {
   list-style: none;
   padding: 0;
   padding-left: 40px;
+  display: flex;
+  flex-direction: column;
+  flex: 0.9
 }
 
 .lateral-menu li {

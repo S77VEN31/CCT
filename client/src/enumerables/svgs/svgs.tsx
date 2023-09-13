@@ -1,3 +1,4 @@
+// Svg components
 import Logo from "../../assets/images/svgs/Logo";
 
 export const Svgs = {

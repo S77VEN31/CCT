@@ -14,9 +14,7 @@ const LateralNavbar = () => {
   const [active, setActive] = useState<string>("/menu/profile");
   return (
     <div className="lateral-menu">
-      <div>
-        {Svgs.logo({ })}
-      </div>
+      <div className="app-logo">{Svgs.logo({})}</div>
       <ul>
         {menuRoutes.map((route, key) => {
           return (
