@@ -1,13 +1,24 @@
+// React
+import { Link } from "react-router-dom";
+// Styles
 import "./LateralNavbar.style.css";
+// Enumerables
+import { RoutesList } from "../../../enumerables/routes/routes";
 
 const LateralNavbar = () => {
+  const { menuRoutes } = RoutesList;
   return (
     <div className="lateral-menu">
       <ul>
-        <li>Item 1</li>
-        <li>Item 2</li>
-        <li>Item 3</li>
-        <li>Item 4</li>
+        {menuRoutes.map((route, key) => {
+          return (
+            <li key={key}>
+              <Link className="medium-h5 route-link" to={route.path}>
+                {route.name}
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );

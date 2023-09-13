@@ -116,23 +116,34 @@
 /* Poppins-light (Weight: 300) */
 /* Poppins-extraLight (Weight: 200) */
 /* Poppins-thin (Weight: 100) */
+/*H1: 2.25em (about 36px when the base font size is 16px)*/
+/*H2: 1.75em (about 28px when the base font size is 16px)*/
+/*H3: 1.5em (about 24px when the base font size is 16px)*/
+/*H4: 1.25em (about 20px when the base font size is 16px)*/
+/*H5: 1.125em (about 18px when the base font size is 16px)*/
+/*H6: 1em (about 16px when the base font size is 16px)*/
 
-.semibold-title {
+.semibold-h2 {
   font-family: "Poppins-semibold";
   font-size: 28px;
 }
 
-.semibold-subtitle {
+.semibold-h5 {
+  font-family: "Poppins-semibold";
+  font-size: 18px;
+}
+
+.semibold-h6 {
   font-family: "Poppins-semibold";
   font-size: 16px;
 }
 
-.medium-subtitle {
+.medium-h6 {
   font-family: "Poppins-medium";
   font-size: 16px;
 }
 
-.medium-placeholder {
+.medium-h5 {
   font-family: "Poppins-medium";
   font-size: 18px;
 }

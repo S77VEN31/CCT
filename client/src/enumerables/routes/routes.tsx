@@ -1,16 +1,28 @@
-import Login from "../../screens/Login/Login";
-import Register from "../../screens/Register/Register";
-import Menu from "../../screens/Menu/Menu";
+// mainRoutes
+import Login from "../../screens/MainScreens/Login/Login";
+import Register from "../../screens/MainScreens/Register/Register";
+// menuRoutes
+import Profile from "../../screens/MenuScreens/Profile/Profile";
+import Search from "../../screens/MenuScreens/Search/Search";
+import Stats from "../../screens/MenuScreens/Stats/Stats";
+import News from "../../screens/MenuScreens/News/News";
 /* Testing Screens delete in production */
 import Tomas from "../../screens/Testing/Tomas/Tomas";
 import Pablo from "../../screens/Testing/Pablo/Pablo";
 import Ariel from "../../screens/Testing/Ariel/Ariel";
 
-export const RoutesList = [
-  { path: "/", element: <Login /> },
-  { path: "/register", element: <Register /> },
-  { path: "/menu", element: <Menu /> },
-  { path: "/tomas", element: <Tomas /> },
-  { path: "/pablo", element: <Pablo /> },
-  { path: "/ariel", element: <Ariel /> },
-];
+export const RoutesList = {
+  mainRoutes: [
+    { path: "/", element: <Login /> },
+    { path: "/register", element: <Register /> },
+    { path: "/tomas", element: <Tomas /> },
+    { path: "/pablo", element: <Pablo /> },
+    { path: "/ariel", element: <Ariel /> },
+  ],
+  menuRoutes: [
+    { path: "/menu/profile", element: <Profile />, name: "Perfil" },
+    { path: "/menu/search", element: <Search />, name: "Buscar" },
+    { path: "/menu/stats", element: <Stats />, name: "Estadísticas" },
+    { path: "/menu/news", element: <News />, name: "Noticias" },
+  ],
+};

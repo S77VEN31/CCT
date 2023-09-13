@@ -1,4 +1,4 @@
-.screen {
+.login-screen {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -6,7 +6,7 @@
   background-color: var(primary);
 }
 
-.register-container {
+.login-container {
   display: flex;
   margin: 5%;
   max-height: 80%;
@@ -21,7 +21,7 @@
   transition: 2s; 
 }
 
-.register-container:hover {
+.login-container:hover {
   box-shadow: 0px 0px 16px var(--white); 
   transition: 2s; 
 }
