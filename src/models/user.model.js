@@ -22,9 +22,14 @@ const userModel = new mongoose.Schema({
     isOrganization: {
         type: Boolean,
         required: true,
-    },
-    members: {
-        type: [userModel],
     }
 }, { timestamps: true })
+
+
+userModel.add({
+    members: {
+        type: [userModel]
+    }
+})
+
 export default mongoose.model("User", userModel);
