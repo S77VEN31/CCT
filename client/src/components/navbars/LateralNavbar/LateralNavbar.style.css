@@ -7,13 +7,22 @@
 .lateral-menu ul {
   list-style: none;
   padding: 0;
+  padding-left: 40px;
 }
 
 .lateral-menu li {
   text-decoration: none;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  border-radius: 50px 0px 0px 50px;
+  padding: 0px 35px;
 }
 
 .lateral-menu li .route-link {
+  display: flex;
+  gap:45px;
+  align-items: center;
   color: var(--text-light);
   cursor: pointer;
   text-decoration: none;
@@ -21,4 +30,30 @@
 
 .lateral-menu li:hover .route-link {
   color: var(--white);
+}
+
+.lateral-menu .icon {
+  font-size: 28;
+  color: var(--text-light);
+}
+
+.lateral-menu  li:hover .icon {
+  color: var(--white);
+}
+
+.lateral-menu .active {
+  background-color: var(--background);
+}
+
+.lateral-menu .active .route-link {
+  color: var(--primary);
+}
+
+.lateral-menu .active .icon {
+  color: var(--primary);
+}
+
+.lateral-menu .active:hover .route-link,
+.lateral-menu .active:hover .icon {
+  color: var(--primary);
 }

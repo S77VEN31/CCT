@@ -5,6 +5,9 @@ import {
   faMapMarker,
   faEnvelope,
   faUser,
+  faSearch,
+  faChartBar,
+  faNewspaper,
 } from "@fortawesome/free-solid-svg-icons";
 
 export const Icons = {
@@ -14,4 +17,7 @@ export const Icons = {
   location: faMapMarker,
   email: faEnvelope,
   user: faUser,
+  search: faSearch,
+  stats: faChartBar,
+  news: faNewspaper,
 };
