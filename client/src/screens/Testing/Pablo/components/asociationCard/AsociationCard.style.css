@@ -1,4 +1,4 @@
-.search-container {
+.pablo-screen .asociationCard-container {
   display: flex;
   flex-direction: column;
   margin: 5%;
@@ -11,13 +11,13 @@
   background-color: var(--white);
 }
 
-.title {
+.pablo-screen .title {
   display: flex;
   text-align: center;
   color: var(--text-dark);
 }
 
-.title-container {
+.pablo-screen .title-container {
   display: flex;
   justify-content: space-around;
 }
