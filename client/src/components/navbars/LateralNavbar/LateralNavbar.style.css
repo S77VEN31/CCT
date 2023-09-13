@@ -1,0 +1,20 @@
+.lateral-menu {
+  height: 100%;
+  flex: 0.2;
+  color: var(--white);
+}
+
+.lateral-menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+.lateral-menu li {
+  margin-bottom: 20px;
+  color: var(--text-light);
+  cursor: pointer;
+}
+
+.lateral-menu li:hover {
+  color: var(--white);
+}

@@ -1,0 +1,10 @@
+.main-container {
+    display: flex;
+    height: 100vh;
+  }
+
+.content-container {
+    display: flex;
+    flex: 1;
+    background-color: var(--background);
+}
