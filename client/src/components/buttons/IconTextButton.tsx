@@ -22,7 +22,11 @@ const IconTextButton = (props: IconTextButtonProps) => {
       type={props.type}
       disabled={props.disabled}
       onClick={props.handleOnClick}
-      className={classes(["button", props.buttonClassname])}
+      className={classes([
+        "button",
+        props.buttonClassname,
+        props.disabled && "disabled",
+      ])}
     >
       {props.icon && <FontAwesomeIcon className="icon" icon={props.icon} />}
       {props.buttonText}

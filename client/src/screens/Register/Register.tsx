@@ -1,5 +1,6 @@
 // React
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 // Styles
 import "./Register.style.css";
 // Enumerables
@@ -14,6 +15,11 @@ function Register() {
     password: "",
     userName: "",
   });
+
+  const navigate = useNavigate();
+  const handleLoginButton = () => {
+    navigate("/");
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -32,9 +38,9 @@ function Register() {
 
   return (
     <div className="screen">
-      <div className="login-container">
+      <div className="register-container">
         <div className="title-container">
-          <text className="title semibold-title">Register</text>
+          <text className="title semibold-title">Registrarse</text>
         </div>
         <form className="inputs-container" onSubmit={handleSubmit}>
           <TextInput
@@ -68,14 +74,12 @@ function Register() {
           />
         </form>
         <div className="buttons-container">
+          <IconTextButton type="submit" buttonText="Registrarse" />
           <IconTextButton
             type="submit"
             buttonText="Iniciar Sesión"
-          ></IconTextButton>
-          <IconTextButton
-            type="submit"
-            buttonText="Registrarse"
-          ></IconTextButton>
+            handleOnClick={handleLoginButton}
+          />
         </div>
       </div>
     </div>

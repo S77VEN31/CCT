@@ -2,24 +2,16 @@
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 // Styles
 import "./App.css";
-// Screens
-import Login from "./screens/Login/Login";
-import Register from "./screens/Register/Register";
-// TestScreens delete in production
-import Tomas from "./screens/Testing/Tomas/Tomas";
-import Pablo from "./screens/Testing/Pablo/Pablo";
-import Ariel from "./screens/Testing/Ariel/Ariel";
+// Enumerables
+import { RoutesList } from "./enumerables/routes/routes";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        {/* Testing Screens delete in production */}
-        <Route path="/tomas" element={<Tomas />} />
-        <Route path="/pablo" element={<Pablo />} />
-        <Route path="/ariel" element={<Ariel />} />
+        {RoutesList.map(({ ...props }, key) => {
+          return <Route key={key} {...props} />;
+        })}
       </Routes>
     </BrowserRouter>
   );

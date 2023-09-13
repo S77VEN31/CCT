@@ -17,6 +17,13 @@
   padding: 20px 40px;
   border-radius: 38px;
   background-color: var(--white);
+  box-shadow: 0px 0px 16px var(--black); 
+  transition: 2s; 
+}
+
+.login-container:hover {
+  box-shadow: 0px 0px 16px var(--white); 
+  transition: 2s; 
 }
 
 .title-container {

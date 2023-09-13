@@ -1,46 +1,55 @@
 .button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    padding: 12px;
-    background-color: var(--secondary);
-    color: var(--primary);
-    border: none;
-    border-radius: 50px;
-    transition: 0.5s;
-  }
-  
-  .button:hover {
-    background-color: var(--primary);
-    box-shadow: 0 0 0 5px var(--primary);
-    color: var(--white);
-    transition: 0.5s;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  background-color: var(--secondary);
+  color: var(--primary);
+  border: none;
+  border-radius: 50px;
+  transition: 0.5s;
+}
 
-  .button:hover .icon {
-      color: var(--white);
-  }
-  
-  .active {
-    background-color: var(--primary);
-    color: var(--white);
-  }
-  
-  .disabled {
-    background-color: var(--gray);
-    color: var(--disabled-gray-strong);
-  }
-  
-  .enabled {
-    background-color: var(--secondary-blue);
-    color: var(--primary-blue);
-  }
+.button:hover {
+  background-color: var(--primary);
+  box-shadow: 0 0 0 5px var(--primary);
+  color: var(--white);
+  transition: 0.5s;
+}
 
-  .icon {
-    transition: 0.5s;
-    width: 24px;
-    height: 24px;
-  }
+.button:hover .icon {
+  color: var(--white);
+}
 
-  
+.button.disabled:hover {
+  background-color: var(--gray-light);
+  box-shadow: none;
+  color: var(--text-light);
+  transition: 0.5s;
+}
+
+.button.disabled:hover .icon {
+  color: var(--text-light)
+}
+
+.active {
+  background-color: var(--primary);
+  color: var(--white);
+}
+
+.disabled {
+  background-color: var(--gray-light);
+  color: var(--text-light);
+}
+
+.enabled {
+  background-color: var(--secondary-blue);
+  color: var(--primary-blue);
+}
+
+.icon {
+  transition: 0.5s;
+  width: 24px;
+  height: 24px;
+}
