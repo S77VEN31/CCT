@@ -23,13 +23,13 @@ const IconTextButton = (props: IconTextButtonProps) => {
       disabled={props.disabled}
       onClick={props.handleOnClick}
       className={classes([
-        "button medium-h5",
+        "button",
         props.buttonClassname,
         props.disabled && "disabled",
       ])}
     >
       {props.icon && <FontAwesomeIcon className="icon" icon={props.icon} />}
-      {props.buttonText}
+      <h5 className="medium">{props.buttonText}</h5>
     </button>
   );
 };

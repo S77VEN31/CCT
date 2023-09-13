@@ -23,9 +23,9 @@ const LateralNavbar = () => {
               className={`${active === route.path ? "active" : ""}`}
               key={key}
             >
-              <Link className="medium-h5 route-link" to={route.path}>
+              <Link className="route-link" to={route.path}>
                 <FontAwesomeIcon icon={route.icon} className="icon" />
-                {route.name}
+                <h5 className="medium">{route.name}</h5>
               </Link>
             </li>
           );

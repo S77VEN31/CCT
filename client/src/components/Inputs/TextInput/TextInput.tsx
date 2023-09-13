@@ -40,7 +40,8 @@ const TextInput = (props: TextInputProps) => {
       </label>
       {props.type === "password" ? (
         <div className={"input-and-icon"}>
-          <input className="medium-h5" {...props} />
+          <input className="medium" {...props} />
+
           <button onClick={togglePassword}>
             <FontAwesomeIcon
               icon={showPassword ? Icons.eyeSlash : Icons.eye}
@@ -51,7 +52,7 @@ const TextInput = (props: TextInputProps) => {
       ) : (
         <div className="icon-and-input">
           {props.icon && <FontAwesomeIcon className="icon" icon={props.icon} />}
-          <input className="medium-h5" {...props} />
+          <input className="medium" {...props} />
         </div>
       )}
     </div>

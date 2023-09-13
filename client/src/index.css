@@ -123,13 +123,15 @@
 /*H5: 1.125em (about 18px when the base font size is 16px)*/
 /*H6: 1em (about 16px when the base font size is 16px)*/
 
-
-h1 { font-size: 36px;}
-h2 { font-size: 28px;}
-h3 {font-size: 24px;}
-h4 { font-size: 20px;}
-h5 { font-size: 18px;}
-h6 { font-size: 16px;}
+h1,h2,h3,h4,h5,h6 {
+  margin: 0;
+}
+h1 { font-size: 36px}
+h2 { font-size: 28px}
+h3 {font-size: 24px}
+h4 { font-size: 20px}
+h5 { font-size: 18px}
+h6 { font-size: 16px}
 .black {
   font-family: "Poppins-black";
 }

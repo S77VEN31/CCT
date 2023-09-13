@@ -11,6 +11,7 @@
 }
 
 .form-group input {
+  font-size: 18px;
   border: none;
   padding: 0;
   outline: none;
