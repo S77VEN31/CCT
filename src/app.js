@@ -7,7 +7,7 @@ import cookieParser from "cookie-parser";
 
 // AuthRoutes
 import authRoutes from "./routes/auth.routes.js"
-
+import eventRoutes from "./routes/event.routes.js"
 // Instance of express
 const app = express();
 

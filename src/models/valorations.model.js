@@ -2,11 +2,12 @@
 import mongoose from "mongoose";
 // Keep track of who rated the event 
 import userModel from "./user.model.js";
-
+const Schema = mongoose.Schema;
 
 const valorationModel = new mongoose.Schema({
     user: {
-        type: userModel,
+        type: Schema.Types.ObjectId,
+        ref: "User",
         required: true,
     },
 
