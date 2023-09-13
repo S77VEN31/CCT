@@ -1,7 +1,6 @@
-.screen {
+.menu-screen {
   display: flex;
   height: 100vh;
-  
   background-color: var(primary);
 }
 
@@ -11,31 +10,9 @@
   width: 100%;
 }
 
-.lateral-menu {
-  background-color: aqua;
-  height: 100%;
-  flex: 0.2;
-  color: var(--white);
-}
-
-.lateral-menu ul {
-  list-style: none;
-  padding: 0;
-}
-
-.lateral-menu li {
-  margin-bottom: 20px;
-  color: var(--text-light);
-  cursor: pointer;
-}
-
-.lateral-menu li:hover {
-  color: var(--white);
-}
-
 .content-container {
   display: flex;
-  flex:1;
-  background-color: red;
+  border-radius: 38px 0 0 38px;
+  flex: 1;
   background-color: var(--background);
 }

@@ -10,11 +10,15 @@
 }
 
 .lateral-menu li {
-  margin-bottom: 20px;
-  color: var(--text-light);
-  cursor: pointer;
+  text-decoration: none;
 }
 
-.lateral-menu li:hover {
+.lateral-menu li .route-link {
+  color: var(--text-light);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.lateral-menu li:hover .route-link {
   color: var(--white);
 }

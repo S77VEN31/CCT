@@ -9,7 +9,7 @@ import { Icons } from "../../../enumerables/icons/icons";
 import TextInput from "../../../components/inputs/TextInput/TextInput";
 import IconTextButton from "../../../components/buttons/IconTextButton";
 
-function Register() {
+const Register = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -37,7 +37,7 @@ function Register() {
   };
 
   return (
-    <div className="screen">
+    <div className="register-screen">
       <div className="register-container">
         <div className="title-container">
           <text className="title semibold-title">Registrarse</text>
@@ -84,6 +84,5 @@ function Register() {
       </div>
     </div>
   );
-}
-
+};
 export default Register;

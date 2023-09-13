@@ -9,7 +9,7 @@ import { Icons } from "../../../enumerables/icons/icons";
 import TextInput from "../../../components/inputs/TextInput/TextInput";
 import IconTextButton from "../../../components/buttons/IconTextButton";
 
-function Login() {
+const Login = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -36,7 +36,7 @@ function Login() {
   };
 
   return (
-    <div className="screen">
+    <div className="login-screen">
       <div className="login-container">
         <div className="title-container">
           <text className="title semibold-title">Iniciar Sesión</text>
@@ -73,6 +73,5 @@ function Login() {
       </div>
     </div>
   );
-}
-
+};
 export default Login;
