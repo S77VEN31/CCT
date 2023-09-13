@@ -1,13 +1,21 @@
+// React
+import { Link } from "react-router-dom";
+// Styles
 import "./LateralNavbar.style.css";
+// Enumerables
+import { navbarRoutes } from "../../../enumerables/navbarRoutes/navbarRoutes";
 
 const LateralNavbar = () => {
   return (
     <div className="lateral-menu">
       <ul>
-        <li>Item 1</li>
-        <li>Item 2</li>
-        <li>Item 3</li>
-        <li>Item 4</li>
+        {navbarRoutes.map((route, key) => {
+          return (
+            <li key={key}>
+              <Link to={route.path}>{route.text}</Link>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
