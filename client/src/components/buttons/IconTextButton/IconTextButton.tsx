@@ -4,7 +4,7 @@ import "./IconTextButton.style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 // Globals
-import { classes } from "../../globals/handleClassnames/classes";
+import { classes } from "../../../globals/handleClassnames/classes";
 
 interface IconTextButtonProps {
   buttonText?: string;

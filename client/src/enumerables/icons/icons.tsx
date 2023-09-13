@@ -8,6 +8,7 @@ import {
   faSearch,
   faChartBar,
   faNewspaper,
+  faBars,
 } from "@fortawesome/free-solid-svg-icons";
 
 export const Icons = {
@@ -20,4 +21,5 @@ export const Icons = {
   search: faSearch,
   stats: faChartBar,
   news: faNewspaper,
+  menu: faBars,
 };

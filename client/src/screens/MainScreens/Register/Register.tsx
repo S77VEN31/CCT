@@ -7,7 +7,7 @@ import "./Register.style.css";
 import { Icons } from "../../../enumerables/icons/icons";
 // Components
 import TextInput from "../../../components/inputs/TextInput/TextInput";
-import IconTextButton from "../../../components/buttons/IconTextButton";
+import IconTextButton from "../../../components/buttons/IconTextButton/IconTextButton";
 
 const Register = () => {
   const [formData, setFormData] = useState({

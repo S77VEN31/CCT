@@ -7,7 +7,7 @@ import "./Login.style.css";
 import { Icons } from "../../../enumerables/icons/icons";
 // Components
 import TextInput from "../../../components/inputs/TextInput/TextInput";
-import IconTextButton from "../../../components/buttons/IconTextButton";
+import IconTextButton from "../../../components/buttons/IconTextButton/IconTextButton";
 
 const Login = () => {
   const [formData, setFormData] = useState({
