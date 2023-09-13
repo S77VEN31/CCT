@@ -2,7 +2,6 @@
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-
   -webkit-text-size-adjust: 100%;
 }
 
@@ -107,9 +106,17 @@
     url("./assets/fonts/poppins/ttf/poppins-latin-100-normal.ttf")
       format("truetype");
 }
-
-.font-title {
-  font-family: "Poppins-extraBold";
+/* Poppins-black (Weight: 900) */
+/* Poppins-extraBold (Weight: 800) */
+/* Poppins-bold (Weight: 700) */
+/* Poppins-semibold (Weight: 600) */
+/* Poppins-medium (Weight: 500) */
+/* Poppins-regular (Weight: 400) */
+/* Poppins-light (Weight: 300) */
+/* Poppins-extraLight (Weight: 200) */
+/* Poppins-thin (Weight: 100) */
+.semibold-title {
+  font-family: "Poppins-semibold";
   font-size: 28px;
   line-height: normal;
 }
@@ -117,4 +124,13 @@
 .medium-subtitle {
   font-family: "Poppins-medium";
   font-size: 16px;
+}
+
+.medium-placeholder {
+  font-family: "Poppins-medium";
+  font-size: 18px;
+}
+
+body {
+  margin: 0;
 }

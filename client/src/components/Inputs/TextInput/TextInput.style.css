@@ -1,6 +1,7 @@
 .form-group {
   display: flex;
   flex-direction: column;
+  gap: 20px;
 }
 
 .form-group label {
@@ -13,6 +14,14 @@
   border: none;
   outline: none;
   background: transparent;
+  flex: 1;
+  color: var(--black);
+}
+
+.form-group button {
+  border: none;
+  outline: none;
+  background: transparent;
 }
 
 .form-group input::placeholder {
@@ -21,20 +30,26 @@
 
 .input-and-icon {
   display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 18px 0px;
   flex-direction: row;
   border-bottom: 1px solid var(--primary);
 }
 
 .icon-and-input {
-  flex-direction: row-reverse;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 18px 24px;
+  gap: 29px;
+  flex-direction: row;
+  border-bottom: 1px solid var(--primary);
 }
 
 .icon {
+  flex: 1;
   color: var(--primary);
-}
-
-.input-and-icon button {
-  border: none;
-  outline: none;
-  background: transparent;
+  font-size: 24px;
+  width: 24px;
 }
