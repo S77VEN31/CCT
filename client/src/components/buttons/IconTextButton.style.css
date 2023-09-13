@@ -48,7 +48,7 @@
   color: var(--primary-blue);
 }
 
-.icon {
+.button .icon {
   transition: 0.5s;
   width: 24px;
   height: 24px;

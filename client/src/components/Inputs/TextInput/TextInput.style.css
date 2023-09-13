@@ -49,7 +49,7 @@
   justify-content: space-around;
 }
 
-.icon {
+.form-group .icon {
   color: var(--primary);
   font-size: 24px;
   width: 24px;
