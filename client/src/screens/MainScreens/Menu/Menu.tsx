@@ -4,6 +4,7 @@ import { Outlet } from "react-router-dom";
 import "./Menu.style.css";
 // Components
 import LateralNavbar from "../../../components/navbars/LateralNavbar/LateralNavbar";
+import MenuHeader from "../../../components/headers/MenuHeader/MenuHeader";
 
 const Menu = () => {
   return (
@@ -11,7 +12,7 @@ const Menu = () => {
       <div className="main-container">
         <LateralNavbar />
         <div className="content-container">
-          <h1>Content</h1>
+          <MenuHeader />
           <Outlet />
         </div>
       </div>

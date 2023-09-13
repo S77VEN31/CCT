@@ -35,8 +35,8 @@ const TextInput = (props: TextInputProps) => {
 
   return (
     <div className="form-group">
-      <label className="medium-h6" htmlFor={props.id}>
-        {props.name}
+      <label htmlFor={props.id}>
+        <h6 className="medium">{props.name}</h6>
       </label>
       {props.type === "password" ? (
         <div className={"input-and-icon"}>
