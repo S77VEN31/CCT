@@ -23,7 +23,7 @@ const IconTextButton = (props: IconTextButtonProps) => {
       disabled={props.disabled}
       onClick={props.handleOnClick}
       className={classes([
-        "button",
+        "button medium-h5",
         props.buttonClassname,
         props.disabled && "disabled",
       ])}

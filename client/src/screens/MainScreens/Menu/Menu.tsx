@@ -1,26 +1,15 @@
+// React
+import { Outlet } from "react-router-dom";
 // Styles
 import "./Menu.style.css";
 // Components
-import { Outlet, Link } from "react-router-dom";
-// Enumerables
-import { RoutesList } from "../../../enumerables/routes/routes";
+import LateralNavbar from "../../../components/navbars/LateralNavbar/LateralNavbar";
 
-function Menu() {
-  const { menuRoutes } = RoutesList;
+const Menu = () => {
   return (
-    <div className="screen">
+    <div className="menu-screen">
       <div className="main-container">
-        <div className="lateral-menu">
-          <ul>
-            {menuRoutes.map((route, key) => {
-              return (
-                <li key={key}>
-                  <Link to={route.path}>{route.name}</Link>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
+        <LateralNavbar />
         <div className="content-container">
           <h1>Content</h1>
           <Outlet />
@@ -28,6 +17,5 @@ function Menu() {
       </div>
     </div>
   );
-}
-
+};
 export default Menu;
