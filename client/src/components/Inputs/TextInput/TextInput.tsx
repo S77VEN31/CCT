@@ -40,13 +40,13 @@ const TextInput = (props: TextInputProps) => {
       </label>
       {props.type === "password" ? (
         <div className={"input-and-icon"}>
+          <input className="medium-placeholder" {...props} />
           <button onClick={togglePassword}>
             <FontAwesomeIcon
               icon={showPassword ? Icons.eyeSlash : Icons.eye}
               className="icon"
             />
           </button>
-          <input className="medium-placeholder" {...props} />
         </div>
       ) : (
         <div className="icon-and-input">

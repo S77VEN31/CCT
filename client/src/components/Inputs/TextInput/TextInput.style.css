@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  background-color: aquamarine;
 }
 
 .form-group label {
@@ -12,10 +13,12 @@
 
 .form-group input {
   border: none;
+  padding: 0;
   outline: none;
   background: transparent;
   flex: 1;
   color: var(--black);
+  border-bottom: 1px solid var(--primary);
 }
 
 .form-group button {
@@ -33,9 +36,9 @@
   flex-direction: row-reverse;
   justify-content: space-around;
   flex-wrap: wrap;
-  padding: 18px 0px;
+  gap: 29px;
+  padding: 18px 24px;
   flex-direction: row;
-  border-bottom: 1px solid var(--primary);
 }
 
 .icon-and-input {
@@ -44,11 +47,10 @@
   padding: 18px 24px;
   gap: 29px;
   flex-direction: row;
-  border-bottom: 1px solid var(--primary);
+  justify-content: space-around;
 }
 
 .icon {
-  flex: 1;
   color: var(--primary);
   font-size: 24px;
   width: 24px;

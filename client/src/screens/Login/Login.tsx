@@ -3,9 +3,9 @@ import { useState } from "react";
 // Styles
 import "./Login.style.css";
 // Enumerables
-import { Icons } from "../enumerables/icons/icons";
+import { Icons } from "../../enumerables/icons/icons";
 // Components
-import TextInput from "../components/inputs/TextInput/TextInput";
+import TextInput from "../../components/inputs/TextInput/TextInput";
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -31,8 +31,10 @@ function Login() {
   return (
     <div className="screen">
       <div className="login-container">
-        <h1 className="semibold-title">Login</h1>
-        <form onSubmit={handleSubmit}>
+        <div className="title-container">
+          <h1 className="title semibold-title">Login</h1>
+        </div>
+        <form className="inputs-container" onSubmit={handleSubmit}>
           <TextInput
             icon={Icons.phone}
             type="email"
@@ -52,8 +54,11 @@ function Login() {
             value={formData.password}
             required={true}
           />
-          <button type="submit">Login</button>
         </form>
+        <div className="buttons-container">
+          <button type="submit">Ingresar</button>
+          <button type="submit">Registrarse</button>
+        </div>
       </div>
     </div>
   );

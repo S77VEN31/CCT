@@ -16,6 +16,7 @@
   --text-dark: #555555;
   --text-light: #797979;
 }
+
 @font-face {
   font-family: "Poppins-black";
   src: local("Poppins-black"),
@@ -115,6 +116,7 @@
 /* Poppins-light (Weight: 300) */
 /* Poppins-extraLight (Weight: 200) */
 /* Poppins-thin (Weight: 100) */
+
 .semibold-title {
   font-family: "Poppins-semibold";
   font-size: 28px;
@@ -131,6 +133,14 @@
   font-size: 18px;
 }
 
+/* Delete default style from browser */
 body {
   margin: 0;
 }
+
+/* Scroll without style */
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+

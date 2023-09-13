@@ -1,6 +1,9 @@
-import "./App.css";
+// React
 import { Route, Routes, BrowserRouter } from "react-router-dom";
-import Login from "./screens/Login";
+// Styles
+import "./App.css";
+// Screens
+import Login from "./screens/Login/Login";
 
 function App() {
   return (

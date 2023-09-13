@@ -1,0 +1,44 @@
+.screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: var(primary);
+}
+
+.login-container {
+  display: flex;
+  top: 10%;
+  bottom: 10%;
+  gap: 30px;
+  flex-direction: column;
+  overflow-y: scroll;
+  padding: 30px;
+  border-radius: 38px;
+  background-color: var(--white);
+}
+
+
+
+.title-container {
+  display: flex;
+  background-color: aqua;
+  justify-content: space-around;
+}
+
+.title {
+  display: flex;
+  text-align: center;
+}
+
+.inputs-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: space-evenly;
+}
