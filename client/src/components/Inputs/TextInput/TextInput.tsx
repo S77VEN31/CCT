@@ -1,10 +1,13 @@
+// React
+import { useState } from "react";
 // Styles
 import "./TextInput.style.css";
 // Icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
+// Enumerables
+import { Icons } from "../../../enumerables/icons/icons";
 
-import { useState } from "react";
 interface TextInputProps {
   type: string;
   id: string;
@@ -13,11 +16,12 @@ interface TextInputProps {
   value: string;
   required: boolean;
   placeholder: string;
-  icon?: JSX.Element;
+  icon?: IconDefinition;
 }
 
 const TextInput = (props: TextInputProps) => {
   const [showPassword, setShowPassword] = useState(false);
+
   const togglePassword = () => {
     setShowPassword(!showPassword);
     const passwordInput = document.getElementById(props.id) as HTMLInputElement;
@@ -34,26 +38,22 @@ const TextInput = (props: TextInputProps) => {
       <label className="medium-subtitle" htmlFor={props.id}>
         {props.name}
       </label>
-
-      <div
-        className={`input-and-icon  ${
-          props.type !== "password" && "icon-and-input"
-        }`}
-      >
-        <input {...props} />
-        <div className="show-password-button">
-          {props.type === "password" ? (
-            <button onClick={togglePassword}>
-              <FontAwesomeIcon
-                icon={showPassword ? faEyeSlash : faEye}
-                className="icon"
-              />
-            </button>
-          ) : (
-            props.icon && props.icon
-          )}
+      {props.type === "password" ? (
+        <div className={"input-and-icon"}>
+          <button onClick={togglePassword}>
+            <FontAwesomeIcon
+              icon={showPassword ? Icons.eyeSlash : Icons.eye}
+              className="icon"
+            />
+          </button>
+          <input className="medium-placeholder" {...props} />
         </div>
-      </div>
+      ) : (
+        <div className="icon-and-input">
+          {props.icon && <FontAwesomeIcon className="icon" icon={props.icon} />}
+          <input className="medium-placeholder" {...props} />
+        </div>
+      )}
     </div>
   );
 };

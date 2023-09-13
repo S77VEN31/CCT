@@ -1,5 +1,5 @@
 import "./App.css";
-import PieChartComponent from "./components/Graphs/PieChart/PieChart";
+import { Route, Routes, BrowserRouter } from "react-router-dom";
 import Login from "./screens/Login";
 
 const data = [
@@ -12,10 +12,11 @@ const data = [
 
 function App() {
   return (
-    <>
-      <Login />
-      <PieChartComponent data={data}/>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
