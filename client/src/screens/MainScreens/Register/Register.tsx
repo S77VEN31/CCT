@@ -2,22 +2,23 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 // Styles
-import "./Login.style.css";
+import "./Register.style.css";
 // Enumerables
-import { Icons } from "../../enumerables/icons/icons";
+import { Icons } from "../../../enumerables/icons/icons";
 // Components
-import TextInput from "../../components/inputs/TextInput/TextInput";
-import IconTextButton from "../../components/buttons/IconTextButton";
+import TextInput from "../../../components/inputs/TextInput/TextInput";
+import IconTextButton from "../../../components/buttons/IconTextButton";
 
-function Login() {
+function Register() {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
+    userName: "",
   });
 
   const navigate = useNavigate();
-  const handleRegisterButton = () => {
-    navigate("/register");
+  const handleLoginButton = () => {
+    navigate("/");
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -37,11 +38,21 @@ function Login() {
 
   return (
     <div className="screen">
-      <div className="login-container">
+      <div className="register-container">
         <div className="title-container">
-          <text className="title semibold-title">Iniciar Sesión</text>
+          <text className="title semibold-title">Registrarse</text>
         </div>
         <form className="inputs-container" onSubmit={handleSubmit}>
+          <TextInput
+            icon={Icons.user}
+            type="text"
+            id="userName"
+            name="userName"
+            onChange={handleChange}
+            value={formData.userName}
+            placeholder="pepito03"
+            required={true}
+          />
           <TextInput
             icon={Icons.email}
             type="email"
@@ -63,11 +74,11 @@ function Login() {
           />
         </form>
         <div className="buttons-container">
-          <IconTextButton type="submit" buttonText="Iniciar Sesión" />
+          <IconTextButton type="submit" buttonText="Registrarse" />
           <IconTextButton
             type="submit"
-            buttonText="Registrarse"
-            handleOnClick={handleRegisterButton}
+            buttonText="Iniciar Sesión"
+            handleOnClick={handleLoginButton}
           />
         </div>
       </div>
@@ -75,4 +86,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;
