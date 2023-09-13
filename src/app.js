@@ -19,5 +19,5 @@ app.use(express.json());
 app.use(cookieParser());
 // Routes
 app.use("/api", authRoutes);
-
+app.use("/api", eventRoutes);
 export default app;
