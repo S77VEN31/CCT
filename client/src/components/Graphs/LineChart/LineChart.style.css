@@ -1,0 +1,17 @@
+g.recharts-layer.recharts-cartesian-axis-tick > text {
+    font-family: 'Poppins-bold', sans-serif;
+    font-size: 0.8rem;
+    color: var(--text-dark);
+}
+
+div.recharts-tooltip-wrapper {
+    font-family: 'Poppins-semibold', sans-serif;
+    font-size: 0.8rem;
+    color: var(--text-dark);
+}
+
+div.recharts-legend-wrapper {
+    font-family: 'Poppins-semibold', sans-serif;
+    font-size: 0.8rem;
+    color: var(--text-dark);
+}
