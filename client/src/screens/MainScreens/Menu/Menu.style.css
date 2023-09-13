@@ -14,5 +14,6 @@
   display: flex;
   border-radius: 38px 0 0 38px;
   flex: 1;
+  flex-direction: column;
   background-color: var(--background);
 }

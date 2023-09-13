@@ -1,9 +1,9 @@
+// React
+import { Outlet } from "react-router-dom";
 // Styles
-import LateralNavbar from "../../../components/navbars/LateralNavbar/LateralNavbar";
 import "./Menu.style.css";
 // Components
-import { Outlet } from "react-router-dom";
-// Enumerables
+import LateralNavbar from "../../../components/navbars/LateralNavbar/LateralNavbar";
 
 const Menu = () => {
   return (
