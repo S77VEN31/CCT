@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
-import userModel from "./user.model.js";
+const Schema = mongoose.Schema;
 
 const commentModel = new mongoose.Schema({
     user: {
-        type: userModel,
-        required: true,
+        type: Schema.Types.ObjectId,
+        ref: "User"
     },
     content: {
         type: String,

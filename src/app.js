@@ -7,7 +7,7 @@ import cookieParser from "cookie-parser";
 
 // AuthRoutes
 import authRoutes from "./routes/auth.routes.js"
-
+import eventRoutes from "./routes/event.routes.js"
 // Instance of express
 const app = express();
 
@@ -19,5 +19,5 @@ app.use(express.json());
 app.use(cookieParser());
 // Routes
 app.use("/api", authRoutes);
-
+app.use("/api", eventRoutes);
 export default app;
