@@ -1,5 +1,6 @@
 // Connect User model to DB
 import mongoose from "mongoose";
+const Schema = mongoose.Schema;
 
 const userModel = new mongoose.Schema({
     userName: {
@@ -28,7 +29,8 @@ const userModel = new mongoose.Schema({
 
 userModel.add({
     members: {
-        type: [userModel]
+        type: Schema.Types.ObjectId,
+        ref: "User"
     }
 })
 

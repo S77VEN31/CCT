@@ -39,7 +39,7 @@ const Login = () => {
     <div className="login-screen">
       <div className="login-container">
         <div className="title-container">
-          <text className="title semibold-h2">Iniciar Sesión</text>
+          <h2 className="title semibold">Iniciar Sesión</h2>
         </div>
         <form className="inputs-container" onSubmit={handleSubmit}>
           <TextInput

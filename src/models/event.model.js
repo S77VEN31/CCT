@@ -1,8 +1,8 @@
-import mongoose from "mongoose";
-import userModel from "./user.model";
-import activityModel from "./activity.model";
-import commentModel from "./comment.model";
-import valorationsModel from "./valorations.model";
+import mongoose, { Schema } from "mongoose";
+import userModel from "./user.model.js";
+import activityModel from "./activity.model.js";
+import commentModel from "./comment.model.js";
+import valorationsModel from "./valorations.model.js";
 
 
 const eventModel = new mongoose.Schema({
@@ -11,22 +11,25 @@ const eventModel = new mongoose.Schema({
         required: true,
         trim: true,
     },
-    comments: {
-        type: [commentModel],
+    comments: [{
+        type: Schema.Types.ObjectId,
+        ref: "Comment",
         required: true,
-    },
+    }],
     requiresApproval: {
         type: Boolean,
         required: true,
     },
-    attendanceRequests: {
-        type: [userModel],
+    attendanceRequests: [{
+        type: Schema.Types.ObjectId,
+        ref: "User",
         required: true,
-    },
-    collaborators: {
-        type: [userModel],
+    }],
+    collaborators: [{
+        type: Schema.Types.ObjectId,
+        ref: "User",
         required: true,
-    },
+    }],
     description: {
         type: String
     },
@@ -52,17 +55,20 @@ const eventModel = new mongoose.Schema({
         type: Number,
         required: true,
     },
-    attendees: {
-        type: [userModel],
+    attendees: [{
+        type: Schema.Types.ObjectId,
+        ref: "User",
         required: true,
-    },
-    activities: {
-        type: [activityModel],
+    }],
+    activities: [{
+        type: Schema.Types.ObjectId,
+        ref: "Activity",
         required: true,
-    },
-    valorations: {
-        type: [valorationsModel],
+    }],
+    valorations: [{
+        type: Schema.Types.ObjectId,
+        ref: "Valorations",
         required: true,
-    }
+    }]
 }, { timestamps: true })
 export default mongoose.model("Event", eventModel);

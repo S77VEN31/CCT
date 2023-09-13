@@ -40,7 +40,7 @@ const Register = () => {
     <div className="register-screen">
       <div className="register-container">
         <div className="title-container">
-          <text className="title semibold-h2">Registrarse</text>
+          <h2 className="title semibold">Registrarse</h2>
         </div>
         <form className="inputs-container" onSubmit={handleSubmit}>
           <TextInput

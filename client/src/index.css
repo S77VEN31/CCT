@@ -123,29 +123,41 @@
 /*H5: 1.125em (about 18px when the base font size is 16px)*/
 /*H6: 1em (about 16px when the base font size is 16px)*/
 
-.semibold-h2 {
-  font-family: "Poppins-semibold";
-  font-size: 28px;
+h1,h2,h3,h4,h5,h6 {
+  margin: 0;
 }
-
-.semibold-h5 {
-  font-family: "Poppins-semibold";
-  font-size: 18px;
+h1 { font-size: 36px}
+h2 { font-size: 28px}
+h3 {font-size: 24px}
+h4 { font-size: 20px}
+h5 { font-size: 18px}
+h6 { font-size: 16px}
+.black {
+  font-family: "Poppins-black";
 }
-
-.semibold-h6 {
-  font-family: "Poppins-semibold";
-  font-size: 16px;
+.extra-bold {
+  font-family: "Poppins-extraBold";
 }
-
-.medium-h6 {
+.bold {
+  font-family: "Poppins-bold";
+}
+.semibold {
+  font-family: "Poppins-semibold";
+}
+.medium {
   font-family: "Poppins-medium";
-  font-size: 16px;
 }
-
-.medium-h5 {
-  font-family: "Poppins-medium";
-  font-size: 18px;
+.regular {
+  font-family: "Poppins-regular";
+}
+.light {
+  font-family: "Poppins-light";
+}
+.extra-light {
+  font-family: "Poppins-extraLight";
+}
+.thin {
+  font-family: "Poppins-thin";
 }
 
 /* Delete default style from browser */
