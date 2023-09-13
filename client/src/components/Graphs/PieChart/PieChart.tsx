@@ -1,30 +1,31 @@
+// Styles
+import "./PieChart.style.css";
 // Recharts for graphs
 import { PieChart, Pie, Cell } from "recharts";
 
-const data = [
-    { name: "Group A", value: 400 },
-    { name: "Group B", value: 300 },
-    { name: "Group C", value: 300 },
-    { name: "Group D", value: 200 },
-];
+// define props
+interface PieChartProps {
+    data: {
+        name: string;
+        value: number;
+    }[];
+}
 
-const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
-
-function PieChartComponent() {
+function PieChartComponent(props: PieChartProps) {
     return (
         <PieChart width={400} height={400}>
             <Pie
-                data={data}
+                data={props.data}
                 cx={200}
                 cy={200}
-                innerRadius={60}
+                innerRadius={50}
                 outerRadius={80}
-                fill="#8884d8"
-                paddingAngle={5}
+                paddingAngle={2}
+                label={(entry) => entry.name + ": " + entry.value}
                 dataKey="value"
             >
-                {data.map((_, index) => (
-                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                {props.data.map((_, index) => (
+                    <Cell key={`cell-${index}`} />
                 ))}
             </Pie>
         </PieChart>

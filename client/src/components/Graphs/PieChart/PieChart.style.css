@@ -1,0 +1,22 @@
+g.recharts-layer > g:nth-child(n) > path {
+    fill: var(--primary)
+}
+g.recharts-layer > g:nth-child(2n) > path {
+    fill: var(--secondary)
+}
+g.recharts-layer > g:nth-child(3n) > path {
+    fill: var(--gray-dark)
+}
+g.recharts-layer > g:nth-child(4n) > path {
+    fill: var(--gray-light)
+}
+
+text.recharts-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.8rem;
+    color: var(--text-dark);
+}
+
+path.recharts-curve.recharts-pie-label-line {
+    display: none;
+}
