@@ -1,0 +1,41 @@
+
+
+.search-container {
+  display: flex;
+  flex-direction: column;
+  margin: 5%;
+  max-height: 140px;
+  max-width: 200px;
+  gap: 6px;
+  flex-direction: column;
+  padding: 24px 24px;
+  border-radius: 20px;
+  background-color: var(--white);
+}
+
+.title {
+  display: flex;
+  text-align: center;
+  color: var(--text-dark);
+}
+
+.title-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.subtitle{
+  display: flex;
+  text-align: center;
+  color: var(--text-light);
+}
+
+.subtitle-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.photo-container {
+  display: flex;
+  justify-content: space-around;
+}
