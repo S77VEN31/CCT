@@ -1,5 +1,36 @@
 .screen {
-    display: flex;
-    height: 100vh;
-    background-color: var(primary);
-  }
+  display: flex;
+  height: 100vh;
+  background-color: var(primary);
+}
+
+.asoc-card {
+  display: flex;
+  flex-direction: row;
+  margin: 5%;
+  max-height: 140px;
+  max-width: 200px;
+  gap: 20px;
+  flex-direction: row;
+  padding: 24px 24px;
+  border-radius: 20px;
+  background-color: white;
+}
+
+.asoc-name .title {
+  font-family: "Poppins-semibold";
+  font-size: 16px;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  display: flex;
+  text-align: center;
+  color: #141414;
+}
+
+.subtitle-container .subtitle {
+  font-family: "Poppins-medium";
+  font-size: 12px;
+  display: flex;
+  text-align: center;
+  color: #40189d;
+}
