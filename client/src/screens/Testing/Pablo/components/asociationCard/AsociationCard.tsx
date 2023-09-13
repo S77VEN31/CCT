@@ -9,15 +9,13 @@ interface asociationCardProps {
 const AsociationCard = (props: asociationCardProps) => {
   return (
     <div className="search-container">
-      <div className="photo-container">
-          {props.photo}
-      </div>
+      <div className="photo-container">{props.photo}</div>
       <div className="info-container">
         <div className="title-container">
-          <text className="title semibold-h6">{props.name}</text>
+          <h6 className="title semibold">{props.name}</h6>
         </div>
         <div className="subtitle-container">
-          <text className="subtitle medium-h6">{props.carrer}</text>
+          <h6 className="subtitle medium">{props.carrer}</h6>
         </div>
       </div>
     </div>
