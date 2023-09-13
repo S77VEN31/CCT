@@ -36,8 +36,4 @@
 .pablo-screen .photo-container {
   display: flex;
   justify-content: space-around;
-  align-items: center;
-  height: 80px;
-  border-radius: 20px;
-  background-color: var(--text-light);
 }

@@ -1,5 +1,5 @@
 import "./AsociationCard.style.css";
-
+import { Svgs } from "../../../../../enumerables/svgs/svgs";
 interface asociationCardProps {
     name?: string | null;
     carrer?: string | null;
@@ -8,8 +8,8 @@ interface asociationCardProps {
 
 const AsociationCard = (props: asociationCardProps) => {
   return (
-    <div className="search-container">
-      <div className="photo-container">{props.photo}</div>
+    <div className="asociationCard-container">
+      <div className="photo-container">{Svgs.photo({})}</div>
       <div className="info-container">
         <div className="title-container">
           <h6 className="title semibold">{props.name}</h6>
