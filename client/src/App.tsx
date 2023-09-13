@@ -4,6 +4,7 @@ import { Route, Routes, BrowserRouter } from "react-router-dom";
 import "./App.css";
 // Screens
 import Login from "./screens/Login/Login";
+import Register from "./screens/Register/Register";
 // TestScreens delete in production
 import Tomas from "./screens/Testing/Tomas/Tomas";
 import Pablo from "./screens/Testing/Pablo/Pablo";
@@ -14,6 +15,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         {/* Testing Screens delete in production */}
         <Route path="/tomas" element={<Tomas />} />
         <Route path="/pablo" element={<Pablo />} />

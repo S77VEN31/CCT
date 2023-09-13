@@ -1,17 +1,18 @@
 // React
 import { useState } from "react";
 // Styles
-import "./Login.style.css";
+import "./Register.style.css";
 // Enumerables
 import { Icons } from "../../enumerables/icons/icons";
 // Components
 import TextInput from "../../components/inputs/TextInput/TextInput";
 import IconTextButton from "../../components/buttons/IconTextButton";
 
-function Login() {
+function Register() {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
+    userName: "",
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -33,9 +34,19 @@ function Login() {
     <div className="screen">
       <div className="login-container">
         <div className="title-container">
-          <h1 className="title semibold-title">Login</h1>
+          <text className="title semibold-title">Register</text>
         </div>
         <form className="inputs-container" onSubmit={handleSubmit}>
+          <TextInput
+            icon={Icons.user}
+            type="text"
+            id="userName"
+            name="userName"
+            onChange={handleChange}
+            value={formData.userName}
+            placeholder="pepito03"
+            required={true}
+          />
           <TextInput
             icon={Icons.email}
             type="email"
@@ -59,11 +70,11 @@ function Login() {
         <div className="buttons-container">
           <IconTextButton
             type="submit"
-            buttonText="Registrarse"
+            buttonText="Iniciar Sesión"
           ></IconTextButton>
           <IconTextButton
             type="submit"
-            buttonText="Iniciar Sesión"
+            buttonText="Registrarse"
           ></IconTextButton>
         </div>
       </div>
@@ -71,4 +82,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;
