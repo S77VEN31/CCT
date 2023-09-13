@@ -122,6 +122,11 @@
   font-size: 28px;
 }
 
+.semibold-subtitle {
+  font-family: "Poppins-semibold";
+  font-size: 16px;
+}
+
 .medium-subtitle {
   font-family: "Poppins-medium";
   font-size: 16px;
