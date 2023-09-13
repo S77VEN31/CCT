@@ -6,6 +6,7 @@ import "./Login.style.css";
 import { Icons } from "../../enumerables/icons/icons";
 // Components
 import TextInput from "../../components/inputs/TextInput/TextInput";
+import IconTextButton from "../../components/buttons/IconTextButton";
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -42,22 +43,28 @@ function Login() {
             name="email"
             onChange={handleChange}
             value={formData.email}
-            placeholder="example@estudiantec.cr"
+            placeholder="ejemplo@estudiantec.cr"
             required={true}
           />
           <TextInput
             type="password"
             id="password"
             name="password"
-            placeholder="your password"
+            placeholder="contraseña"
             onChange={handleChange}
             value={formData.password}
             required={true}
           />
         </form>
         <div className="buttons-container">
-          <button type="submit">Ingresar</button>
-          <button type="submit">Registrarse</button>
+          <IconTextButton
+            type="submit"
+            buttonText="Registrarse"
+          ></IconTextButton>
+          <IconTextButton
+            type="submit"
+            buttonText="Iniciar Sesión"
+          ></IconTextButton>
         </div>
       </div>
     </div>
