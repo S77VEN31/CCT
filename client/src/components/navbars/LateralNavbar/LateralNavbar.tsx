@@ -13,7 +13,7 @@ const LateralNavbar = () => {
         {menuRoutes.map((route, key) => {
           return (
             <li key={key}>
-              <Link className="route-link" to={route.path}>
+              <Link className="medium-h5 route-link" to={route.path}>
                 {route.name}
               </Link>
             </li>

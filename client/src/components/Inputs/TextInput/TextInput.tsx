@@ -35,12 +35,12 @@ const TextInput = (props: TextInputProps) => {
 
   return (
     <div className="form-group">
-      <label className="medium-subtitle" htmlFor={props.id}>
+      <label className="medium-h6" htmlFor={props.id}>
         {props.name}
       </label>
       {props.type === "password" ? (
         <div className={"input-and-icon"}>
-          <input className="medium-placeholder" {...props} />
+          <input className="medium-h5" {...props} />
           <button onClick={togglePassword}>
             <FontAwesomeIcon
               icon={showPassword ? Icons.eyeSlash : Icons.eye}
@@ -51,7 +51,7 @@ const TextInput = (props: TextInputProps) => {
       ) : (
         <div className="icon-and-input">
           {props.icon && <FontAwesomeIcon className="icon" icon={props.icon} />}
-          <input className="medium-placeholder" {...props} />
+          <input className="medium-h5" {...props} />
         </div>
       )}
     </div>
