@@ -10,7 +10,7 @@ function Pablo() {
       <AsociationCard 
         name="ASODEC" 
         carrer="Ingeniería en Computación" 
-        photo="Logo"
+        // image="Logo"
       />
       <SwitchInput label="test"/>
     </div>

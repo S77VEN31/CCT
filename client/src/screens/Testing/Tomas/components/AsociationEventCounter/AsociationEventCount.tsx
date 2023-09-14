@@ -1,24 +1,32 @@
 //Styles
 import './AsociationEventCount.style.css'
-//Svgs
-import { Svgs } from "../../../../../enumerables/svgs/svgs";
+// Icons
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Icons } from "../../../../../enumerables/icons/icons";
 
 interface AsociationEventCountProps {
-    name?: string | null;
-    amount?: number | null;
+    name?: string;
+    amount?: number;
+    image?: string;
   }
 
 const AsociationEventCount = (props:AsociationEventCountProps) => {
   return (
     <div className="asociation-event-count">
-        <div className="photo-container">{Svgs.photo({})}</div>
+        <div className="profile-container">
+            {props.image ? (
+            <img
+                src={props.image}
+                alt="Profile image"
+                className="profile-image"
+            />
+            ) : (
+            <FontAwesomeIcon icon={Icons.user} className="icon" />
+            )}
+        </div>
         <div className="asociation-info">
-            <div className="asoc-name">
-                <h6 className="title semibold">{props.name}</h6>
-            </div>
-            <div className="subtitle-container">
-                <h6 className="subtitle medium">{props.amount} eventos activos</h6>
-            </div>
+            <h6 className="title semibold">{props.name}</h6>
+            <h6 className="subtitle medium">{props.amount} eventos activos</h6>
         </div>
     </div>
   )

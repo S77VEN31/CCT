@@ -2,7 +2,6 @@
 .asociation-event-count {
     display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: center;
     margin: 5%;
     max-height: 100px;
@@ -30,7 +29,14 @@
     color: var(--primary)
   }
 
-  .pablo-screen .photo-container {
+  .asociation-event-count .profile-container {
     display: flex;
-    justify-content: space-around;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    border-radius: 15px;
+    background-color: var(--gray-light);
+    color: var(--text-dark);
+    overflow: hidden;
   }
