@@ -1,0 +1,27 @@
+.profile-screen {
+ display: flex;
+ flex: 1;
+}
+
+.profile-screen .total-cards-container {
+    display: flex;
+    align-items: center;
+    flex:1;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.profile-screen .total-cards-container .card-1 {
+    background-color: var(--purple);
+}
+.profile-screen .total-cards-container .card-2 {
+    background-color: var(--blue);
+}
+.profile-screen .total-cards-container .card-3 {
+    background-color: var(--aqua);
+}
+.profile-screen .total-cards-container .card-4 {
+    background-color: var(--green);
+}
+
+

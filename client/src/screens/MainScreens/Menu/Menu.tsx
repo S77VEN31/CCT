@@ -13,7 +13,9 @@ const Menu = () => {
         <LateralNavbar />
         <div className="content-container">
           <MenuHeader />
-          <Outlet />
+          <div className="content">
+            <Outlet />
+          </div>
         </div>
       </div>
     </div>

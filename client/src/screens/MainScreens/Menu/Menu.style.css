@@ -16,4 +16,10 @@
   flex: 1;
   flex-direction: column;
   background-color: var(--background);
+  overflow: hidden;
+}
+
+.menu-screen .content-container .content{
+  flex: 1;  
+  margin: 50px;
 }

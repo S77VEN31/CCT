@@ -15,6 +15,10 @@
   --black: #000000;
   --text-dark: #555555;
   --text-light: #797979;
+  --aqua: #1bd084;
+  --green: #8bc740;
+  --blue: #48a9f8;
+  --purple: #4e36e2;
 }
 
 @font-face {
