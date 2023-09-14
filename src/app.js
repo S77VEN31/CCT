@@ -10,7 +10,11 @@ import authRoutes from "./routes/auth.routes.js"
 import eventRoutes from "./routes/event.routes.js"
 // Instance of express
 const app = express();
-
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    next();
+});
 // Register middlewares
 app.use(morgan("dev"));
 // Get json data from request
