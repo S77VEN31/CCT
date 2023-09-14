@@ -28,11 +28,26 @@ const Login = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    // Add your login logic here using formData.email and formData.password
-    console.log("Login form submitted:", formData);
-    // You can send a request to your backend for authentication
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault(); // Prevent the default form submission behavior
+
+    try {
+      const response = await fetch("http://localhost:3000/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json", // Set the content type to JSON
+        },
+        body: JSON.stringify(formData), // Serialize the form data to JSON
+      });
+      if (response.ok) {
+        navigate("menu/profile");
+      } else {
+        throw new Error(response.statusText);
+      }
+    } catch (error) {
+      // Handle the error here
+      console.log(error);
+    }
   };
 
   return (
@@ -41,35 +56,37 @@ const Login = () => {
         <div className="title-container">
           <h2 className="title semibold">Iniciar Sesión</h2>
         </div>
-        <form className="inputs-container" onSubmit={handleSubmit}>
-          <TextInput
-            icon={Icons.email}
-            type="email"
-            id="email"
-            name="email"
-            onChange={handleChange}
-            value={formData.email}
-            placeholder="ejemplo@estudiantec.cr"
-            required={true}
-          />
-          <TextInput
-            type="password"
-            id="password"
-            name="password"
-            placeholder="contraseña"
-            onChange={handleChange}
-            value={formData.password}
-            required={true}
-          />
+        <form onSubmit={handleSubmit}>
+          <div className="inputs-container">
+            <TextInput
+              icon={Icons.email}
+              type="email"
+              id="email"
+              name="email"
+              onChange={handleChange}
+              value={formData.email}
+              placeholder="ejemplo@estudiantec.cr"
+              required={true}
+            />
+            <TextInput
+              type="password"
+              id="password"
+              name="password"
+              placeholder="contraseña"
+              onChange={handleChange}
+              value={formData.password}
+              required={true}
+            />
+          </div>
+          <div className="buttons-container">
+            <IconTextButton type="submit" buttonText="Iniciar Sesión" />
+            <IconTextButton
+              type="button"
+              buttonText="Registrarse"
+              handleOnClick={handleRegisterButton}
+            />
+          </div>
         </form>
-        <div className="buttons-container">
-          <IconTextButton type="submit" buttonText="Iniciar Sesión" />
-          <IconTextButton
-            type="submit"
-            buttonText="Registrarse"
-            handleOnClick={handleRegisterButton}
-          />
-        </div>
       </div>
     </div>
   );
