@@ -5,7 +5,7 @@ import { Icons } from "../../../enumerables/icons/icons";
 // Components
 import TotalsDataCard from "../../../components/cards/TotalsDataCard/TotalsDataCard";
 import EventCard from "../../../components/cards/EventCard/EventCard";
-
+import ProfileInfoCard from "../../../components/cards/ProfileInfoCard/ProfileInfoCard";
 
 const TotalsDataCardData = [
   {
@@ -67,8 +67,8 @@ const EventCardData = [
     buttonText: "Editar",
     description: "Descripcion",
     location: "Ubicacion",
-  }
-]
+  },
+];
 
 const Profile = () => {
   return (
@@ -83,6 +83,7 @@ const Profile = () => {
           return <EventCard key={key} {...props} />;
         })}
       </div>
+      <ProfileInfoCard />
     </div>
   );
 };

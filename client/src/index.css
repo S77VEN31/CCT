@@ -8,7 +8,8 @@
 :root {
   --primary: #40189d;
   --secondary: #e9e0ff;
-  --background: #f2f2f2;
+  --background: #555555;
+  /*--background: #f2f2f2;*/
   --white: #ffffff;
   --gray-dark: #959595;
   --gray-light: #d8d8d8;
@@ -168,14 +169,6 @@ h6 { font-size: 16px}
 body {
   margin: 0;
 }
-
-/* Scroll without style
-::-webkit-scrollbar {
-  width: 0px;
-  background: transparent;
-}
-*/
-/* Hide the default scrollbar */
 
 ::-webkit-scrollbar {
   width: 20px;
