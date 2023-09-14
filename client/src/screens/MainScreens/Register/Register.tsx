@@ -30,7 +30,6 @@ const Register = () => {
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
     // Add your login logic here using formData.email and formData.password
     console.log("Login form submitted:", formData);
     // You can send a request to your backend for authentication

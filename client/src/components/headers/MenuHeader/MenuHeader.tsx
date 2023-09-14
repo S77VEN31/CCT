@@ -7,12 +7,16 @@ import { Icons } from "../../../enumerables/icons/icons";
 import NotificationButton from "../../buttons/NotificationButton/NotificationButton";
 import MainProfileCard from "../../cards/MainProfileCard/MainProfileCard";
 
-const MenuHeader = () => {
+interface MenuHeaderProps {
+  title: string;
+}
+
+const MenuHeader = (props: MenuHeaderProps) => {
   return (
     <div className="menu-header">
       <div className="icon-and-title">
         <FontAwesomeIcon icon={Icons.menu} className="icon" />
-        <h2 className="semibold">Búsqueda</h2>
+        <h2 className="semibold">{props.title}</h2>
       </div>
       <div className="buttons-and-profile">
         <div className="buttons">
