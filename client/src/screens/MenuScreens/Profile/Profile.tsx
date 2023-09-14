@@ -79,11 +79,9 @@ const Profile = () => {
         })}
       </div>
       <div className="event-cards-container">
-       <div className="test">
-       {EventCardData.map(({ ...props }, key) => {
+        {EventCardData.map(({ ...props }, key) => {
           return <EventCard key={key} {...props} />;
         })}
-       </div>
       </div>
     </div>
   );

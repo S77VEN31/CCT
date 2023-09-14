@@ -9,6 +9,7 @@
     justify-content: space-between;
     padding: 20px 30px;
     gap: 12px;
+    margin-bottom: 20px;
 }
 
 .totals-data-card .icon {
