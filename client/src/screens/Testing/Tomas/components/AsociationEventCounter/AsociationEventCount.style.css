@@ -1,0 +1,36 @@
+
+.asociation-event-count {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 5%;
+    max-height: 100px;
+    max-width: 200px;
+    gap: 20px;
+    flex-direction: row;
+    padding: 24px;
+    border-radius: 20px;
+    background-color: var(--white);
+  }
+  
+  .asociation-event-count .asociation-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .asociation-event-count .title {
+    display: flex;
+    color: var(--black)
+  }
+  
+  .asociation-event-count .subtitle {
+    display: flex;
+    font-size: 12px;
+    color: var(--primary)
+  }
+
+  .pablo-screen .photo-container {
+    display: flex;
+    justify-content: space-around;
+  }
