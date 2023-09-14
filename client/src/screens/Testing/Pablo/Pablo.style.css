@@ -1,5 +1,6 @@
 .pablo-screen {
   display: flex;
+  flex-direction: column;
   height: 100vh;
-  background-color: var(primary);
+  background-color: var(--background);
 }

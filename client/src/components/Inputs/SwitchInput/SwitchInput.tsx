@@ -3,7 +3,11 @@ import { useState } from "react";
 // Components
 import ReactSwitch from "react-switch";
 
-const SwitchInput = () => {
+interface SwitchInputProps {
+  label?: string | null;
+}
+
+const SwitchInput = (props:SwitchInputProps) => {
   const [checked, setChecked] = useState(false);
 
   const handleChange = () => {
@@ -12,6 +16,7 @@ const SwitchInput = () => {
 
   return (
     <div className="switch-input">
+      <h6 className="switch-label semibold">{props.label}</h6>
       <ReactSwitch
         className="react-switch"
         checkedIcon={false}
@@ -20,6 +25,11 @@ const SwitchInput = () => {
           handleChange();
         }}
         checked={checked}
+        offColor="#40189d"
+        onColor="#e9e0ff"
+        onHandleColor="#40189d"
+        height={20}
+        width={50}
       />
     </div>
   );

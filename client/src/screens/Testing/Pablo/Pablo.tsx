@@ -1,6 +1,10 @@
 import "./Pablo.style.css";
 import AsociationCard from "./components/asociationCard/AsociationCard";
+
+import SwitchInput from "../../../components/Inputs/SwitchInput/SwitchInput";
+
 function Pablo() {
+
   return(
     <div className="pablo-screen">
       <AsociationCard 
@@ -8,6 +12,7 @@ function Pablo() {
         carrer="Ingeniería en Computación" 
         photo="Logo"
       />
+      <SwitchInput label="test"/>
     </div>
   )  
 }
