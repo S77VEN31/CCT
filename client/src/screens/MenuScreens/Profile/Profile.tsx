@@ -78,12 +78,18 @@ const Profile = () => {
           return <TotalsDataCard key={key} {...props} />;
         })}
       </div>
-      <div className="event-cards-container">
-        {EventCardData.map(({ ...props }, key) => {
-          return <EventCard key={key} {...props} />;
-        })}
+      <div className="content-row">
+        <ProfileInfoCard
+          image="https://picsum.photos/300/300"
+          title="ASODEC"
+          subtitle="Computación"
+        />
+        <div className="event-cards-container">
+          {EventCardData.map(({ ...props }, key) => {
+            return <EventCard key={key} {...props} />;
+          })}
+        </div>
       </div>
-      <ProfileInfoCard />
     </div>
   );
 };
