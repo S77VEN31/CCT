@@ -9,9 +9,17 @@ import { Svgs } from "../../../enumerables/svgs/svgs";
 import { RoutesList } from "../../../enumerables/routes/routes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const LateralNavbar = () => {
+interface LateralNavbarProps {
+  setTitle: (title: string) => void;
+}
+
+const LateralNavbar = (props: LateralNavbarProps) => {
   const { menuRoutes } = RoutesList;
   const [active, setActive] = useState<string>("/menu/profile");
+  const handleOnClick = (route: string, title: string) => {
+    setActive(route);
+    props.setTitle(title);
+  };
   return (
     <div className="lateral-menu">
       <div className="app-logo">{Svgs.logo({})}</div>
@@ -19,7 +27,9 @@ const LateralNavbar = () => {
         {menuRoutes.map((route, key) => {
           return (
             <li
-              onClick={() => setActive(route.path)}
+              onClick={() => {
+                handleOnClick(route.path, route.name);
+              }}
               className={`${active === route.path ? "active" : ""}`}
               key={key}
             >

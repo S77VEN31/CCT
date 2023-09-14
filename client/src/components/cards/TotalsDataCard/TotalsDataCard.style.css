@@ -1,6 +1,6 @@
 .totals-data-card {
     width: 300px;
-    min-height: 170px;
+    min-height: 120px;
     background-color: var(--gray-light);
     border-radius: 20px;
     display: flex;
@@ -9,6 +9,7 @@
     justify-content: space-between;
     padding: 20px 30px;
     gap: 12px;
+    margin-bottom: 20px;
 }
 
 .totals-data-card .icon {

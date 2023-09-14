@@ -169,9 +169,25 @@ body {
   margin: 0;
 }
 
-/* Scroll without style */
+/* Scroll without style
 ::-webkit-scrollbar {
   width: 0px;
   background: transparent;
 }
+*/
+/* Hide the default scrollbar */
+
+::-webkit-scrollbar {
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+
+  border-radius: 50px;
+  background-color: var(--primary);
+}
+
+
 

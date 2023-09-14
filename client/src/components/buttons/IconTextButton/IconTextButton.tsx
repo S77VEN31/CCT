@@ -29,7 +29,7 @@ const IconTextButton = (props: IconTextButtonProps) => {
       ])}
     >
       {props.icon && <FontAwesomeIcon className="icon" icon={props.icon} />}
-      <h5 className="medium">{props.buttonText}</h5>
+      {props.buttonText && <h5 className="medium">{props.buttonText}</h5>}
     </button>
   );
 };
