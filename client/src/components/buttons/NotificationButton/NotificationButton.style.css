@@ -22,7 +22,6 @@
 .notification-button .icon-text-button:hover {
     border: none;
     background-color: var(--primary);
-    
 }
 
 .notification-button .notification-badge {
@@ -34,7 +33,6 @@
     justify-content: center;
     align-items: center;
     color: var(--white);
-
     font-size: 14px;
     background-color: var(--primary);
     border-radius: 50px;

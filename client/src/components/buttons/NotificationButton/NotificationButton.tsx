@@ -3,13 +3,26 @@ import "./NotificationButton.style.css";
 // Components
 import IconTextButton from "../IconTextButton/IconTextButton";
 // Icons
-import { Icons } from "../../../enumerables/icons/icons";
+import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
+interface NotificationButtonProps {
+  notifications: number;
+  handleClick?: () => void;
+  icon?: IconDefinition;
+}
 
-const NotificationButton = () => {
+const NotificationButton = (props: NotificationButtonProps) => {
   return (
     <div className="notification-button">
-      <div className="notification-badge semibold">23</div>
-      <IconTextButton buttonClassname={"icon-text-button"} icon={Icons.email} />
+      {props.notifications > 0 && (
+        <div className="notification-badge semibold">{props.notifications}</div>
+      )}
+      <IconTextButton
+        handleOnClick={() => {
+          props.handleClick;
+        }}
+        buttonClassname={"icon-text-button"}
+        icon={props.icon}
+      />
     </div>
   );
 };
