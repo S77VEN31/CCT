@@ -14,6 +14,7 @@ const Register = () => {
     email: "",
     password: "",
     userName: "",
+    isOrganization: false,
   });
 
   const navigate = useNavigate();
@@ -29,10 +30,28 @@ const Register = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    // Add your login logic here using formData.email and formData.password
-    console.log("Login form submitted:", formData);
-    // You can send a request to your backend for authentication
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault(); // Prevent the default form submission behavior
+
+    try {
+      const response = await fetch("http://localhost:3000/api/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json", // Set the content type to JSON
+        },
+        body: JSON.stringify(formData), // Serialize the form data to JSON
+      });
+      console.log(formData);
+      console.log(response);
+      if (response.ok) {
+        navigate("/menu/profile"); // If change absolute path
+      } else {
+        throw new Error(response.statusText);
+      }
+    } catch (error) {
+      // Handle the error here
+      console.log(error);
+    }
   };
 
   return (
@@ -41,45 +60,48 @@ const Register = () => {
         <div className="title-container">
           <h2 className="title semibold">Registrarse</h2>
         </div>
-        <form className="inputs-container" onSubmit={handleSubmit}>
-          <TextInput
-            icon={Icons.user}
-            type="text"
-            id="userName"
-            name="userName"
-            onChange={handleChange}
-            value={formData.userName}
-            placeholder="pepito03"
-            required={true}
-          />
-          <TextInput
-            icon={Icons.email}
-            type="email"
-            id="email"
-            name="email"
-            onChange={handleChange}
-            value={formData.email}
-            placeholder="ejemplo@estudiantec.cr"
-            required={true}
-          />
-          <TextInput
-            type="password"
-            id="password"
-            name="password"
-            placeholder="contraseña"
-            onChange={handleChange}
-            value={formData.password}
-            required={true}
-          />
+
+        <form onSubmit={handleSubmit}>
+          <div className="inputs-container">
+            <TextInput
+              icon={Icons.user}
+              type="text"
+              id="userName"
+              name="userName"
+              onChange={handleChange}
+              value={formData.userName}
+              placeholder="pepito03"
+              required={true}
+            />
+            <TextInput
+              icon={Icons.email}
+              type="email"
+              id="email"
+              name="email"
+              onChange={handleChange}
+              value={formData.email}
+              placeholder="ejemplo@estudiantec.cr"
+              required={true}
+            />
+            <TextInput
+              type="password"
+              id="password"
+              name="password"
+              placeholder="contraseña"
+              onChange={handleChange}
+              value={formData.password}
+              required={true}
+            />
+          </div>
+          <div className="buttons-container">
+            <IconTextButton type="submit" buttonText="Registrarse" />
+            <IconTextButton
+              type="button"
+              buttonText="Iniciar Sesión"
+              handleOnClick={handleLoginButton}
+            />
+          </div>
         </form>
-        <div className="buttons-container">
-          <IconTextButton type="submit" buttonText="Registrarse" />
-          <IconTextButton
-            type="submit"
-            buttonText="Iniciar Sesión"
-            handleOnClick={handleLoginButton}
-          />
-        </div>
       </div>
     </div>
   );
