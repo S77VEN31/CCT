@@ -1,0 +1,11 @@
+.switch-input {
+    display: flex;
+    align-items: center;
+}
+
+.switch-input .switch-label {
+    display: flex;
+    margin-right: 10px;
+    vertical-align: middle;
+    color: var(--text-dark)
+}
