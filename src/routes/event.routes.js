@@ -1,10 +1,22 @@
 // Router 
 import { Router } from 'express';
 // Controllers
-import { getEvents, createEvent, updateEvent, valorateEvent, deleteEvent, getEvent, commentEvent, joinEvent, getEventRequests, acceptEventRequest, rejectEventRequest } from '../controllers/event.controller.js';
+import {
+    getEvents,
+    createEvent,
+    updateEvent,
+    valorateEvent,
+    deleteEvent,
+    getEvent,
+    commentEvent,
+    joinEvent,
+    getEventRequests,
+    acceptEventRequest,
+    rejectEventRequest
+} from '../controllers/event.controller.js';
 import { sendMailTest } from '../controllers/email.controller.js';
 // Middlewares
-import { authRequired } from '../middlewares/jwtValidate.js';
+import { authRequired } from '../middlewares/jwtValidate.middleware.js';
 
 const router = Router();
 

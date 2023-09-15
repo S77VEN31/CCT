@@ -5,11 +5,18 @@ import commentModel from "./comment.model.js";
 import valorationsModel from "./valorations.model.js";
 
 
+
+
 const eventModel = new mongoose.Schema({
     title: {
         type: String,
         required: true,
         trim: true,
+    },
+    owner: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+        required: true,
     },
     comments: [{
         type: Schema.Types.ObjectId,
@@ -46,11 +53,14 @@ const eventModel = new mongoose.Schema({
         required: true,
         trim: true,
     },
+
+    // TODO: Add category model
     category: {
         type: String,
         required: true,
         trim: true,
     },
+
     capacity: {
         type: Number,
         required: true,

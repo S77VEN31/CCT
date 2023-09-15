@@ -37,7 +37,16 @@ export const valorateEvent = async (req, res) => {
 
 
 export const createEvent = async (req, res) => {
-    ({ title, description, startTime, endTime, location, category, capacity, requiresApproval } = req.body);    
+    const {
+        title,
+        description,
+        startTime,
+        endTime,
+        location,
+        category,
+        capacity,
+        requiresApproval
+    } = req.body;    
     try {
         // verify user is an organization
         if (!req.user.isOrganization) {
@@ -49,6 +58,7 @@ export const createEvent = async (req, res) => {
         const event = new Event({
             title: title,
             description: description,
+            owner: req.user.id,
             startTime,
             endTime,
             location,
