@@ -1,5 +1,0 @@
-/* Defines the root bg and height*/
-#root {
-  background-color: var(--primary);
-  height: 100vh;
-}
