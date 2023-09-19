@@ -4,17 +4,15 @@ import express from "express";
 import morgan from "morgan";
 // Get cookies from request
 import cookieParser from "cookie-parser";
+// Enable cors
+import cors from "cors";
 
 // AuthRoutes
 import authRoutes from "./routes/auth.routes.js"
 import eventRoutes from "./routes/event.routes.js"
 // Instance of express
 const app = express();
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-    next();
-});
+app.use(cors({ origin: 'http://localhost:5173' }))
 // Register middlewares
 app.use(morgan("dev"));
 // Get json data from request
