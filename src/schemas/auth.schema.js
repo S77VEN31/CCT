@@ -7,7 +7,9 @@ export const registerSchema = z.object({
         .max(50, { message: "Username must be less than 50 characters long" }),
     email: z
         .string({ required_error: "Email is required" })
-        .email({ message: "Invalid email" }),
+        .refine((email) => email.endsWith('@estudiantec.cr'), {
+            message: "Email must end with @estudiantec.cr",
+        }),
     password: z
         .string({ required_error: "Password is required" })
         .min(6, { message: "Password must be at least 6 characters long" })
