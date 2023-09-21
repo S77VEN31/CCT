@@ -1,15 +1,19 @@
-export const customErrorMessages = (key, message, code, validation, name) => {
-    return {
+
+
+
+export const customErrorMessages = (errorMessage, messageKey, key) => {
+    const result = {
         message: {
             issues: [
                 {
-                    validation: validation,
-                    code: code,
-                    message: message,
+                    validation: errorMessage.validation,
+                    code: errorMessage.code,
+                    message: errorMessage.messages[messageKey],
                     path: key,
                 }
             ],
-            name: name,
+            name: errorMessage.name,
         }
-    };
+    }
+    return result;
 };

@@ -36,38 +36,36 @@ export const register = async (req, res) => {
     catch (error) {
         // Email or username is already in use
         if (error.code === 11000) {
-            // Error messages object destructuring
-            const { validation, name, code, messages } = ErrorMessages.inUse
-            const { userName, email } = messages
-            // Get key and message
+            const inUseError = ErrorMessages.inUse
             const key = Object.keys(error.keyValue)[0]
             const message = key === "userName"
-                ? userName
-                : email
+                ? "userNameMessage"
+                : "emailMessage"
+            const errorObject = customErrorMessages(inUseError, message, key)
             // Send error message
-            return res.status(400).json(customErrorMessages(
-                key,
-                message,
-                code,
-                validation,
-                name
-            ))
+            return res.status(400).json(errorObject)
         }
-        // Other errors
         res.status(500).json({ message: error })
     }
 }
 
-// Validar cuando se mandan datos extra
 export const login = async (req, res) => {
     const { email, password } = req.body
     try {
         // Find user
         const userFound = await User.findOne({ email })
-        if (!userFound) return res.status(400).json({ message: "User not found" })
+        if (!userFound) {
+            const userNotFoundError = ErrorMessages.userNotFound
+            const errorObject = customErrorMessages(userNotFoundError, "emailMessage", "email")
+            return res.status(400).json(errorObject)
+        }
         // Compare password
         const isCorrect = await bcrypt.compare(password, userFound.password)
-        if (!isCorrect) return res.status(400).json({ message: "Incorrect password" })
+        if (!isCorrect) {
+            const invalidPasswordError = ErrorMessages.invalidPassword
+            const errorObject = customErrorMessages(invalidPasswordError, "passwordMessage", "password")
+            return res.status(400).json(errorObject)
+        }
         // Create token with userFound._id
         const token = await createAccessToken({ id: userFound._id })
         res.cookie("token", token)

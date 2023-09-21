@@ -12,4 +12,4 @@ app.listen(port, () => {
 // Connect to DB
 connect();
 // Log message
-console.log("Server running on port 3000");
+console.log("Server running");

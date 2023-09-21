@@ -4,8 +4,25 @@ export const ErrorMessages = {
         name: "InUseError",
         code: "duplicate_key",
         messages: {
-            userName: "Username already in use",
-            email: "Email already in use",
+            userNameMessage: "Username already in use",
+            emailMessage: "Email already in use",
         }
-    }
+    },
+    userNotFound: {
+        validation: 'Find user validation',
+        name: "UserNotFoundError",
+        code: "user_not_found",
+        messages: {
+            userNameMessage: "Username not found",
+            emailMessage: "Email not found",
+        }
+    },
+    invalidPassword: {
+        validation: 'Invalid password validation',
+        name: "InvalidPasswordError",
+        code: "invalid_password",
+        messages: {
+            passwordMessage: "Invalid password",
+        }
+    },
 }

@@ -12,7 +12,8 @@ export const registerSchema = z.object({
         .string({ required_error: "Password is required" })
         .min(6, { message: "Password must be at least 6 characters long" })
         .max(50, { message: "Password must be less than 50 characters long" }),
-})
+    isOrganization: z.boolean()
+}).strict()
 
 export const loginSchema = z.object({
     email: z
@@ -20,6 +21,4 @@ export const loginSchema = z.object({
         .email({ message: "Invalid email" }),
     password: z
         .string({ required_error: "Password is required" })
-        .min(6, { message: "Password must be at least 6 characters long" })
-        .max(50, { message: "Password must be less than 50 characters long" }),
-})
+}).strict()
