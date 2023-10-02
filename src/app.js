@@ -10,6 +10,7 @@ import cors from "cors";
 // AuthRoutes
 import authRoutes from "./routes/auth.routes.js"
 import eventRoutes from "./routes/event.routes.js"
+import userRoutes from "./routes/user.routes.js"
 // Instance of express
 const app = express();
 app.use(cors({ origin: 'http://localhost:5173' }))
@@ -22,4 +23,5 @@ app.use(cookieParser());
 // Routes
 app.use("/api", authRoutes);
 app.use("/api", eventRoutes);
+app.use("/api", userRoutes);
 export default app;

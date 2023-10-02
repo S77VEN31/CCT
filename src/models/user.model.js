@@ -1,5 +1,6 @@
 // Connect User model to DB
 import mongoose from "mongoose";
+import { number } from "zod";
 const Schema = mongoose.Schema;
 
 const userModel = new mongoose.Schema({
@@ -28,7 +29,15 @@ const userModel = new mongoose.Schema({
         name: String,
         type: Buffer,
     },
-
+    name: {
+        type: String,
+    },
+    carne: {
+        type: String,
+    },
+    phone: {
+        type: String,
+    },
 }, { timestamps: true })
 
 
