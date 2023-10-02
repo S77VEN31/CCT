@@ -23,7 +23,11 @@ const userModel = new mongoose.Schema({
     isOrganization: {
         type: Boolean,
         required: true,
-    }
+    },
+    profilePicture: {
+        type: Buffer,
+    },
+
 }, { timestamps: true })
 
 
