@@ -6,18 +6,20 @@ import morgan from "morgan";
 import cookieParser from "cookie-parser";
 // Enable cors
 import cors from "cors";
-
+// Get json data from request
 import bodyParser from 'body-parser';
 
 // AuthRoutes
 import authRoutes from "./routes/auth.routes.js"
 import eventRoutes from "./routes/event.routes.js"
 import userRoutes from "./routes/user.routes.js"
+
 // Instance of express
 const app = express();
+// Increase payload size
 app.use(bodyParser.json({ limit: '10mb' }));
 app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
-
+// Enable cors
 app.use(cors({ origin: 'http://localhost:5173' }))
 // Register middlewares
 app.use(morgan("dev"));
