@@ -26,7 +26,6 @@ const userModel = new mongoose.Schema({
         required: true,
     },
     profilePicture: {
-        name: String,
         type: Buffer,
     },
     name: {

@@ -3,7 +3,7 @@ import User from "../models/user.model.js";
 export const updateProfileInfo = async (req, res) => {
     try {
         const userId = '651a8bfd6df0d6d4c13d48d8';
-        const { name, carne, phone } = req.body;
+        const { name, carne, phone, profilePicture } = req.body;
         // Encuentra el usuario por su ID
         const user = await User.findById(userId);
         // Si no existe el usuario
@@ -14,6 +14,7 @@ export const updateProfileInfo = async (req, res) => {
         user.name = name;
         user.carne = carne;
         user.phone = phone;
+        user.profilePicture = profilePicture;
         await user.save();
         res.json({ message: "Información actualizada." });
 
