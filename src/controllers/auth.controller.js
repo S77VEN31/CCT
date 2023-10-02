@@ -14,7 +14,8 @@ export const register = async (req, res) => {
         userName,
         email,
         password,
-        isOrganization
+        isOrganization,
+        profilePicture
     } = req.body
     try {
         // Hash password
@@ -25,6 +26,7 @@ export const register = async (req, res) => {
             email,
             password: passwordHash,
             isOrganization,
+            profilePicture
         })
         await newUser.save()
         // Create token
