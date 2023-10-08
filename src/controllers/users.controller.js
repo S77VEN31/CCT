@@ -6,7 +6,7 @@ import { SuccessMessages } from "../enumerables/successMessages.js";
 
 export const updateProfileInfo = async (req, res) => {
     try {
-        const userId = '651b2222e32f0c176545f124';
+        const userId = req.user.id;
         const updateFields = {
             ...req.body,
         };
