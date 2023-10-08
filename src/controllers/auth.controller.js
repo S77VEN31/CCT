@@ -34,8 +34,8 @@ export const register = async (req, res) => {
     catch (error) {
         // Email or username is already in use
         if (error.code === 11000) {
-            const { code, error, message } = ErrorMessages.inUse
-            return res.status(code).json({ error, message })
+            const { code, name, message } = ErrorMessages.inUse
+            return res.status(code).json({ name, message })
         }
         res.status(500).json({ message: error })
     }
@@ -47,14 +47,14 @@ export const login = async (req, res) => {
         // Find user
         const userFound = await User.findOne({ email })
         if (!userFound) {
-            const { code, error, message } = ErrorMessages.userNotFound
-            return res.status(code).json({ error, message })
+            const { code, name, message } = ErrorMessages.userNotFound
+            return res.status(code).json({ name, message })
         }
         // Compare password
         const isCorrect = await bcrypt.compare(password, userFound.password)
         if (!isCorrect) {
-            const { code, error, message } = ErrorMessages.invalidPassword
-            return res.status(code).json({ error, message })
+            const { code, name, message } = ErrorMessages.invalidPassword
+            return res.status(code).json({ name, message })
         }
         // Create token with userFound._id
         const token = await createAccessToken({ id: userFound._id })

@@ -12,8 +12,8 @@ export const updateProfileInfo = async (req, res) => {
         // Encuentra el usuario por su ID y actualiza los campos proporcionados en req.body
         const result = await User.updateOne({ _id: userId }, { $set: updateFields });
         if (result.nModified === 0) {
-            const { code, error, message } = ErrorMessages.userNotFound
-            return res.status(code).json({ error, message });
+            const { code, name, message } = ErrorMessages.userNotFound
+            return res.status(code).json({ name, message });
         }
         const { code, name, message } = ErrorMessages.updatedProfile;
         res.status(code).json({ message, name });
