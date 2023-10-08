@@ -4,8 +4,6 @@ import User from "../models/user.model.js"
 import bcrypt from "bcryptjs"
 // Create token
 import { createAccessToken } from "../libs/jwt.js"
-// Libs
-import { customErrorMessages } from "../libs/errorMessages.js"
 // Enumerables
 import { ErrorMessages } from "../enumerables/errorMessages.js"
 
@@ -31,19 +29,13 @@ export const register = async (req, res) => {
         const token = await createAccessToken({ id: newUser._id })
         res.cookie("token", token)
         // Send userSaved in response
-        res.json(newUser)
+        res.status(200).json(newUser)
     }
     catch (error) {
         // Email or username is already in use
         if (error.code === 11000) {
-            const inUseError = ErrorMessages.inUse
-            const key = Object.keys(error.keyValue)[0]
-            const message = key === "userName"
-                ? "userNameMessage"
-                : "emailMessage"
-            const errorObject = customErrorMessages(inUseError, message, key)
-            // Send error message
-            return res.status(400).json(errorObject)
+            const { code, error, message } = ErrorMessages.inUse
+            return res.status(code).json({ error, message })
         }
         res.status(500).json({ message: error })
     }
@@ -55,22 +47,20 @@ export const login = async (req, res) => {
         // Find user
         const userFound = await User.findOne({ email })
         if (!userFound) {
-            const userNotFoundError = ErrorMessages.userNotFound
-            const errorObject = customErrorMessages(userNotFoundError, "emailMessage", "email")
-            return res.status(400).json(errorObject)
+            const { code, error, message } = ErrorMessages.userNotFound
+            return res.status(code).json({ error, message })
         }
         // Compare password
         const isCorrect = await bcrypt.compare(password, userFound.password)
         if (!isCorrect) {
-            const invalidPasswordError = ErrorMessages.invalidPassword
-            const errorObject = customErrorMessages(invalidPasswordError, "passwordMessage", "password")
-            return res.status(400).json(errorObject)
+            const { code, error, message } = ErrorMessages.invalidPassword
+            return res.status(code).json({ error, message })
         }
         // Create token with userFound._id
         const token = await createAccessToken({ id: userFound._id })
         res.cookie("token", token)
         // Send user in response
-        res.json(userFound)
+        res.status(200).json(userFound)
     }
     catch (error) {
         res.status(500).json({ message: error.message })

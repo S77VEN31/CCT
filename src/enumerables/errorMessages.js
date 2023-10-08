@@ -1,28 +1,17 @@
 export const ErrorMessages = {
     inUse: {
-        validation: "Unique element validation",
-        name: "InUseError",
-        code: "duplicate_key",
-        messages: {
-            userNameMessage: "Username already in use",
-            emailMessage: "Email already in use",
-        }
+        code: 409,
+        name: "Usuario en uso",
+        message: "El nombre de usuario o correo electrónico ya está registrado. Por favor, elige otro."
     },
     userNotFound: {
-        validation: 'Find user validation',
-        name: "UserNotFoundError",
-        code: "user_not_found",
-        messages: {
-            userNameMessage: "Username not found",
-            emailMessage: "Email not found",
-        }
+        code: 404,
+        name: "Usuario o correo electrónico no encontrado",
+        message: "No se encontró un usuario con el nombre de usuario o correo electrónico proporcionado."
     },
     invalidPassword: {
-        validation: 'Invalid password validation',
-        name: "InvalidPasswordError",
-        code: "invalid_password",
-        messages: {
-            passwordMessage: "Invalid password",
-        }
+        code: 401,
+        name: "Contraseña incorrecta",
+        message: "La contraseña proporcionada es incorrecta. Por favor, verifica tus credenciales e intenta nuevamente."
     },
 }
