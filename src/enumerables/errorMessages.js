@@ -14,4 +14,9 @@ export const ErrorMessages = {
         name: "Contraseña incorrecta",
         message: "La contraseña proporcionada es incorrecta. Por favor, verifica tus credenciales e intenta nuevamente."
     },
+    updateProfile: {
+        code: 500,
+        name: "Error al actualizar el perfil",
+        message: "Hubo un error al actualizar la información de perfil."
+    },
 }

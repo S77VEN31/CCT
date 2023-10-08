@@ -2,6 +2,7 @@
 import User from "../models/user.model.js";
 // Enumerables
 import { ErrorMessages } from "../enumerables/errorMessages.js";
+import { SuccessMessages } from "../enumerables/successMessages.js";
 
 export const updateProfileInfo = async (req, res) => {
     try {
@@ -15,10 +16,10 @@ export const updateProfileInfo = async (req, res) => {
             const { code, name, message } = ErrorMessages.userNotFound
             return res.status(code).json({ name, message });
         }
-        const { code, name, message } = ErrorMessages.updatedProfile;
+        const { code, name, message } = SuccessMessages.updateProfile;
         res.status(code).json({ message, name });
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: "Hubo un error al actualizar la imagen de perfil." });
+        const { code, name, message } = ErrorMessages.updateProfile;
+        res.status(code).json({ message, name });
     }
 };
