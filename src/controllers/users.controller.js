@@ -25,9 +25,9 @@ export const updateProfileInfo = async (req, res) => {
 };
 
 export const addMember = async (req, res) => {
-    const userId = req.user.id;
-    const { memberId } = req.body;
     try {
+        const userId = req.user.id;
+        const { memberId } = req.body;
         // find member by carne
         const member = await User.findOne({ carne: memberId });
         if (!member) {
@@ -52,8 +52,8 @@ export const addMember = async (req, res) => {
 }
 
 export const getMembers = async (req, res) => {
-    const userId = req.user.id;
     try {
+        const userId = req.user.id;
         const user = await User.findById(userId).populate("members");
         res.status(200).json(user.members);
     } catch (error) {
