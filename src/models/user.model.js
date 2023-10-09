@@ -37,6 +37,12 @@ const userModel = new mongoose.Schema({
     phone: {
         type: String,
     },
+    carrerCode: {
+        type: String,
+    },
+    description: {
+        type: String,
+    },
 }, { timestamps: true })
 
 
