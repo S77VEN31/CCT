@@ -27,9 +27,9 @@ export const updateProfileInfo = async (req, res) => {
 export const addMember = async (req, res) => {
     try {
         const userId = req.user.id;
-        const { memberId } = req.body;
+        const { carne } = req.body;
         // find member by carne
-        const member = await User.findOne({ carne: memberId });
+        const member = await User.findOne({ carne });
         if (!member) {
             const { code, name, message } = ErrorMessages.memberNotFound;
             return res.status(code).json({ message, name });
