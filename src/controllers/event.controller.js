@@ -56,15 +56,15 @@ export const createEvent = async (req, res) => {
         const members = await User.find({ _id: { $in: req.user.members } })
         // create event
         const event = new Event({
-            title: title,
-            description: description,
+            title,
+            description,
             owner: req.user.id,
             startTime,
             endTime,
             location,
             category,
             capacity,
-            requiresApproval: requiresApproval,
+            requiresApproval,
             activities: [],
             collaborators: [req.user, ...members],
             valorations: [],

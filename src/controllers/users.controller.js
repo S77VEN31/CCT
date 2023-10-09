@@ -23,3 +23,42 @@ export const updateProfileInfo = async (req, res) => {
         res.status(code).json({ message, name });
     }
 };
+
+export const addMember = async (req, res) => {
+    const userId = req.user.id;
+    const { memberId } = req.body;
+    try {
+        // find member by carne
+        const member = await User.findOne({ carne: memberId });
+        if (!member) {
+            const { code, name, message } = ErrorMessages.memberNotFound;
+            return res.status(code).json({ message, name });
+        }
+        const user = await User.findById(userId);
+        // Check if member is already in user's members list
+        const isMember = user.members.some(element => member._id.equals(element._id));
+        if (isMember) {
+            const { code, name, message } = ErrorMessages.memberAlreadyExists;
+            return res.status(code).json({ message, name });
+        } else {
+            const { code, name, message } = SuccessMessages.memberAdded;
+            await User.updateOne({ _id: userId }, { $addToSet: { members: member._id } });
+            return res.status(code).json({ message, name });
+        }
+    } catch (error) {
+        const { code, name, message } = ErrorMessages.memberNotAdded;
+        res.status(code).json({ message, name });
+    }
+}
+
+export const getMembers = async (req, res) => {
+    const userId = req.user.id;
+    try {
+        const user = await User.findById(userId).populate("members");
+        res.status(200).json(user.members);
+    } catch (error) {
+        const { code, name, message } = ErrorMessages.membersNotFound;
+        res.status(code).json({ message, name });
+    }
+}
+

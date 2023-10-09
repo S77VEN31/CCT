@@ -47,10 +47,10 @@ const userModel = new mongoose.Schema({
 
 
 userModel.add({
-    members: {
+    members: [{
         type: Schema.Types.ObjectId,
         ref: "User"
-    }
+    }]
 })
 
 export default mongoose.model("User", userModel);
