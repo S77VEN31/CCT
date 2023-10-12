@@ -10,6 +10,6 @@ const router = Router();
 router.put("/users/updateProfileInfo", authRequired, updateProfileInfo);
 router.put("/organization/addMember", authRequired, addMember);
 router.get("/organization/getMembers", authRequired, getMembers);
-router.delete("/organization/deleteMember", authRequired, deleteMember);
+router.put("/organization/deleteMember", authRequired, deleteMember);
 
 export default router;
