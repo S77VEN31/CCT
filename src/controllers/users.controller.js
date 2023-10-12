@@ -62,3 +62,26 @@ export const getMembers = async (req, res) => {
     }
 }
 
+export const deleteMember = async (req, res) => {
+    try {
+        const userId = req.user.id;
+        const { carne } = req.body;
+        // find member by carne
+        const member = await User.findOne({ carne });
+        // Delete member from user's members list
+        const user = await User.findById(userId);
+        const isMember = user.members.some(element => member._id.equals(element._id));
+        if (!isMember) {
+            const { code, name, message } = ErrorMessages.memberNotFound;
+            return res.status(code).json({ message, name });
+        }
+        await User.updateOne({ _id: userId }, { $pull: { members: member._id } });
+        const { code, name, message } = SuccessMessages.memberDeleted;
+        res.status(code).json({ message, name });
+    }
+    catch (error) {
+        console.log(error);
+        const { code, name, message } = ErrorMessages.memberNotDeleted;
+        res.status(code).json({ message, name });
+    }
+}

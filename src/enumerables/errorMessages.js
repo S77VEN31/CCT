@@ -29,6 +29,11 @@ export const ErrorMessages = {
         name: "Miembro ya existe",
         message: "El miembro ya existe en tu lista de colaboradores."
     },
+    memberNotDeleted: {
+        code: 500,
+        name: "Error al eliminar miembro",
+        message: "Hubo un error al eliminar el miembro de tu lista de colaboradores."
+    },
     invalidPassword: {
         code: 401,
         name: "Contraseña incorrecta",
