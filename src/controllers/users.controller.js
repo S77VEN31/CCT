@@ -66,6 +66,7 @@ export const deleteMember = async (req, res) => {
     try {
         const userId = req.user.id;
         const { carne } = req.body;
+        console.log(carne);
         // find member by carne
         const member = await User.findOne({ carne });
         // Delete member from user's members list
