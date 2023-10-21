@@ -6,8 +6,8 @@ import { createCarrer, createEventCategory, getCarrers, getEventCategories } fro
 const router = Router();
 
 router.post('/data/event/category', createEventCategory);
-router.post('/data/carrer', createCarrer);
 router.get('/data/event/categories', getEventCategories);
+router.post('/data/carrer', createCarrer);
 router.get('/data/carrers', getCarrers);
 
 export default router;

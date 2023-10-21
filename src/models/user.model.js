@@ -35,7 +35,7 @@ const userModel = new mongoose.Schema({
     phone: {
         type: String,
     },
-    carrerCode: {
+    carrer: {
         type: Schema.Types.ObjectId,
         ref: "Carrer",
     },
