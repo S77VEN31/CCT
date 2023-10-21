@@ -1,7 +1,5 @@
-// Connect User model to DB
-import mongoose from "mongoose";
-import { number } from "zod";
-const Schema = mongoose.Schema;
+// Mongoose
+import mongoose, { Schema } from "mongoose";
 
 const userModel = new mongoose.Schema({
     userName: {
@@ -38,13 +36,13 @@ const userModel = new mongoose.Schema({
         type: String,
     },
     carrerCode: {
-        type: String,
+        type: Schema.Types.ObjectId,
+        ref: "Carrer",
     },
     description: {
         type: String,
     },
 }, { timestamps: true })
-
 
 userModel.add({
     members: [{

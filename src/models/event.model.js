@@ -1,17 +1,37 @@
+// Mongoose
 import mongoose, { Schema } from "mongoose";
-import userModel from "./user.model.js";
-import activityModel from "./activity.model.js";
-import commentModel from "./comment.model.js";
-import valorationsModel from "./valorations.model.js";
-
-
-
 
 const eventModel = new mongoose.Schema({
     title: {
         type: String,
         required: true,
         trim: true,
+    },
+    description: {
+        type: String
+    },
+    startTime: {
+        type: Date,
+        required: true,
+    },
+    endTime: {
+        type: Date,
+        required: true,
+    },
+    location: {
+        type: String,
+        required: true,
+        trim: true,
+    },
+    category: {
+        type: Schema.Types.ObjectId,
+        ref: "EventCategory",
+        required: true,
+        trim: true,
+    },
+    capacity: {
+        type: Number,
+        required: true,
     },
     owner: {
         type: Schema.Types.ObjectId,
@@ -37,34 +57,6 @@ const eventModel = new mongoose.Schema({
         ref: "User",
         required: true,
     }],
-    description: {
-        type: String
-    },
-    startTime: {
-        type: Date,
-        required: true,
-    },
-    endTime: {
-        type: Date,
-        required: true,
-    },
-    location: {
-        type: String,
-        required: true,
-        trim: true,
-    },
-
-    // TODO: Add category model
-    category: {
-        type: String,
-        required: true,
-        trim: true,
-    },
-
-    capacity: {
-        type: Number,
-        required: true,
-    },
     attendees: [{
         type: Schema.Types.ObjectId,
         ref: "User",

@@ -1,4 +1,4 @@
-// Model
+// Models
 import User from "../models/user.model.js"
 // Encrypt library
 import bcrypt from "bcryptjs"

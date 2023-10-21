@@ -10,9 +10,10 @@ import cors from "cors";
 import bodyParser from 'body-parser';
 
 // AuthRoutes
-import authRoutes from "./routes/auth.routes.js"
-import eventRoutes from "./routes/event.routes.js"
-import userRoutes from "./routes/user.routes.js"
+import authRoutes from "./routes/auth.routes.js";
+import dataRoutes from "./routes/data.routes.js";
+import eventRoutes from "./routes/event.routes.js";
+import userRoutes from "./routes/user.routes.js";
 
 // Instance of express
 const app = express();
@@ -31,4 +32,6 @@ app.use(cookieParser());
 app.use("/api", authRoutes);
 app.use("/api", eventRoutes);
 app.use("/api", userRoutes);
+app.use("/api", dataRoutes);
+
 export default app;
