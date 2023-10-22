@@ -13,7 +13,6 @@ export const updateProfileInfo = async (req, res) => {
         };
         const carrer = await Carrer.findOne({ code: updateFields.carrer });
         updateFields.carrer = carrer;
-        console.log(updateFields);
         // Encuentra el usuario por su ID y actualiza los campos proporcionados en req.body
         const result = await User.updateOne({ _id: userId }, { $set: updateFields });
         if (result.nModified === 0) {

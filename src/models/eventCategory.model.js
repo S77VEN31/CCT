@@ -6,6 +6,9 @@ const eventCategoryModel = new mongoose.Schema({
     },
     description: {
         type: String,
+    },
+    code: {
+        type: String,
     }
 })
 export default mongoose.model("EventCategory", eventCategoryModel);

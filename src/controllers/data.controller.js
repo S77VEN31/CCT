@@ -3,9 +3,9 @@ import Carrer from '../models/carrer.model.js'
 import EventCategory from '../models/eventCategory.model.js'
 
 export const createEventCategory = async (req, res) => {
-    const { name, description } = req.body
+    const { name, description, code } = req.body
     try {
-        const newEventCategory = new EventCategory({ name, description })
+        const newEventCategory = new EventCategory({ name, description, code })
         await newEventCategory.save()
         res.status(200).json(newEventCategory)
     }
