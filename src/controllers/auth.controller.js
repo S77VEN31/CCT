@@ -79,11 +79,5 @@ export const profile = async (req, res) => {
     const profileFound = await User.findById(req.user.id)
     if (!profileFound) return res.status(400).json({ message: "Profile not found" })
     // Send user in response
-    const response = {
-        id: profileFound._id,
-        userName: profileFound.userName,
-        email: profileFound.email,
-        createdAt: profileFound.createdAt
-    }
-    res.json(response)
+    res.json(profileFound)
 }
