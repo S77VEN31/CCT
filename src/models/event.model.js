@@ -33,6 +33,10 @@ const eventModel = new mongoose.Schema({
         type: Number,
         required: true,
     },
+    requiredCollaborators: {
+        type: Number,
+        required: true,
+    },
     owner: {
         type: Schema.Types.ObjectId,
         ref: "User",
