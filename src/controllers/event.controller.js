@@ -39,12 +39,12 @@ export const valorateEvent = async (req, res) => {
 
 export const createEvent = async (req, res) => {
     const {
-        category,
+        categoryName,
         ...eventData
     } = req.body;    
     try {
         // search for category
-        const category = EventCategory.findOne({ name: category })
+        const category = EventCategory.findOne({ name: categoryName })
         if (!category) {
             res.status(500).json({ message: "Category not found" })
         }
