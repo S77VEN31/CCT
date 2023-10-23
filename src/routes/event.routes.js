@@ -15,13 +15,16 @@ import {
     updateEvent,
     valorateEvent
 } from '../controllers/event.controller.js';
+// Schemas
+import { eventSchema } from '../schemas/event.schema.js';
 // Middlewares
+import { validateInput } from '../middlewares/inputValidate.middleware.js';
 import { authRequired } from '../middlewares/jwtValidate.middleware.js';
 
 const router = Router();
 
 // create event 
-router.post('/create/event', authRequired, createEvent)
+router.post('/create/event', authRequired, validateInput(eventSchema), createEvent)
 // edit event
 router.put('/events/:id', authRequired, updateEvent)
 // delete event

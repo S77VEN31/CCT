@@ -44,9 +44,6 @@ export const createEvent = async (req, res) => {
     } = req.body;    
     console.log(req.body)
     try {
-        if (!categoryName) {
-            res.status(500).json({ message: "Category name is required" })
-        }
         // search for category
         const category = EventCategory.findOne({ name: categoryName })
         // create event
