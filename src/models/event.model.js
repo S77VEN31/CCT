@@ -34,8 +34,6 @@ const eventModel = new mongoose.Schema({
     category: {
         type: Schema.Types.ObjectId,
         ref: "EventCategory",
-        required: true,
-        trim: true,
     },
     owner: {
         type: Schema.Types.ObjectId,
