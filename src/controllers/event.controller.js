@@ -1,6 +1,6 @@
 // Models
-import Event from "../models/event.model.js"
 import Comment from "../models/comment.model.js"
+import Event from "../models/event.model.js"
 import User from "../models/user.model.js"
 
 export const valorateEvent = async (req, res) => {
@@ -38,37 +38,17 @@ export const valorateEvent = async (req, res) => {
 
 export const createEvent = async (req, res) => {
     const {
-        title,
-        description,
-        startTime,
-        endTime,
-        location,
-        category,
-        capacity,
-        requiresApproval
+        ...eventData
     } = req.body;    
     try {
-        // verify user is an organization
-        if (!req.user.isOrganization) {
-            throw new Error("You are not an organization")
-        }
-        // find organization members
-        const members = await User.find({ _id: { $in: req.user.members } })
         // create event
         const event = new Event({
-            title,
-            description,
+            ...eventData,
             owner: req.user.id,
-            startTime,
-            endTime,
-            location,
-            category,
-            capacity,
-            requiresApproval,
             activities: [],
-            collaborators: [req.user, ...members],
+            collaborators: [],
             valorations: [],
-            attendees: [req.user],
+            attendees: [],
             attendanceRequests: [],
             comments: []
         })

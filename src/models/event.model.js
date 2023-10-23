@@ -23,12 +23,6 @@ const eventModel = new mongoose.Schema({
         required: true,
         trim: true,
     },
-    category: {
-        type: Schema.Types.ObjectId,
-        ref: "EventCategory",
-        required: true,
-        trim: true,
-    },
     capacity: {
         type: Number,
         required: true,
@@ -37,23 +31,20 @@ const eventModel = new mongoose.Schema({
         type: Number,
         required: true,
     },
+    category: {
+        type: Schema.Types.ObjectId,
+        ref: "EventCategory",
+        required: true,
+        trim: true,
+    },
     owner: {
         type: Schema.Types.ObjectId,
         ref: "User",
         required: true,
     },
-    comments: [{
+    activities: [{
         type: Schema.Types.ObjectId,
-        ref: "Comment",
-        required: true,
-    }],
-    requiresApproval: {
-        type: Boolean,
-        required: true,
-    },
-    attendanceRequests: [{
-        type: Schema.Types.ObjectId,
-        ref: "User",
+        ref: "Activity",
         required: true,
     }],
     collaborators: [{
@@ -61,19 +52,24 @@ const eventModel = new mongoose.Schema({
         ref: "User",
         required: true,
     }],
+    valorations: [{
+        type: Schema.Types.ObjectId,
+        ref: "Valorations",
+        required: true,
+    }],
     attendees: [{
         type: Schema.Types.ObjectId,
         ref: "User",
         required: true,
     }],
-    activities: [{
+    attendanceRequests: [{
         type: Schema.Types.ObjectId,
-        ref: "Activity",
+        ref: "User",
         required: true,
     }],
-    valorations: [{
+    comments: [{
         type: Schema.Types.ObjectId,
-        ref: "Valorations",
+        ref: "Comment",
         required: true,
     }]
 }, { timestamps: true })
