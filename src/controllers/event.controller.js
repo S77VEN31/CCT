@@ -40,8 +40,15 @@ export const valorateEvent = async (req, res) => {
 export const createEvent = async (req, res) => {
     const {
         categoryName,
-        ...eventData
+        title,
+        description,
+        startTime,
+        endTime,
+        location,
+        capacity,
+        requiredCollaborators,
     } = req.body;    
+    console.log(req.body)
     try {
         // search for category
         const category = EventCategory.findOne({ name: categoryName })
@@ -50,7 +57,13 @@ export const createEvent = async (req, res) => {
         }
         // create event
         const event = new Event({
-            ...eventData,
+            title,
+            description,
+            startTime,
+            endTime,
+            location,
+            capacity,
+            requiredCollaborators,
             category: category._id,
             owner: req.user.id,
             activities: [],
