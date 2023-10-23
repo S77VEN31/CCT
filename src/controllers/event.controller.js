@@ -40,30 +40,18 @@ export const valorateEvent = async (req, res) => {
 export const createEvent = async (req, res) => {
     const {
         categoryName,
-        title,
-        description,
-        startTime,
-        endTime,
-        location,
-        capacity,
-        requiredCollaborators,
+        ...eventData
     } = req.body;    
     console.log(req.body)
     try {
+        if (!categoryName) {
+            res.status(500).json({ message: "Category name is required" })
+        }
         // search for category
         const category = EventCategory.findOne({ name: categoryName })
-        if (!category) {
-            res.status(500).json({ message: "Category not found" })
-        }
         // create event
         const event = new Event({
-            title,
-            description,
-            startTime,
-            endTime,
-            location,
-            capacity,
-            requiredCollaborators,
+            ...eventData,
             category: category._id,
             owner: req.user.id,
             activities: [],
