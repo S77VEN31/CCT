@@ -1,6 +1,7 @@
 // Models
 import Comment from "../models/comment.model.js"
 import Event from "../models/event.model.js"
+import EventCategory from "../models/eventCategory.model.js"
 import User from "../models/user.model.js"
 
 export const valorateEvent = async (req, res) => {
@@ -38,12 +39,19 @@ export const valorateEvent = async (req, res) => {
 
 export const createEvent = async (req, res) => {
     const {
+        category,
         ...eventData
     } = req.body;    
     try {
+        // search for category
+        const category = EventCategory.findOne({ name: category })
+        if (!category) {
+            res.status(500).json({ message: "Category not found" })
+        }
         // create event
         const event = new Event({
             ...eventData,
+            category: category._id,
             owner: req.user.id,
             activities: [],
             collaborators: [],
