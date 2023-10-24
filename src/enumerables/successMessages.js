@@ -13,5 +13,15 @@ export const SuccessMessages = {
         code: 200,
         name: "Miembro eliminado",
         message: "El estudiante ha sido eliminado de tu lista de colaboradores."
-    }
+    },
+    eventCreated: {
+        code: 200,
+        name: "Evento creado",
+        message: "El evento ha sido creado exitosamente."
+    },
+    userAdded: {
+        code: 200,
+        name: "Usuario agregado",
+        message: "El usuario ha sido agregado a la lista de participantes."
+    },
 }

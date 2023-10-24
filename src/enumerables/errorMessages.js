@@ -44,4 +44,24 @@ export const ErrorMessages = {
         name: "Error al actualizar el perfil",
         message: "Hubo un error al actualizar la información de perfil."
     },
+    createEvent: {
+        code: 500,
+        name: "Error al crear el evento",
+        message: "Hubo un error al crear el evento."
+    },
+    notEventsFound: {
+        code: 404,
+        name: "Eventos no encontrados",
+        message: "No se encontraron eventos."
+    },
+    userNotAdded: {
+        code: 500,
+        name: "Error al agregar usuario",
+        message: "Hubo un error al agregar el usuario a la lista de participantes."
+    },
+    userAlreadyAdded: {
+        code: 400,
+        name: "Usuario ya existe",
+        message: "El usuario ya existe en la lista de participantes."
+    },
 }

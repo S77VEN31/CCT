@@ -11,6 +11,7 @@ export const updateProfileInfo = async (req, res) => {
         const updateFields = {
             ...req.body,
         };
+        // Find carrer by code and replace it with the carrer object
         const carrer = await Carrer.findOne({ code: updateFields.carrer });
         updateFields.carrer = carrer;
         // Encuentra el usuario por su ID y actualiza los campos proporcionados en req.body
@@ -31,7 +32,7 @@ export const addMember = async (req, res) => {
     try {
         const userId = req.user.id;
         const { carne } = req.body;
-        // find member by carne
+        // Find member by carne
         const member = await User.findOne({ carne });
         if (!member) {
             const { code, name, message } = ErrorMessages.memberNotFound;
@@ -69,7 +70,7 @@ export const deleteMember = async (req, res) => {
     try {
         const userId = req.user.id;
         const { carne } = req.body;
-        // find member by carne
+        // Find member by carne
         const member = await User.findOne({ carne });
         // Delete member from user's members list
         const user = await User.findById(userId);

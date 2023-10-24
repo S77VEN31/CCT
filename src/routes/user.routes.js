@@ -6,8 +6,9 @@ import { updateProfileInfo, addMember, getMembers, deleteMember } from '../contr
 import { authRequired } from '../middlewares/jwtValidate.middleware.js';
 
 const router = Router();
-
+// General
 router.put("/users/updateProfileInfo", authRequired, updateProfileInfo);
+// Organization
 router.put("/organization/addMember", authRequired, addMember);
 router.get("/organization/getMembers", authRequired, getMembers);
 router.put("/organization/deleteMember", authRequired, deleteMember);

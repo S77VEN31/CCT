@@ -3,9 +3,13 @@ import { Router } from 'express';
 // Controllers
 import { sendMailTest } from '../controllers/email.controller.js';
 import {
+    getAllEvents,
+    createEvent,
+    getOrganizationEvents,
+    getUserEvents,
+    addUserToEvent,
     acceptEventRequest,
     commentEvent,
-    createEvent,
     deleteEvent,
     getEvent,
     getEventRequests,
@@ -23,8 +27,16 @@ import { authRequired } from '../middlewares/jwtValidate.middleware.js';
 
 const router = Router();
 
-// create event 
-router.post('/create/event', authRequired, validateInput(eventSchema), createEvent)
+// General
+router.get("/getAllEvents", authRequired, getAllEvents);
+// Organization Events
+router.post('/organization/createEvent', authRequired, validateInput(eventSchema), createEvent)
+router.get("/organization/getMyEvents", authRequired, getOrganizationEvents);
+// User Events
+router.get("/user/getMyEvents", authRequired, getUserEvents);
+router.put("/user/enrollEvent", authRequired, addUserToEvent);
+
+
 // edit event
 router.put('/events/:id', authRequired, updateEvent)
 // delete event
@@ -49,6 +61,5 @@ router.post('/events/:id/valorate', authRequired, valorateEvent)
 
 // complete and utter test route to send email
 router.get('/sendmail', sendMailTest)
-
 
 export default router;

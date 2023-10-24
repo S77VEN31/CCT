@@ -3,50 +3,30 @@ import Comment from "../models/comment.model.js"
 import Event from "../models/event.model.js"
 import EventCategory from "../models/eventCategory.model.js"
 import User from "../models/user.model.js"
+// Enumerables
+import { SuccessMessages } from "../enumerables/successMessages.js";
+import { ErrorMessages } from "../enumerables/errorMessages.js";
 
-export const valorateEvent = async (req, res) => {
+export const getAllEvents = async (req, res) => {
     try {
-        // validate that the user is an attendee
-        const event = await Event.findById(req.params.id)
-        if (!event.attendees.includes(req.user)) {
-            throw new Error("You are not an attendee of this event")
-        }
-        // validate that the user has not valorated the event
-        if (event.valorations.find(valoration => valoration.user == req.user)) {
-            throw new Error("You have already valorated this event")
-        }
-        // create valoration
-        const valoration = {
-            user: req.user,
-            rating: req.body.rating,
-            recommendationProbability: req.body.recommendationProbability,
-            assistanceProbability: req.body.assistanceProbability,
-            comment: req.body.comment,
-            likesComment: req.body.likesComment,
-            dislikesComment: req.body.dislikesComment
-        }
-        // add valoration to event
-        event.valorations.push(valoration)
-        // save event
-        await event.save()
-        // return event
-        res.json(event)
+        // Get all events
+        const events = await Event.find();
+        res.status(200).json(events);
     } catch (error) {
-        res.status(500).json({ message: error.message })
+        const { code, name, message } = ErrorMessages.notEventsFound;
+        res.status(code).json({ message, name });
     }
 }
 
-
 export const createEvent = async (req, res) => {
-    const {
-        categoryName,
-        ...eventData
-    } = req.body;    
-    console.log(req.body)
     try {
-        // search for category
+        const {
+            categoryName,
+            ...eventData
+        } = req.body;
+        // Search for category
         const category = EventCategory.findOne({ name: categoryName })
-        // create event
+        // Create event object
         const event = new Event({
             ...eventData,
             category: category._id,
@@ -56,16 +36,77 @@ export const createEvent = async (req, res) => {
             valorations: [],
             attendees: [],
             attendanceRequests: [],
-            comments: []
+            comments: [],
+            participants: []
         })
-        // save event
+        // Save event
         await event.save()
-        // return event
-        res.json(event)
+        // Return event
+        const { code, name, message } = SuccessMessages.eventCreated;
+        res.status(code).json({ message, name });
     } catch (error) {
-        res.status(500).json({ message: error.message })
+        const { code, name, message } = ErrorMessages.createEvent;
+        res.status(code).json({ message, name });
     }
 }
+
+export const getOrganizationEvents = async (req, res) => {
+    try {
+        // Get events from owner id
+        const ownerId = req.user.id;
+        const events = await Event.find({ owner: ownerId });
+        res.status(200).json(events);
+    } catch (error) {
+        const { code, name, message } = ErrorMessages.notEventsFound;
+        res.status(code).json({ message, name });
+    }
+}
+
+export const getUserEvents = async (req, res) => {
+    try {
+        const userId = req.user.id;
+        const events = await Event.find({ participants: userId });
+        res.status(200).json(events);
+    } catch (error) {
+        const { code, name, message } = ErrorMessages.notEventsFound;
+        res.status(code).json({ message, name });
+    }
+}
+
+export const addUserToEvent = async (req, res) => {
+    try {
+        const userId = req.user.id;
+        const { eventId } = req.body;
+        // Find event
+        const event = await Event.findById(eventId);
+        // Check if user is already in event's participants list
+        const isParticipant = event.participants.some(element => userId.equals(element._id));
+        if (isParticipant) {
+            const { code, name, message } = ErrorMessages.userAlreadyAdded;
+            return res.status(code).json({ message, name });
+        } else {
+            const { code, name, message } = SuccessMessages.userAdded;
+            await Event.updateOne({ _id: eventId }, { $addToSet: { participants: userId } });
+            return res.status(code).json({ message, name });
+        }
+    }
+    catch (error) {
+        const { code, name, message } = ErrorMessages.userNotAdded
+        res.status(code).json({ message, name });
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 export const updateEvent = async (req, res) => {
     try {
@@ -269,6 +310,38 @@ export const commentEvent = async (req, res) => {
         await event.save()
         // return 
         res.json(comment)
+    } catch (error) {
+        res.status(500).json({ message: error.message })
+    }
+}
+
+export const valorateEvent = async (req, res) => {
+    try {
+        // validate that the user is an attendee
+        const event = await Event.findById(req.params.id)
+        if (!event.attendees.includes(req.user)) {
+            throw new Error("You are not an attendee of this event")
+        }
+        // validate that the user has not valorated the event
+        if (event.valorations.find(valoration => valoration.user == req.user)) {
+            throw new Error("You have already valorated this event")
+        }
+        // create valoration
+        const valoration = {
+            user: req.user,
+            rating: req.body.rating,
+            recommendationProbability: req.body.recommendationProbability,
+            assistanceProbability: req.body.assistanceProbability,
+            comment: req.body.comment,
+            likesComment: req.body.likesComment,
+            dislikesComment: req.body.dislikesComment
+        }
+        // add valoration to event
+        event.valorations.push(valoration)
+        // save event
+        await event.save()
+        // return event
+        res.json(event)
     } catch (error) {
         res.status(500).json({ message: error.message })
     }
