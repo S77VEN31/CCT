@@ -9,7 +9,7 @@ import { ErrorMessages } from "../enumerables/errorMessages.js";
 
 export const getAllEvents = async (req, res) => {
     try {
-        // Get all events
+        // Get all events and return them
         const events = await Event.find();
         res.status(200).json(events);
     } catch (error) {
@@ -24,9 +24,9 @@ export const createEvent = async (req, res) => {
             categoryName,
             ...eventData
         } = req.body;
-        // Search for category
+        // Search category by name and get the object
         const category = EventCategory.findOne({ name: categoryName })
-        // Create event object
+        // Create event object and save it, then return success message
         const event = new Event({
             ...eventData,
             category: category._id,
@@ -39,9 +39,7 @@ export const createEvent = async (req, res) => {
             comments: [],
             participants: []
         })
-        // Save event
         await event.save()
-        // Return event
         const { code, name, message } = SuccessMessages.eventCreated;
         res.status(code).json({ message, name });
     } catch (error) {
@@ -52,8 +50,8 @@ export const createEvent = async (req, res) => {
 
 export const getOrganizationEvents = async (req, res) => {
     try {
-        // Get events from owner id
         const ownerId = req.user.id;
+        // Get events that have the owner id in the owner field, then return them
         const events = await Event.find({ owner: ownerId });
         res.status(200).json(events);
     } catch (error) {
@@ -65,6 +63,7 @@ export const getOrganizationEvents = async (req, res) => {
 export const getUserEvents = async (req, res) => {
     try {
         const userId = req.user.id;
+        // Get events that have the user id in the participants field, then return them
         const events = await Event.find({ participants: userId });
         res.status(200).json(events);
     } catch (error) {
@@ -81,14 +80,15 @@ export const addUserToEvent = async (req, res) => {
         const event = await Event.findById(eventId);
         // Check if user is already in event's participants list
         const isParticipant = event.participants.some(element => userId.equals(element._id));
+        // If user is already in event's participants list, return error
         if (isParticipant) {
             const { code, name, message } = ErrorMessages.userAlreadyAdded;
             return res.status(code).json({ message, name });
-        } else {
-            const { code, name, message } = SuccessMessages.userAdded;
-            await Event.updateOne({ _id: eventId }, { $addToSet: { participants: userId } });
-            return res.status(code).json({ message, name });
         }
+        // Add user to event's participants list, then return success message
+        const { code, name, message } = SuccessMessages.userAdded;
+        await Event.updateOne({ _id: eventId }, { $addToSet: { participants: userId } });
+        res.status(code).json({ message, name });
     }
     catch (error) {
         const { code, name, message } = ErrorMessages.userNotAdded
