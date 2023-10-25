@@ -5,6 +5,14 @@ import User from "../models/user.model.js";
 import { ErrorMessages } from "../enumerables/errorMessages.js";
 import { SuccessMessages } from "../enumerables/successMessages.js";
 
+export const getProfile = async (req, res) => {
+    // Find user
+    const profileFound = await User.findById(req.user.id)
+    if (!profileFound) return res.status(400).json({ message: "Profile not found" })
+    // Send user in response
+    res.json(profileFound)
+}
+
 export const updateProfileInfo = async (req, res) => {
     try {
         const userId = req.user.id;

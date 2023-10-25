@@ -8,13 +8,13 @@ import { createAccessToken } from "../libs/jwt.js"
 import { ErrorMessages } from "../enumerables/errorMessages.js"
 
 export const register = async (req, res) => {
-    const {
-        userName,
-        email,
-        password,
-        isOrganization
-    } = req.body
     try {
+        const {
+            userName,
+            email,
+            password,
+            isOrganization
+        } = req.body
         // Hash password
         const passwordHash = await bcrypt.hash(password, 10)
         // Create new user and save it
@@ -42,8 +42,8 @@ export const register = async (req, res) => {
 }
 
 export const login = async (req, res) => {
-    const { email, password } = req.body
     try {
+        const { email, password } = req.body
         // Find user
         const userFound = await User.findOne({ email })
         if (!userFound) {
@@ -72,12 +72,4 @@ export const logout = (req, res) => {
     res.cookie("token", "", { expires: new Date(0) })
     // Send status
     return res.sendStatus(200)
-}
-
-export const profile = async (req, res) => {
-    // Find user
-    const profileFound = await User.findById(req.user.id)
-    if (!profileFound) return res.status(400).json({ message: "Profile not found" })
-    // Send user in response
-    res.json(profileFound)
 }

@@ -3,17 +3,17 @@ import { Router } from 'express';
 // Controllers
 import { sendMailTest } from '../controllers/email.controller.js';
 import {
-    getAllEvents,
-    createEvent,
-    getOrganizationEvents,
-    getUserEvents,
-    addUserToEvent,
     acceptEventRequest,
+    addUserToEvent,
     commentEvent,
+    createEvent,
     deleteEvent,
+    getAllEvents,
     getEvent,
     getEventRequests,
     getEvents,
+    getOrganizationEvents,
+    getUserEvents,
     joinEvent,
     rejectEventRequest,
     updateEvent,
@@ -28,13 +28,13 @@ import { authRequired } from '../middlewares/jwtValidate.middleware.js';
 const router = Router();
 
 // General
-router.get("/getAllEvents", authRequired, getAllEvents);
+router.get("/events", authRequired, getAllEvents);
 // Organization Events
-router.post('/organization/createEvent', authRequired, validateInput(eventSchema), createEvent)
-router.get("/organization/getMyEvents", authRequired, getOrganizationEvents);
+router.get("/organization/events", authRequired, getOrganizationEvents);
+router.post('/organization/event/create', authRequired, validateInput(eventSchema), createEvent)
 // User Events
-router.get("/user/getMyEvents", authRequired, getUserEvents);
-router.put("/user/enrollEvent", authRequired, addUserToEvent);
+router.get("/user/events", authRequired, getUserEvents);
+router.put("/user/event/join", authRequired, addUserToEvent);
 
 
 // edit event

@@ -11,10 +11,10 @@ import {
 const router = Router();
 
 // Event Categories
-router.post('/data/eventCategory', createEventCategory);
-router.get('/data/eventCategories', getEventCategories);
+router.get('/data/event/categories', getEventCategories);
+router.post('/data/event/category/create', createEventCategory);
 // Carrers
-router.post('/data/carrer', createCarrer);
 router.get('/data/carrers', getCarrers);
+router.post('/data/carrer/create', createCarrer);
 
 export default router;
