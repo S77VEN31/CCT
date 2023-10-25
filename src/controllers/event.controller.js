@@ -76,9 +76,8 @@ export const addUserToEvent = async (req, res) => {
     try {
         const userId = req.user.id;
         const { eventId } = req.body;
-        // Find event
+        // Find event and check if user is already in participants list
         const event = await Event.findById(eventId);
-        // Check if user is already in event's participants list
         const isParticipant = event.participants.some(element => userId.equals(element._id));
         // If user is already in event's participants list, return error
         if (isParticipant) {
