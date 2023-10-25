@@ -1,11 +1,11 @@
 // Models
-import Comment from "../models/comment.model.js"
-import Event from "../models/event.model.js"
-import EventCategory from "../models/eventCategory.model.js"
-import User from "../models/user.model.js"
+import Comment from "../models/comment.model.js";
+import Event from "../models/event.model.js";
+import EventCategory from "../models/eventCategory.model.js";
+import User from "../models/user.model.js";
 // Enumerables
-import { SuccessMessages } from "../enumerables/successMessages.js";
 import { ErrorMessages } from "../enumerables/errorMessages.js";
+import { SuccessMessages } from "../enumerables/successMessages.js";
 
 export const getAllEvents = async (req, res) => {
     try {
@@ -51,10 +51,12 @@ export const createEvent = async (req, res) => {
 export const getOrganizationEvents = async (req, res) => {
     try {
         const ownerId = req.user.id;
+        console.log(ownerId);
         // Get events that have the owner id in the owner field, then return them
         const events = await Event.find({ owner: ownerId });
         res.status(200).json(events);
     } catch (error) {
+        console.log(error);
         const { code, name, message } = ErrorMessages.notEventsFound;
         res.status(code).json({ message, name });
     }
