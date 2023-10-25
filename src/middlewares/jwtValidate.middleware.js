@@ -14,7 +14,8 @@ export const authRequired = (req, res, next) => {
         if (err) return res.status(403).json({ message: "Unauthorized invalid token" })
         // If token is valid
         req.user = decodedToken
+        // Next middleware
+        next()
     })
-    // Next middleware
-    next()
+
 }
