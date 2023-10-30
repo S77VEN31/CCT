@@ -20,15 +20,18 @@ export const getAllEvents = async (req, res) => {
 
 export const createEvent = async (req, res) => {
     try {
+        const { categoryName, ...eventData } = req.body;
 
-        const {
-            categoryName,
-            ...eventData
-        } = req.body;
-        console.log(categoryName)
         // Search category by name and get the object
-        const category = EventCategory.findOne({ name: categoryName })
-        console.log("category id", category)
+        const category = await EventCategory.findOne({ name: categoryName });
+
+        // Check if category was found
+        if (!category) {
+            return res.status(400).json({ message: 'Category not found' });
+        }
+
+        console.log("Found category: ", category);
+
         // Create event object and save it, then return success message
         const event = new Event({
             ...eventData,
@@ -41,15 +44,19 @@ export const createEvent = async (req, res) => {
             attendanceRequests: [],
             comments: [],
             participants: []
-        })
-        await event.save()
+        });
+
+        await event.save();
+
         const { code, name, message } = SuccessMessages.eventCreated;
         res.status(code).json({ message, name });
+
     } catch (error) {
         const { code, name, message } = ErrorMessages.createEvent;
         res.status(code).json({ message, name });
     }
 }
+
 
 export const getOrganizationEvents = async (req, res) => {
     try {
