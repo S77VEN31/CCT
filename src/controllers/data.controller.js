@@ -24,6 +24,16 @@ export const getEventCategories = async (req, res) => {
     }
 }
 
+export const getEventCategory = async (req, res) => {
+    try {
+        const eventCategory = await EventCategory.findById(req.body.id)
+        res.status(200).json(eventCategory)
+    }
+    catch (error) {
+        res.status(500).json({ message: error })
+    }
+}
+
 export const createCarrer = async (req, res) => {
     const { name, code } = req.body
     try {
