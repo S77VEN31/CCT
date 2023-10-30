@@ -29,4 +29,9 @@ export const SuccessMessages = {
         name: "Evento actualizado",
         message: "El evento ha sido actualizado exitosamente."
     },
+    eventDeleted: {
+        code: 200,
+        name: "Evento eliminado",
+        message: "El evento ha sido eliminado exitosamente."
+    },
 }

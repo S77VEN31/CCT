@@ -82,6 +82,29 @@ export const updateEvent = async (req, res) => {
     }
 };
 
+export const deleteEvent = async (req, res) => {
+    try {
+        const eventId = req.params.id;
+
+        // Find event by id and delete it
+        const result = await Event.deleteOne({ _id: eventId });
+
+        // If event is not found or not deleted, return error
+        if (result.deletedCount === 0) {
+            const { code, name, message } = ErrorMessages.eventNotFound;
+            return res.status(code).json({ name, message });
+        }
+
+        // Return success message
+        const { code, name, message } = SuccessMessages.eventDeleted;
+        res.status(code).json({ message, name });
+
+    } catch (error) {
+        const { code, name, message } = ErrorMessages.eventNotDeleted;
+        res.status(code).json({ message, name });
+    }
+}
+
 
 
 export const getOrganizationEvents = async (req, res) => {
@@ -147,22 +170,7 @@ export const addUserToEvent = async (req, res) => {
 
 
 
-export const deleteEvent = async (req, res) => {
-    try {
-        // get event from id param
-        const event = await Event.findById(req.params.id)
-        // ensure user is a collaborator
-        if (!event.collaborators.includes(req.user)) {
-            throw new Error("You are not a collaborator of this event")
-        }
-        // delete event
-        await event.delete()
-        // return event
-        res.json(event)
-    } catch (error) {
-        res.status(500).json({ message: error.message })
-    }
-}
+
 
 export const getEvents = async (req, res) => {
     try {

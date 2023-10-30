@@ -74,4 +74,9 @@ export const ErrorMessages = {
         name: "Evento no encontrado",
         message: "No se encontró un evento con el id proporcionado."
     },
+    eventNotDeleted: {
+        code: 500,
+        name: "Error al eliminar el evento",
+        message: "Hubo un error al eliminar el evento."
+    },
 }
