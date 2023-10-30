@@ -55,6 +55,33 @@ export const createEvent = async (req, res) => {
     }
 }
 
+export const updateEventInfo = async (req, res) => {
+    try {
+        const eventId = req.body._id;
+        const updateFields = {
+            ...req.body,
+        };
+
+        // Find event by id and update it with the new fields
+        const result = await Event.updateOne({ _id: eventId }, { $set: updateFields });
+
+        // If event is not found or not modified, return error
+        if (result.nModified === 0) {
+            const { code, name, message } = ErrorMessages.eventNotFound;
+            return res.status(code).json({ name, message });
+        }
+
+        // Return success message
+        const { code, name, message } = SuccessMessages.eventUpdated;
+        res.status(code).json({ message, name });
+
+    } catch (error) {
+        const { code, name, message } = ErrorMessages.updateEvent;
+        res.status(code).json({ message, name });
+    }
+};
+
+
 
 export const getOrganizationEvents = async (req, res) => {
     try {

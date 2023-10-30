@@ -32,6 +32,7 @@ router.get("/events", authRequired, getAllEvents);
 // Organization Events
 router.get("/organization/events", authRequired, getOrganizationEvents);
 router.post('/organization/event/create', authRequired, validateInput(eventSchema), createEvent)
+router.put('/organization/event/update', authRequired, updateEvent)
 // User Events
 router.get("/user/events", authRequired, getUserEvents);
 router.put("/user/event/join", authRequired, addUserToEvent);
