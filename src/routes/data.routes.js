@@ -13,7 +13,7 @@ const router = Router();
 
 // Event Categories
 router.get('/data/event/categories', getEventCategories);
-router.get('/data/event/category', getEventCategory);
+router.get('/data/event/category/:id', getEventCategory);
 router.post('/data/event/category/create', createEventCategory);
 // Carrers
 router.get('/data/carrers', getCarrers);

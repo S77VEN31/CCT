@@ -26,7 +26,8 @@ export const getEventCategories = async (req, res) => {
 
 export const getEventCategory = async (req, res) => {
     try {
-        const eventCategory = await EventCategory.findById(req.body.id)
+        const categoryId = req.params.id;
+        const eventCategory = await EventCategory.findById(categoryId)
         res.status(200).json(eventCategory)
     }
     catch (error) {
