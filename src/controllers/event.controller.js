@@ -55,7 +55,7 @@ export const createEvent = async (req, res) => {
     }
 }
 
-export const updateEventInfo = async (req, res) => {
+export const updateEvent = async (req, res) => {
     try {
         const eventId = req.body._id;
 
@@ -145,31 +145,7 @@ export const addUserToEvent = async (req, res) => {
 
 
 
-export const updateEvent = async (req, res) => {
-    try {
-        // get event from id param
-        const event = await Event.findById(req.params.id)
-        // ensure user is a collaborator
-        if (!event.collaborators.includes(req.user)) {
-            throw new Error("You are not a collaborator of this event")
-        }
-        // update event
-        event.title = req.body.title
-        event.description = req.body.description
-        event.startTime = req.body.startTime
-        event.endTime = req.body.endTime
-        event.location = req.body.location
-        event.category = req.body.category
-        event.capacity = req.body.capacity
-        event.requiresApproval = req.body.requiresApproval
-        // save event
-        await event.save()
-        // return event
-        res.json(event)
-    } catch (error) {
-        res.status(500).json({ message: error.message })
-    }
-}
+
 
 export const deleteEvent = async (req, res) => {
     try {
