@@ -24,4 +24,9 @@ export const SuccessMessages = {
         name: "Usuario agregado",
         message: "El usuario ha sido agregado a la lista de participantes."
     },
+    eventUpdated: {
+        code: 200,
+        name: "Evento actualizado",
+        message: "El evento ha sido actualizado exitosamente."
+    },
 }

@@ -77,7 +77,7 @@ export const updateEventInfo = async (req, res) => {
         res.status(code).json({ message, name });
 
     } catch (error) {
-        const { code, name, message } = ErrorMessages.updateEvent;
+        const { code, name, message } = ErrorMessages.eventNotUpdated;
         res.status(code).json({ message, name });
     }
 };

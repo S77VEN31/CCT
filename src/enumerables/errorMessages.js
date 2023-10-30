@@ -64,4 +64,14 @@ export const ErrorMessages = {
         name: "Usuario ya existe",
         message: "El usuario ya existe en la lista de participantes."
     },
+    eventNotUpdated: {
+        code: 500,
+        name: "Error al actualizar el evento",
+        message: "Hubo un error al actualizar el evento."
+    },
+    eventNotFound: {
+        code: 404,
+        name: "Evento no encontrado",
+        message: "No se encontró un evento con el id proporcionado."
+    },
 }
