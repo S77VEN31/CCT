@@ -30,8 +30,6 @@ export const createEvent = async (req, res) => {
             return res.status(400).json({ message: 'Category not found' });
         }
 
-        console.log("Found category: ", category);
-
         // Create event object and save it, then return success message
         const event = new Event({
             ...eventData,
