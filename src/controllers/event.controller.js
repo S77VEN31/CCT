@@ -28,6 +28,7 @@ export const createEvent = async (req, res) => {
         console.log(categoryName)
         // Search category by name and get the object
         const category = EventCategory.findOne({ name: categoryName })
+        console.log("category id", category)
         // Create event object and save it, then return success message
         const event = new Event({
             ...eventData,
