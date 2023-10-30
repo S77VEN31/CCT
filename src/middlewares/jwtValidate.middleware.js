@@ -17,5 +17,4 @@ export const authRequired = (req, res, next) => {
         // Next middleware
         next()
     })
-
 }

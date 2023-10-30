@@ -20,10 +20,12 @@ export const getAllEvents = async (req, res) => {
 
 export const createEvent = async (req, res) => {
     try {
+
         const {
             categoryName,
             ...eventData
         } = req.body;
+        console.log(categoryName)
         // Search category by name and get the object
         const category = EventCategory.findOne({ name: categoryName })
         // Create event object and save it, then return success message
