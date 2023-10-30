@@ -56,14 +56,13 @@ export const createEvent = async (req, res) => {
 }
 
 export const updateEventInfo = async (req, res) => {
-    console.log(req.body)
     try {
         const eventId = req.body._id;
 
         const updateFields = {
             ...req.body,
         };
-
+        console.log(req.body)
         // Find event by id and update it with the new fields
         const result = await Event.updateOne({ _id: eventId }, { $set: updateFields });
 
