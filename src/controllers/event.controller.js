@@ -10,7 +10,7 @@ import { SuccessMessages } from "../enumerables/successMessages.js";
 export const getAllEvents = async (req, res) => {
     try {
         // Get all events and return them
-        const events = await Event.find();
+        const events = await Event.find().populate('owner');
         res.status(200).json(events);
     } catch (error) {
         const { code, name, message } = ErrorMessages.notEventsFound;
