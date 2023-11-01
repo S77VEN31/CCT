@@ -139,7 +139,6 @@ export const addUserToEvent = async (req, res) => {
         const { eventId } = req.body;
         // Find event and check if user is already in participants list
         const event = await Event.findById(eventId);
-        console.log(event);
         const isParticipant = event.participants.some(element => userId.equals(element._id));
         // If user is already in event's participants list, return error
         if (isParticipant) {
@@ -160,7 +159,6 @@ export const addUserToEvent = async (req, res) => {
         res.status(code).json({ message, name });
     }
     catch (error) {
-        console.log(error);
         const { code, name, message } = ErrorMessages.userNotAdded
         res.status(code).json({ message, name });
     }
