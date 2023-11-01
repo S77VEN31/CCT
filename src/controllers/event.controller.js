@@ -146,6 +146,7 @@ export const addUserToEvent = async (req, res) => {
             return res.status(code).json({ message, name });
         }
         // Check if event is full
+        console.log(event);
         if (event.participants.length >= event.capacity) {
             /* Add user to attendanceRequests list, 
             then return error message user is in attendanceRequests list */
