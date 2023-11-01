@@ -139,6 +139,7 @@ export const addUserToEvent = async (req, res) => {
         const { eventId } = req.body;
         // Find event and check if user is already in participants list
         const event = await Event.findById(eventId);
+        console.log(event);
         const isParticipant = event.participants.some(element => userId.equals(element._id));
         // If user is already in event's participants list, return error
         if (isParticipant) {
@@ -146,7 +147,6 @@ export const addUserToEvent = async (req, res) => {
             return res.status(code).json({ message, name });
         }
         // Check if event is full
-        console.log(event);
         if (event.participants.length >= event.capacity) {
             /* Add user to attendanceRequests list, 
             then return error message user is in attendanceRequests list */
