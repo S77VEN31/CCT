@@ -159,6 +159,7 @@ export const addUserToEvent = async (req, res) => {
         res.status(code).json({ message, name });
     }
     catch (error) {
+        console.log(error);
         const { code, name, message } = ErrorMessages.userNotAdded
         res.status(code).json({ message, name });
     }
