@@ -16,6 +16,7 @@ import {
     getUserEvents,
     joinEvent,
     rejectEventRequest,
+    removeUserFromEvent,
     updateEvent,
     valorateEvent
 } from '../controllers/event.controller.js';
@@ -37,7 +38,7 @@ router.delete('/organization/event/delete/:id', authRequired, deleteEvent)
 // User Events
 router.get("/user/events", authRequired, getUserEvents);
 router.put("/user/event/join", authRequired, addUserToEvent);
-
+router.put("/user/event/leave", authRequired, removeUserFromEvent);
 
 // edit event
 router.put('/events/:id', authRequired, updateEvent)
