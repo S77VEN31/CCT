@@ -145,6 +145,14 @@ export const addUserToEvent = async (req, res) => {
             const { code, name, message } = ErrorMessages.userAlreadyAdded;
             return res.status(code).json({ message, name });
         }
+        // Check if event is full
+        if (event.participants.length >= event.capacity) {
+            /* Add user to attendanceRequests list, 
+            then return error message user is in attendanceRequests list */
+            const { code, name, message } = ErrorMessages.eventFull;
+            await Event.updateOne({ _id: eventId }, { $addToSet: { attendanceRequests: userId } });
+            return res.status(code).json({ message, name });
+        }
         // Add user to event's participants list, then return success message
         const { code, name, message } = SuccessMessages.userAdded;
         await Event.updateOne({ _id: eventId }, { $addToSet: { participants: userId } });

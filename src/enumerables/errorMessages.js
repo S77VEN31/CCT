@@ -79,4 +79,9 @@ export const ErrorMessages = {
         name: "Error al eliminar el evento",
         message: "Hubo un error al eliminar el evento."
     },
+    eventFull: {
+        code: 400,
+        name: "Evento lleno",
+        message: "Serás añadido a la lista de espera."
+    },
 }
