@@ -165,6 +165,30 @@ export const addUserToEvent = async (req, res) => {
     }
 }
 
+export const removeUserFromEvent = async (req, res) => {
+    try {
+        const userId = req.user.id;
+        const { eventId } = req.body;
+        // Find event and check if user is already in participants list
+        const event = await Event.findById(eventId);
+        const isParticipant = event.participants.some(element => element._id.toString() === userId);
+        // If user is not in event's participants list, return error
+        if (!isParticipant) {
+            const { code, name, message } = ErrorMessages.userNotInEvent;
+            return res.status(code).json({ message, name });
+        }
+        // Remove user from event's participants list, then return success message
+        const { code, name, message } = SuccessMessages.userRemoved;
+        await Event.updateOne({ _id: eventId }, { $pull: { participants: userId } });
+        res.status(code).json({ message, name });
+    }
+    catch (error) {
+        console.log(error);
+        const { code, name, message } = ErrorMessages.userNotRemoved
+        res.status(code).json({ message, name });
+    }
+}
+
 
 
 

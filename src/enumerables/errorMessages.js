@@ -84,4 +84,14 @@ export const ErrorMessages = {
         name: "Evento lleno",
         message: "Serás añadido a la lista de espera."
     },
+    userNotInEvent: {
+        code: 400,
+        name: "Usuario no está en el evento",
+        message: "El usuario no está en el evento."
+    },
+    userNotRemoved: {
+        code: 500,
+        name: "Error al eliminar usuario",
+        message: "Hubo un error al eliminar el usuario de la lista de participantes."
+    },
 }

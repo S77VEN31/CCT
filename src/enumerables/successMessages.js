@@ -34,4 +34,9 @@ export const SuccessMessages = {
         name: "Evento eliminado",
         message: "El evento ha sido eliminado exitosamente."
     },
+    userRemoved: {
+        code: 200,
+        name: "Usuario eliminado",
+        message: "El usuario ha sido eliminado de la lista de participantes."
+    },
 }
