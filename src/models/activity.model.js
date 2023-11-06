@@ -20,10 +20,10 @@ const activityModel = new mongoose.Schema({
         type: Date,
         required: true,
     },
-    collaborator: [{
+    collaborator: {
         type: Schema.Types.ObjectId,
         ref: "User",
         required: true,
-    }]
+    }
 }, { timestamps: true })
 export default mongoose.model("Activity", activityModel);
