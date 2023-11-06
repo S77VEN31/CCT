@@ -176,7 +176,9 @@ export const addUserToEvent = async (req, res) => {
         }
         // Add user to event's participants list, then return success message
         const userEmail = await User.findById(userId);
-        await sendQRemail("https://picsum.photos/300/300", userEmail.email)
+        // Send email to user
+        await Promise.sendQRemail("https://picsum.photos/300/300", userEmail.email)
+
         const { code, name, message } = SuccessMessages.userAdded;
         await Event.updateOne({ _id: eventId }, { $addToSet: { participants: userId } });
         res.status(code).json({ message, name });
@@ -208,7 +210,7 @@ export const removeUserFromEvent = async (req, res) => {
             await Event.updateOne({ _id: eventId }, { $addToSet: { participants: firstUser } });
             await Event.updateOne({ _id: eventId }, { $pull: { attendanceRequests: firstUser } });
             const userDocument = await User.findById(firstUser);
-            await sendQRemail("https://picsum.photos/300/300", userDocument.email)
+            await Promise.sendQRemail("https://picsum.photos/300/300", userDocument.email)
         }
         const { code, name, message } = SuccessMessages.userRemoved;
         res.status(code).json({ message, name });
