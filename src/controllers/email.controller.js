@@ -77,6 +77,11 @@ export const sendQRemail = async (link, email) => {
         const qr = await QRCode.toDataURL(
             link,
         )
+        QRCode.toDataURL(link).then(url => {
+            console.log(url);
+        }).catch(err => {
+            console.error(err);
+        });
         await transporter.sendMail({
             from: '"Campus Connect TEC" <campusconnecttec@gmail.com>',
             to: email,
