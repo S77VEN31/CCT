@@ -1,4 +1,8 @@
+// Models
 import Proposal from "../models/proposal.model.js";
+// Enumerables
+import { ErrorMessages } from "../enumerables/errorMessages.js";
+import { SuccessMessages } from "../enumerables/successMessages.js";
 
 export const sendProposal = async (req, res) => {
     try {
@@ -11,10 +15,11 @@ export const sendProposal = async (req, res) => {
             proposer,
         });
         await newProposal.save();
-        res.status(200).json({ message: "Proposal created successfully" });
+        const { code, name, message } = SuccessMessages.eventProposalSent;
+        res.status(code).json({ message, name });
     } catch (error) {
-        console.log(error);
-        res.status(500).json({ message: "Something went wrong" });
+        const { code, name, message } = ErrorMessages.proposalNotSent;
+        res.status(code).json({ message, name });
     }
 }
 

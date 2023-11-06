@@ -39,4 +39,14 @@ export const SuccessMessages = {
         name: "Usuario eliminado",
         message: "El usuario ha sido eliminado de la lista de participantes."
     },
+    eventProposalSent: {
+        code: 200,
+        name: "Propuesta enviada",
+        message: "La propuesta ha sido enviada exitosamente."
+    },
+    collaboratorsModified: {
+        code: 200,
+        name: "Colaboradores modificados",
+        message: "Los colaboradores han sido modificados exitosamente."
+    },
 }

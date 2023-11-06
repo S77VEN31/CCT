@@ -17,6 +17,7 @@ import {
     joinEvent,
     rejectEventRequest,
     removeUserFromEvent,
+    updateCollaboratorsList,
     updateEvent,
     valorateEvent
 } from '../controllers/event.controller.js';
@@ -35,6 +36,7 @@ router.get("/organization/events", authRequired, getOrganizationEvents);
 router.post('/organization/event/create', authRequired, validateInput(eventSchema), createEvent)
 router.put('/organization/event/update', authRequired, updateEvent)
 router.delete('/organization/event/delete/:id', authRequired, deleteEvent)
+router.put('/organization/event/update/collaborators', authRequired, updateCollaboratorsList)
 // User Events
 router.get("/user/events", authRequired, getUserEvents);
 router.put("/user/event/join", authRequired, addUserToEvent);

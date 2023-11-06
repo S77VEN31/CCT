@@ -99,4 +99,14 @@ export const ErrorMessages = {
         name: "Organizaciones no encontradas",
         message: "No se encontraron organizaciones."
     },
+    proposalNotSent: {
+        code: 500,
+        name: "Error al enviar la propuesta",
+        message: "Hubo un error al enviar la propuesta."
+    },
+    collaboratorsNotModified: {
+        code: 500,
+        name: "Error al modificar colaboradores",
+        message: "Hubo un error al modificar los colaboradores."
+    },
 }

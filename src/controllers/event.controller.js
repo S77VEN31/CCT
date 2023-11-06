@@ -188,6 +188,23 @@ export const removeUserFromEvent = async (req, res) => {
     }
 }
 
+export const updateCollaboratorsList = async (req, res) => {
+    try {
+        const { collaborators, eventId } = req.body;
+        // Find event and update collaborators list
+        const event = await Event.findById(eventId);
+        event.collaborators = collaborators;
+        await event.save();
+        // Return success message
+        const { code, name, message } = SuccessMessages.collaboratorsModified;
+        res.status(code).json({ message, name });
+    }
+    catch (error) {
+        console.log(error);
+        const { code, name, message } = ErrorMessages.collaboratorsNotModified;
+        res.status(code).json({ message, name });
+    }
+}
 
 
 
