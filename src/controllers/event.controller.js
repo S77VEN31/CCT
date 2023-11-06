@@ -136,7 +136,7 @@ export const getUserEventsAttendanceRequests = async (req, res) => {
     try {
         const userId = req.user.id;
         // Get events that have the user id in the attendanceRequests field, then return them
-        const events = await Event.find({ attendanceRequests: userId });
+        const events = await Event.find({ attendanceRequests: userId }).populate('owner');
         res.status(200).json(events);
     } catch (error) {
         const { code, name, message } = ErrorMessages.notEventsFound;
