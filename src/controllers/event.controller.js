@@ -245,7 +245,7 @@ export const getActivitiesFromEvent = async (req, res) => {
 
 export const rateActivity = async (req, res) => {
     try {
-        const { userId } = req.user.id;
+        const userId = req.user.id;
         const { activityId, rating, comment } = req.body;
         const valoration = new Valoration({
             user: userId,
