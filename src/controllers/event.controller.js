@@ -87,6 +87,9 @@ export const updateEvent = async (req, res) => {
 export const deleteEvent = async (req, res) => {
     try {
         const eventId = req.params.id;
+        // Save the event title to send it in the email
+        const event = await Event.findById(eventId);
+        const eventName = event.title;
 
         // Find event by id and delete it
         const result = await Event.deleteOne({ _id: eventId });
@@ -96,7 +99,7 @@ export const deleteEvent = async (req, res) => {
             const { code, name, message } = ErrorMessages.eventNotFound;
             return res.status(code).json({ name, message });
         }
-        await sendEmailToAllUsers(eventId)
+        await sendEmailToAllUsers(eventName)
         // Return success message
         const { code, name, message } = SuccessMessages.eventDeleted;
         res.status(code).json({ message, name });

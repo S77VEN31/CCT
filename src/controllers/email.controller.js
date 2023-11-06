@@ -2,7 +2,6 @@
 import nodemailer from "nodemailer";
 import QRCode from "qrcode";
 // Models
-import Event from "../models/event.model.js";
 import User from "../models/user.model.js";
 
 const transporter = nodemailer.createTransport({
@@ -15,21 +14,15 @@ const transporter = nodemailer.createTransport({
     },
 })
 
-export const sendEmailToAllUsers = async (eventId) => {
+export const sendEmailToAllUsers = async (eventName) => {
     try {
-        const event = await Event.findById(eventId);
-        if (!event) {
-            console.log(`Event with id ${eventId} not found.`);
-            return false;
-        }
-
         const users = await User.find();
         const sendEmailPromises = users.map((user) => {
             return transporter.sendMail({
                 from: '"Campus Connect TEC" <campusconnecttec@gmail.com>',
                 to: user.email,
                 subject: "¡Evento eliminado!",
-                html: `<p>¡Hola! El evento ${event.name} ha sido eliminado. Lamentamos los inconvenientes.</p>`,
+                html: `<p>¡Hola! El evento ${eventName} ha sido eliminado. Lamentamos los inconvenientes.</p>`,
             }).catch(error => {
                 console.error(`Failed to send email to ${user.email}`, error);
                 return null; // returning null for failed email, you can handle this as per your logic
