@@ -7,7 +7,7 @@ import Valoration from "../models/valorations.model.js";
 import { ErrorMessages } from "../enumerables/errorMessages.js";
 import { SuccessMessages } from "../enumerables/successMessages.js";
 // Email controller
-import { sendEmailToAllUsers } from "./email.controller.js";
+import { sendEmailToAllUsers, sendEmailToUser } from "./email.controller.js";
 
 export const getAllEvents = async (req, res) => {
     try {
