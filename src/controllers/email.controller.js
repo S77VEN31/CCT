@@ -21,6 +21,7 @@ export const sendEmailToAllUsers = async (id) => {
         const event = await Event.findById(id)
         const users = await User.find()
         users.forEach(user => {
+            console.log(user.email)
             transporter.sendMail({
                 from: '"Campus Connect TEC" <campusconnecttec@gmail.com>',
                 to: user.email,
