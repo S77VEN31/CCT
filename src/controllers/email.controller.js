@@ -85,7 +85,8 @@ export const sendQRemail = async (link, email) => {
             attachments: [
                 {
                     filename: 'qrcode.png',
-                    path: qr,
+                    content: qr.split("base64,")[1], // Suponiendo que `qr` tiene un prefijo 'data:image/png;base64,'
+                    encoding: 'base64',
                     cid: 'qrcodecid'
                 }
             ]
