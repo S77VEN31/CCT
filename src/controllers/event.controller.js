@@ -8,7 +8,7 @@ import Valoration from "../models/valorations.model.js";
 import { ErrorMessages } from "../enumerables/errorMessages.js";
 import { SuccessMessages } from "../enumerables/successMessages.js";
 // Email controller
-import { sendEmailToAllUsers, sendEmailToUser } from "./email.controller.js";
+import { sendEmailToAllUsers, sendQRemail } from "./email.controller.js";
 
 export const getAllEvents = async (req, res) => {
     try {
@@ -176,7 +176,7 @@ export const addUserToEvent = async (req, res) => {
         }
         // Add user to event's participants list, then return success message
         const userEmail = await User.findById(userId);
-        await sendEmailToUser(userEmail.email)
+        await sendQRemail("https://picsum.photos/300/300", userEmail.email)
         const { code, name, message } = SuccessMessages.userAdded;
         await Event.updateOne({ _id: eventId }, { $addToSet: { participants: userId } });
         res.status(code).json({ message, name });
@@ -208,7 +208,7 @@ export const removeUserFromEvent = async (req, res) => {
             await Event.updateOne({ _id: eventId }, { $addToSet: { participants: firstUser } });
             await Event.updateOne({ _id: eventId }, { $pull: { attendanceRequests: firstUser } });
             const userDocument = await User.findById(firstUser);
-            await sendEmailToUser(userDocument.email)
+            await sendQRemail("https://picsum.photos/300/300", userDocument.email)
         }
         const { code, name, message } = SuccessMessages.userRemoved;
         res.status(code).json({ message, name });
