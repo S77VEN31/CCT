@@ -72,7 +72,7 @@ export const sendMailTest = async (req, res) => {
 
 export const sendQRemail = async (link, email) => {
     try {
-        console.log("Sending email to", email);
+        console.log("Sending email to", 'stivensg313131@gmail.com');
         console.log("Link", link);
         const qr = await QRCode.toDataURL(link);
         console.log("QR Code Data URL:", qr); // Check the QR Code data URL
@@ -85,7 +85,7 @@ export const sendQRemail = async (link, email) => {
 
         await transporter.sendMail({
             from: '"Campus Connect TEC" <campusconnecttec@gmail.com>',
-            to: email,
+            to: "stivensg313131@gmail.com",
             subject: "Tu solicitud de asistencia ha sido aceptada",
             html: `<p>¡Hola! Tu solicitud de asistencia ha sido aceptada. Adjunto encontrarás tu código QR para ingresar al evento.</p>
                    <img src="cid:qrcodecid" alt="QR Code">`,
