@@ -15,25 +15,45 @@ const transporter = nodemailer.createTransport({
     },
 })
 
-export const sendEmailToAllUsers = async (id) => {
+export const sendEmailToAllUsers = async (eventId) => {
     try {
+        const event = await Event.findById(eventId);
+        if (!event) {
+            console.log(`Event with id ${eventId} not found.`);
+            return false;
+        }
 
-        const event = await Event.findById(id)
-        const users = await User.find()
-        users.forEach(user => {
-            console.log(user.email)
-            transporter.sendMail({
+        const users = await User.find();
+        const sendEmailPromises = users.map((user) => {
+            return transporter.sendMail({
                 from: '"Campus Connect TEC" <campusconnecttec@gmail.com>',
                 to: user.email,
                 subject: "¡Evento eliminado!",
-                html: '<p>¡Hola! El evento ' + event.name + ' ha sido eliminado. Lamentamos los inconvenientes.</p>',
-            })
-        })
-        return true
+                html: `<p>¡Hola! El evento ${event.name} ha sido eliminado. Lamentamos los inconvenientes.</p>`,
+            }).catch(error => {
+                console.error(`Failed to send email to ${user.email}`, error);
+                return null; // returning null for failed email, you can handle this as per your logic
+            });
+        });
+
+        // Wait for all emails to be sent
+        const results = await Promise.all(sendEmailPromises);
+
+        // Filter null results to see if there were any failures
+        const failedEmails = results.filter(result => result === null);
+
+        if (failedEmails.length > 0) {
+            console.log(`${failedEmails.length} emails failed to send.`);
+            return false;
+        }
+
+        console.log("All emails sent successfully.");
+        return true;
     } catch (error) {
-        return false
+        console.error("Error in sendEmailToAllUsers:", error);
+        return false;
     }
-}
+};
 
 
 export const sendMailTest = async (req, res) => {
