@@ -49,4 +49,9 @@ export const SuccessMessages = {
         name: "Colaboradores modificados",
         message: "Los colaboradores han sido modificados exitosamente."
     },
+    activityCreated: {
+        code: 200,
+        name: "Actividad creada",
+        message: "La actividad ha sido creada exitosamente."
+    },
 }

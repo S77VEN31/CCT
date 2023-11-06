@@ -109,4 +109,9 @@ export const ErrorMessages = {
         name: "Error al modificar colaboradores",
         message: "Hubo un error al modificar los colaboradores."
     },
+    activityNotCreated: {
+        code: 500,
+        name: "Error al crear la actividad",
+        message: "Hubo un error al crear la actividad."
+    },
 }
