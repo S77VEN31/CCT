@@ -82,6 +82,7 @@ export const sendQRemail = async (link, email) => {
             subject: "Tu solicitud de asistencia ha sido aceptada",
             html: '<p>¡Hola! Tu solicitud de asistencia ha sido aceptada. Adjunto encontrarás tu código QR para ingresar al evento.</p> <img src="' + qr + '" alt="QR Code">',
         })
+        console.log("Email sent successfully.");
     }
     catch (error) {
         throw error; 
