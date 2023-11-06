@@ -221,6 +221,7 @@ export const createEventActivity = async (req, res) => {
         const { code, name, message } = SuccessMessages.activityCreated;
         res.status(code).json({ message, name });
     } catch (error) {
+        console.log(error);
         const { code, name, message } = ErrorMessages.activityNotCreated;
         res.status(code).json({ message, name });
     }
