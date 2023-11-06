@@ -72,34 +72,25 @@ export const sendMailTest = async (req, res) => {
 
 export const sendQRemail = async (link, email) => {
     try {
-        console.log("Sending email to", email)
-        console.log("Link", link)
-        const qr = await QRCode.toDataURL(
-            link,
-        )
-        QRCode.toDataURL(link).then(url => {
-            console.log(url);
-        }).catch(err => {
-            console.error(err);
-        });
+        console.log("Sending email to", email);
+        console.log("Link", link);
+        const qr = await QRCode.toDataURL(link);
         await transporter.sendMail({
             from: '"Campus Connect TEC" <campusconnecttec@gmail.com>',
             to: email,
             subject: "Tu solicitud de asistencia ha sido aceptada",
-            html: '<p>¡Hola! Tu solicitud de asistencia ha sido aceptada. Adjunto encontrarás tu código QR para ingresar al evento.</p> <img src="cid:qrcodecid" alt="QR Code">',
-            attachments: [
-                {
-                    filename: 'qrcode.png',
-                    content: qr.split("base64,")[1], // Suponiendo que `qr` tiene un prefijo 'data:image/png;base64,'
-                    encoding: 'base64',
-                    cid: 'qrcodecid'
-                }
-            ]
+            html: `<p>¡Hola! Tu solicitud de asistencia ha sido aceptada. Adjunto encontrarás tu código QR para ingresar al evento.</p>
+                   <img src="cid:qrcodecid" alt="QR Code">`,
+            attachments: [{
+                filename: 'qrcode.png',
+                content: qr.split("base64,")[1],
+                encoding: 'base64',
+                cid: 'qrcodecid'
+            }]
         });
         console.log("Email sent successfully.");
+    } catch (error) {
+        console.error("Error sending email:", error);
+        throw error;
     }
-    catch (error) {
-        throw error; 
-        console.log(error)
-    }
-}
+};
