@@ -84,6 +84,7 @@ export const sendQRemail = async (link, email) => {
         })
     }
     catch (error) {
+        throw error; 
         console.log(error)
     }
 }
