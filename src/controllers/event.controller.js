@@ -7,7 +7,7 @@ import Valoration from "../models/valorations.model.js";
 import { ErrorMessages } from "../enumerables/errorMessages.js";
 import { SuccessMessages } from "../enumerables/successMessages.js";
 // Email controller
-import { sendEmailToAllUsers, sendEmailToUser } from "./email.controller.js";
+import { sendEmailToAllUsers } from "./email.controller.js";
 
 export const getAllEvents = async (req, res) => {
     try {
@@ -155,7 +155,7 @@ export const addUserToEvent = async (req, res) => {
         const { eventId } = req.body;
         // get user email to send email
         const userEmail = req.user.email;
-        await sendEmailToUser(userEmail)
+
 
         // Find event and check if user is already in participants list
         const event = await Event.findById(eventId);
@@ -174,6 +174,7 @@ export const addUserToEvent = async (req, res) => {
             return res.status(code).json({ message, name });
         }
         // Add user to event's participants list, then return success message
+        await sendEmailToUser(userEmail)
         const { code, name, message } = SuccessMessages.userAdded;
         await Event.updateOne({ _id: eventId }, { $addToSet: { participants: userId } });
         res.status(code).json({ message, name });
