@@ -7,7 +7,7 @@ import User from "../models/user.model.js";
 const transporter = nodemailer.createTransport({
     service: "gmail",
     port: 465,
-    secure: false, // true for 465, false for other ports
+    secure: true, // true for 465, false for other ports
     auth: {
         user: "campusconnecttec@gmail.com",
         pass: "pxajtrwezfrvncpm"
