@@ -194,6 +194,7 @@ export const removeUserFromEvent = async (req, res) => {
         const firstUser = event.attendanceRequests.shift();
         if (firstUser) {
             await Event.updateOne({ _id: eventId }, { $addToSet: { participants: firstUser } });
+            await Event.updateOne({ _id: eventId }, { $pull: { attendanceRequests: firstUser } });
         }
         const { code, name, message } = SuccessMessages.userRemoved;
         res.status(code).json({ message, name });
