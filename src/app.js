@@ -9,10 +9,11 @@ import cors from "cors";
 // Get json data from request
 import bodyParser from 'body-parser';
 
-// AuthRoutes
+// Routes
 import authRoutes from "./routes/auth.routes.js";
 import dataRoutes from "./routes/data.routes.js";
 import eventRoutes from "./routes/event.routes.js";
+import proposalRoutes from "./routes/proposal.routes.js";
 import userRoutes from "./routes/user.routes.js";
 
 // Instance of express
@@ -33,5 +34,6 @@ app.use("/api", authRoutes);
 app.use("/api", eventRoutes);
 app.use("/api", userRoutes);
 app.use("/api", dataRoutes);
+app.use("/api", proposalRoutes);
 
 export default app;

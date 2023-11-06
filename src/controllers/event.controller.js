@@ -110,7 +110,6 @@ export const deleteEvent = async (req, res) => {
 export const getOrganizationEvents = async (req, res) => {
     try {
         const ownerId = req.user.id;
-        console.log(ownerId);
         // Get events that have the owner id in the owner field, then return them
         const events = await Event.find({ owner: ownerId });
         res.status(200).json(events);

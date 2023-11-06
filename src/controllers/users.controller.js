@@ -13,6 +13,16 @@ export const getProfile = async (req, res) => {
     res.json(profileFound)
 }
 
+export const getOrganizations = async (req, res) => {
+    try {
+        const organizations = await User.find({ isOrganization: true });
+        res.status(200).json(organizations);
+    } catch (error) {
+        const { code, name, message } = ErrorMessages.organizationsNotFound;
+        res.status(code).json({ message, name });
+    }
+}
+
 export const updateProfileInfo = async (req, res) => {
     try {
         const userId = req.user.id;

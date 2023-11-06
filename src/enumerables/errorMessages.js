@@ -94,4 +94,9 @@ export const ErrorMessages = {
         name: "Error al eliminar usuario",
         message: "Hubo un error al eliminar el usuario de la lista de participantes."
     },
+    organizationsNotFound: {
+        code: 404,
+        name: "Organizaciones no encontradas",
+        message: "No se encontraron organizaciones."
+    },
 }
