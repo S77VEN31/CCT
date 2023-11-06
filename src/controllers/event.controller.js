@@ -230,7 +230,7 @@ export const createEventActivity = async (req, res) => {
 
 export const getActivitiesFromEvent = async (req, res) => {
     try {
-        const event = await Event.findById(req.body.eventId).populate('activities');
+        const event = await Event.find({ _id: req.body.eventId }).populate('activities');
         console.log(event);
         res.status(200).json(event.activities);
     } catch (error) {
