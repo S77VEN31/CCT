@@ -11,6 +11,7 @@ import {
     getAllEvents,
     getOrganizationEvents,
     getUserEvents,
+    getUserEventsAttendanceRequests,
     rateActivity,
     removeUserFromEvent,
     updateCollaboratorsList,
@@ -37,6 +38,7 @@ router.get("/organization/event/activities/:id", authRequired, getActivitiesFrom
 router.post("/organization/event/activity/rate", authRequired, rateActivity);
 // User Events
 router.get("/user/events", authRequired, getUserEvents);
+router.get("/user/events/pending", authRequired, getUserEventsAttendanceRequests);
 router.put("/user/event/join", authRequired, addUserToEvent);
 router.put("/user/event/leave", authRequired, removeUserFromEvent);
 
