@@ -1,6 +1,9 @@
 // imports for QR and email
-import QRCode from "qrcode";
 import nodemailer from "nodemailer";
+import QRCode from "qrcode";
+// Models
+import Event from "../models/event.model.js";
+import User from "../models/user.model.js";
 
 const transporter = nodemailer.createTransport({
     service: "gmail",
@@ -11,6 +14,26 @@ const transporter = nodemailer.createTransport({
         pass: "pxajtrwezfrvncpm"
     },
 })
+
+export const sendEmailToAllUsers = async (id) => {
+    try {
+
+        const event = await Event.findById(id)
+        const users = await User.find()
+        users.forEach(user => {
+            transporter.sendMail({
+                from: '"Campus Connect TEC" <campusconnecttec@gmail.com>',
+                to: user.email,
+                subject: "¡Evento eliminado!",
+                html: '<p>¡Hola! El evento ' + event.name + ' ha sido eliminado. Lamentamos los inconvenientes.</p>',
+            })
+        })
+        return true
+    } catch (error) {
+        return false
+    }
+}
+
 
 export const sendMailTest = async (req, res) => {
     try {

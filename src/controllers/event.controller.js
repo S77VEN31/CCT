@@ -6,6 +6,8 @@ import Valoration from "../models/valorations.model.js";
 // Enumerables
 import { ErrorMessages } from "../enumerables/errorMessages.js";
 import { SuccessMessages } from "../enumerables/successMessages.js";
+// Email controller
+import { sendEmailToAllUsers } from "./email.controller.js";
 
 export const getAllEvents = async (req, res) => {
     try {
@@ -94,7 +96,7 @@ export const deleteEvent = async (req, res) => {
             const { code, name, message } = ErrorMessages.eventNotFound;
             return res.status(code).json({ name, message });
         }
-
+        await sendEmailToAllUsers(eventId)
         // Return success message
         const { code, name, message } = SuccessMessages.eventDeleted;
         res.status(code).json({ message, name });
