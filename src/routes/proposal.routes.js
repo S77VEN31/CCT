@@ -9,6 +9,6 @@ const router = Router();
 
 // Event Categories
 router.get('/proposals', authRequired, getProposals);
-router.post('/proposal/send', sendProposal);
+router.post('/proposal/send', authRequired, sendProposal);
 
 export default router;
