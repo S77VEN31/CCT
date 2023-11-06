@@ -154,7 +154,7 @@ export const addUserToEvent = async (req, res) => {
         const userId = req.user.id;
         const { eventId } = req.body;
         // get user email to send email
-        const userEmail = req.user.email;
+
 
 
         // Find event and check if user is already in participants list
@@ -174,7 +174,8 @@ export const addUserToEvent = async (req, res) => {
             return res.status(code).json({ message, name });
         }
         // Add user to event's participants list, then return success message
-        await sendEmailToUser(userEmail)
+        const userEmail = await User.findById(userId);
+        await sendEmailToUser(userEmail.email)
         const { code, name, message } = SuccessMessages.userAdded;
         await Event.updateOne({ _id: eventId }, { $addToSet: { participants: userId } });
         res.status(code).json({ message, name });
@@ -205,6 +206,8 @@ export const removeUserFromEvent = async (req, res) => {
         if (firstUser) {
             await Event.updateOne({ _id: eventId }, { $addToSet: { participants: firstUser } });
             await Event.updateOne({ _id: eventId }, { $pull: { attendanceRequests: firstUser } });
+            const userDocument = await User.findById(firstUser);
+            await sendEmailToUser(userDocument.email)
         }
         const { code, name, message } = SuccessMessages.userRemoved;
         res.status(code).json({ message, name });
