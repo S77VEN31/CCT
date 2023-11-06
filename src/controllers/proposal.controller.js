@@ -13,6 +13,7 @@ export const sendProposal = async (req, res) => {
         await newProposal.save();
         res.status(200).json({ message: "Proposal created successfully" });
     } catch (error) {
+        console.log(error);
         res.status(500).json({ message: "Something went wrong" });
     }
 }
