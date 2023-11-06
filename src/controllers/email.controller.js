@@ -75,6 +75,14 @@ export const sendQRemail = async (link, email) => {
         console.log("Sending email to", email);
         console.log("Link", link);
         const qr = await QRCode.toDataURL(link);
+        console.log("QR Code Data URL:", qr); // Check the QR Code data URL
+
+        // Check if the base64 part is extracted correctly
+        const base64Data = qr.split("base64,")[1];
+        if (!base64Data) {
+            throw new Error('Base64 data could not be extracted from the QR code data URL');
+        }
+
         await transporter.sendMail({
             from: '"Campus Connect TEC" <campusconnecttec@gmail.com>',
             to: email,
@@ -83,14 +91,14 @@ export const sendQRemail = async (link, email) => {
                    <img src="cid:qrcodecid" alt="QR Code">`,
             attachments: [{
                 filename: 'qrcode.png',
-                content: qr.split("base64,")[1],
+                content: base64Data,
                 encoding: 'base64',
                 cid: 'qrcodecid'
             }]
         });
-        console.log("Email sent successfully.");
+        console.log("Email sent successfully to", email);
     } catch (error) {
-        console.error("Error sending email:", error);
+        console.error("Error sending email to", email, ":", error);
         throw error;
     }
 };
