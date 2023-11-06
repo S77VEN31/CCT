@@ -1,6 +1,5 @@
 // imports for QR and email
 import nodemailer from "nodemailer";
-import QRCode from "qrcode";
 // Models
 import User from "../models/user.model.js";
 
@@ -74,16 +73,19 @@ export const sendQRemail = async (link, email) => {
     try {
         console.log("Sending email to", email)
         console.log("Link", link)
-        const qr = await QRCode.toDataURL(
-            link,
-        )
         await transporter.sendMail({
             from: '"Campus Connect TEC" <campusconnecttec@gmail.com>',
             to: email,
-            attachDataUrls: true,
             subject: "Tu solicitud de asistencia ha sido aceptada",
-            html: '<p>¡Hola! Tu solicitud de asistencia ha sido aceptada. Adjunto encontrarás tu código QR para ingresar al evento.</p> <img src="' + qr + '" alt="QR Code">',
-        })
+            html: '<p>¡Hola! Tu solicitud de asistencia ha sido aceptada. Adjunto encontrarás tu código QR para ingresar al evento.</p> <img src="cid:qrcodecid" alt="QR Code">',
+            attachments: [
+                {
+                    filename: 'qrcode.png',
+                    path: qr,
+                    cid: 'qrcodecid'
+                }
+            ]
+        });
         console.log("Email sent successfully.");
     }
     catch (error) {
