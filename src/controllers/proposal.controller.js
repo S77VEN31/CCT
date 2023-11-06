@@ -20,7 +20,8 @@ export const sendProposal = async (req, res) => {
 
 export const getProposals = async (req, res) => {
     try {
-        const proposals = await Proposal.find();
+        const { id } = req.user;
+        const proposals = await Proposal.find({ organization: id });
         res.status(200).json(proposals);
     } catch (error) {
         res.status(404).json({ message: error.message });
