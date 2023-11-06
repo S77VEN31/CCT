@@ -72,6 +72,8 @@ export const sendMailTest = async (req, res) => {
 
 export const sendQRemail = async (link, email) => {
     try {
+        console.log("Sending email to", email)
+        console.log("Link", link)
         const qr = await QRCode.toDataURL(
             link,
         )
