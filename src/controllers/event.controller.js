@@ -1,4 +1,5 @@
 // Models
+import Activity from "../models/activity.model.js";
 import Event from "../models/event.model.js";
 import EventCategory from "../models/eventCategory.model.js";
 // Enumerables
