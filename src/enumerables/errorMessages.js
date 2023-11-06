@@ -114,4 +114,9 @@ export const ErrorMessages = {
         name: "Error al crear la actividad",
         message: "Hubo un error al crear la actividad."
     },
+    valorationNotSend: {
+        code: 500,
+        name: "Error al enviar la valoración",
+        message: "Hubo un error al enviar la valoración."
+    },
 }

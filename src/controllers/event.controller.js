@@ -2,6 +2,7 @@
 import Activity from "../models/activity.model.js";
 import Event from "../models/event.model.js";
 import EventCategory from "../models/eventCategory.model.js";
+import Valoration from "../models/valorations.model.js";
 // Enumerables
 import { ErrorMessages } from "../enumerables/errorMessages.js";
 import { SuccessMessages } from "../enumerables/successMessages.js";
@@ -242,7 +243,25 @@ export const getActivitiesFromEvent = async (req, res) => {
     }
 }
 
-
+export const rateActivity = async (req, res) => {
+    try {
+        const { userId } = req.user.id;
+        const { activityId, rating, comment } = req.body;
+        const valoration = new Valoration({
+            user: userId,
+            rating,
+            comment
+        });
+        await valoration.save();
+        const activity = await Activity.findById(activityId);
+        activity.valorations.push(valoration._id);
+        const { code, name, message } = SuccessMessages.valorationSend;
+        res.status(code).json({ message, name });
+    } catch (error) {
+        const { code, name, message } = ErrorMessages.valorationNotSend;
+        res.status(code).json({ message, name });
+    }
+}
 
 
 

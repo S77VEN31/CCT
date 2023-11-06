@@ -11,6 +11,7 @@ import {
     getAllEvents,
     getOrganizationEvents,
     getUserEvents,
+    rateActivity,
     removeUserFromEvent,
     updateCollaboratorsList,
     updateEvent
@@ -33,6 +34,7 @@ router.delete('/organization/event/delete/:id', authRequired, deleteEvent)
 router.put('/organization/event/update/collaborators', authRequired, updateCollaboratorsList)
 router.post("/organization/event/activity/create", authRequired, createEventActivity);
 router.get("/organization/event/activities/:id", authRequired, getActivitiesFromEvent);
+router.post("/organization/event/activity/rate", authRequired, rateActivity);
 // User Events
 router.get("/user/events", authRequired, getUserEvents);
 router.put("/user/event/join", authRequired, addUserToEvent);

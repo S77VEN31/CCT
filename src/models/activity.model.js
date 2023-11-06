@@ -23,6 +23,10 @@ const activityModel = new mongoose.Schema({
     collaborator: {
         type: Schema.Types.ObjectId,
         ref: "User",
-    }
+    },
+    valorations: [{
+        type: Schema.Types.ObjectId,
+        ref: "Valoration",
+    }]
 }, { timestamps: true })
 export default mongoose.model("Activity", activityModel);

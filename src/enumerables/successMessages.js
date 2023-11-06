@@ -54,4 +54,9 @@ export const SuccessMessages = {
         name: "Actividad creada",
         message: "La actividad ha sido creada exitosamente."
     },
+    valorationSend: {
+        code: 200,
+        name: "Valoración enviada",
+        message: "La valoración ha sido enviada exitosamente."
+    },
 }
