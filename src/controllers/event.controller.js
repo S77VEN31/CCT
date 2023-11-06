@@ -230,7 +230,12 @@ export const createEventActivity = async (req, res) => {
 
 export const getActivitiesFromEvent = async (req, res) => {
     try {
-        const event = await Event.findById(req.params.id).populate('activities');
+        const event = await Event.findById(req.params.id).populate({
+            path: 'activities',
+            populate: {
+                path: 'collaborator'
+            }
+        });
         res.status(200).json(event.activities);
     } catch (error) {
         res.status(409).json({ message: error.message });
