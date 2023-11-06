@@ -21,7 +21,7 @@ export const sendProposal = async (req, res) => {
 export const getProposals = async (req, res) => {
     try {
         const { id } = req.user;
-        const proposals = await Proposal.find({ organization: id });
+        const proposals = await Proposal.find({ organization: id }).populate("proposer");
         res.status(200).json(proposals);
     } catch (error) {
         res.status(404).json({ message: error.message });
