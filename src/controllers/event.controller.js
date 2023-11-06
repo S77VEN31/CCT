@@ -231,6 +231,7 @@ export const createEventActivity = async (req, res) => {
 export const getActivitiesFromEvent = async (req, res) => {
     try {
         const event = await Event.findById(req.body.eventId).populate('activities');
+        console.log(event);
         res.status(200).json(event.activities);
     } catch (error) {
         res.status(409).json({ message: error.message });
