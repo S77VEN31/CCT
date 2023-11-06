@@ -2,6 +2,7 @@
 import Activity from "../models/activity.model.js";
 import Event from "../models/event.model.js";
 import EventCategory from "../models/eventCategory.model.js";
+import User from "../models/user.model.js";
 import Valoration from "../models/valorations.model.js";
 // Enumerables
 import { ErrorMessages } from "../enumerables/errorMessages.js";
