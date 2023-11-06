@@ -32,7 +32,7 @@ router.put('/organization/event/update', authRequired, updateEvent)
 router.delete('/organization/event/delete/:id', authRequired, deleteEvent)
 router.put('/organization/event/update/collaborators', authRequired, updateCollaboratorsList)
 router.post("/organization/event/activity/create", authRequired, createEventActivity);
-router.get("/organization/event/activities", authRequired, getActivitiesFromEvent);
+router.get("/organization/event/activities/:id", authRequired, getActivitiesFromEvent);
 // User Events
 router.get("/user/events", authRequired, getUserEvents);
 router.put("/user/event/join", authRequired, addUserToEvent);
