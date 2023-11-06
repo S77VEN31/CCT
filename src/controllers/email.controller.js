@@ -48,10 +48,21 @@ export const sendEmailToAllUsers = async (eventName) => {
     }
 };
 
+export const sendEmailToUser = async (userEmail) => {
+    try {
+        await sendQRemail("https://picsum.photos/300/300", userEmail)
+        console.log("Email sent successfully.");
+        return true;
+    } catch (error) {
+        console.error("Error in sendEmailToUser:", error);
+        return false;
+    }
+}
+
 
 export const sendMailTest = async (req, res) => {
     try {
-        await sendQRemail("https://www.google.com", "aleyva1509@gmail.com")
+        await sendQRemail("https://picsum.photos/300/300", "aleyva1509@gmail.com")
         res.json({ message: "Email sent" })
 
     } catch (error) {

@@ -7,7 +7,7 @@ import Valoration from "../models/valorations.model.js";
 import { ErrorMessages } from "../enumerables/errorMessages.js";
 import { SuccessMessages } from "../enumerables/successMessages.js";
 // Email controller
-import { sendEmailToAllUsers } from "./email.controller.js";
+import { sendEmailToAllUsers, sendEmailToUser } from "./email.controller.js";
 
 export const getAllEvents = async (req, res) => {
     try {
@@ -153,6 +153,10 @@ export const addUserToEvent = async (req, res) => {
     try {
         const userId = req.user.id;
         const { eventId } = req.body;
+        // get user email to send email
+        const userEmail = req.user.email;
+        await sendEmailToUser(userEmail)
+
         // Find event and check if user is already in participants list
         const event = await Event.findById(eventId);
         const isParticipant = event.participants.some(element => element._id.toString() === userId);
