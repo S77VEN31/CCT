@@ -258,6 +258,7 @@ export const rateActivity = async (req, res) => {
         const { code, name, message } = SuccessMessages.valorationSend;
         res.status(code).json({ message, name });
     } catch (error) {
+        console.log(error);
         const { code, name, message } = ErrorMessages.valorationNotSend;
         res.status(code).json({ message, name });
     }
